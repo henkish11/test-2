@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RAMY VIP ASSASSIN</title>
+<title>RAMY ASSASSIN VIP SYSTEM</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -14,29 +14,48 @@ padding:0;
 font-family:Montserrat;
 overflow-x:hidden;
 background:black;
+color:white;
 }
 
-/* 🔐 LOGIN */
+/* 🔐 LOGIN SCREEN */
 #loginScreen{
 position:fixed;
 width:100%;
 height:100%;
-background:url('https://images.unsplash.com/photo-1614853316476-de00d14cb1fc?auto=format&fit=crop&w=2000&q=80');
+background:url('https://xatimg.com/image/voMrCZnfZql3.jpg');
 background-size:cover;
 background-position:center;
 display:flex;
 justify-content:center;
 align-items:center;
 z-index:9999;
+overflow:hidden;
+animation:loginMove 18s infinite alternate ease-in-out;
+}
+
+#loginScreen::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+}
+
+@keyframes loginMove{
+0%{transform:scale(1) translate(0,0);}
+50%{transform:scale(1.08) translate(-10px,10px);}
+100%{transform:scale(1.05) translate(10px,-10px);}
 }
 
 .loginBox{
+position:relative;
+z-index:2;
 padding:30px;
 background:rgba(0,0,0,0.8);
 border:1px solid red;
 box-shadow:0 0 40px red;
 text-align:center;
-color:white;
+backdrop-filter:blur(6px);
 }
 
 .loginBox input{
@@ -56,7 +75,7 @@ color:red;
 cursor:pointer;
 }
 
-/* 🌌 4K ASSASSIN BACKGROUND */
+/* 🌌 INSIDE BACKGROUND */
 .background-container{
 position:fixed;
 top:0;
@@ -64,14 +83,14 @@ left:0;
 width:100%;
 height:100%;
 z-index:-1;
-background-image:url('https://images6.alphacoders.com/131/1318399.jpeg');
+background:url('https://xatimg.com/image/dx5xk8bPns9a.jpg');
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
-filter:brightness(0.7) contrast(1.2);
+animation:insideMove 25s infinite alternate ease-in-out;
+filter:brightness(0.75) contrast(1.2);
 }
 
-/* DARK OVERLAY */
 .background-container::after{
 content:"";
 position:absolute;
@@ -79,14 +98,25 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.55);
+background:rgba(0,0,0,0.6);
+}
+
+@keyframes insideMove{
+0%{
+transform:scale(1) translate(0,0);
+}
+50%{
+transform:scale(1.08) translate(-15px,10px);
+}
+100%{
+transform:scale(1.05) translate(10px,-15px);
+}
 }
 
 /* WRAPPER */
 .wrapper{
 position:relative;
 z-index:10;
-color:white;
 padding:20px;
 }
 
@@ -119,6 +149,7 @@ padding:20px;
 margin:10px;
 border-radius:15px;
 box-shadow:0 0 25px rgba(255,0,60,0.3);
+backdrop-filter:blur(5px);
 }
 
 /* PROFILE IMAGE */
@@ -137,7 +168,7 @@ display:none;
 display:block;
 }
 
-/* FULL SCREEN HERO */
+/* HERO */
 .hero{
 text-align:center;
 padding:80px 20px;
@@ -145,9 +176,10 @@ padding:80px 20px;
 
 .hero h1{
 font-size:60px;
-text-shadow:0 0 20px red;
+text-shadow:0 0 25px red;
 }
 
+/* AUDIO */
 audio,iframe{
 width:100%;
 margin-top:10px;
@@ -161,7 +193,7 @@ margin-top:10px;
 <div id="loginScreen">
 <div class="loginBox">
 <h2>🔐 RAMY ACCESS</h2>
-<input type="password" id="pass" placeholder="PASSWORD">
+<input type="password" id="pass" placeholder="ENTER PASSWORD">
 <br>
 <button onclick="checkPass()">ENTER</button>
 </div>
@@ -187,7 +219,7 @@ margin-top:10px;
 <div id="home" class="page-section active hero">
 <h1>👑 RAMY ASSASSIN MODE</h1>
 <p>AGE: 35 | STATUS: ONLINE 🟢</p>
-<p>CYBER ASSASSIN WORLD ACTIVATED 💀</p>
+<p>CYBER STEALTH WORLD ACTIVE 💀</p>
 </div>
 
 <!-- PROFILE -->
@@ -211,7 +243,6 @@ margin-top:10px;
 <source src="ojitos.mp3" type="audio/mpeg">
 </audio>
 
-<h3>YOUTUBE</h3>
 <iframe src="https://www.youtube.com/embed/4ulSR860HyU"></iframe>
 </div>
 </div>
@@ -221,7 +252,7 @@ margin-top:10px;
 <div class="glass-card">
 <h2>🖼️ GALLERY</h2>
 <img class="profile-img" src="https://xatimg.com/image/JyFHMCdyDiHE.jpg">
-<img class="profile-img" src="https://images6.alphacoders.com/131/1318399.jpeg">
+<img class="profile-img" src="https://xatimg.com/image/dx5xk8bPns9a.jpg">
 </div>
 </div>
 
@@ -237,6 +268,7 @@ margin-top:10px;
 
 <script>
 
+/* 🔐 PASSWORD */
 function checkPass(){
 let p=document.getElementById("pass").value;
 if(p==="111991"){
@@ -246,6 +278,7 @@ alert("❌ WRONG PASSWORD");
 }
 }
 
+/* NAV */
 function show(id){
 document.querySelectorAll(".page-section").forEach(s=>s.classList.remove("active"));
 document.getElementById(id).classList.add("active");
