@@ -59,20 +59,89 @@ canvas{
   border-radius:8px;
 }
 
+/* TOPBAR */
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  padding:8px 15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  z-index:10;
+  font-size:13px;
+}
+
+.status{color:#38bdf8}
+
 /* MAIN */
 .container{
   height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
+  padding:10px;
 }
 
 .profile{
   width:900px;
   max-width:95%;
-  background:rgba(255,255,255,0.05);
+  background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));
   border-radius:20px;
+  border:1px solid rgba(255,255,255,0.1);
   padding:20px;
+  backdrop-filter:blur(18px);
+  box-shadow:0 0 50px rgba(0,140,255,0.25);
+}
+
+/* TOP */
+.top{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.top img{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  border:2px solid #00c3ff;
+}
+
+.name{
+  font-size:32px;
+  font-weight:700;
+  color:#4fc3ff;
+}
+
+/* ORIGINAL INFO (UNCHANGED) */
+.grid{
+  margin-top:15px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:12px;
+  border-radius:15px;
+  font-size:13px;
+}
+
+/* LINKS */
+.world{
+  display:block;
+  padding:10px;
+  border-radius:10px;
+  background:rgba(0,195,255,0.1);
+  text-decoration:none;
+  color:#fff;
+  font-size:13px;
 }
 
 /* CHAT */
@@ -90,7 +159,7 @@ canvas{
 }
 
 .chat-msgs{
-  height:180px;
+  height:160px;
   overflow-y:auto;
   padding:8px;
   font-size:12px;
@@ -115,7 +184,7 @@ canvas{
   cursor:pointer;
 }
 
-/* MESSAGE BOX */
+/* MESSAGE */
 .msg{
   display:flex;
   justify-content:space-between;
@@ -159,10 +228,38 @@ canvas{
   </div>
 </div>
 
+<div class="topbar">
+  <div class="status" id="status">⚡ OFFLINE</div>
+  <div>GOD SYSTEM V2</div>
+</div>
+
 <div class="container">
 <div class="profile">
 
+<!-- ORIGINAL DATA (UNCHANGED FULLY) -->
+<div class="top">
+<img src="https://xatimg.com/image/RKP5IrStF45l.png">
+<div>
+<div class="name">Ramy</div>
+<div>@iegypt • ID: 106080</div>
+</div>
+</div>
+
+<div class="grid">
+<div class="card">⚡I love trading on the xat website</div>
+<div class="card">❤️I got involved with Dolly and she's my whole life❤️</div>
+</div>
+
+<div class="grid">
+<a class="world" href="https://xat.com/2ra" target="_blank">https://xat.com/2ra</a>
+<a class="world" href="https://xat.com/7reqa" target="_blank">https://xat.com/7reqa</a>
+<a class="world" href="https://xat.com/trade" target="_blank">https://xat.com/trade</a>
+<a class="world" href="https://xat.com/cambio" target="_blank">https://xat.com/cambio</a>
+</div>
+
+<!-- CHAT -->
 <div class="chat">
+
 <div class="chat-header">Public Chat</div>
 
 <div style="display:flex;gap:5px;padding:5px;">
@@ -184,19 +281,19 @@ style="flex:1;padding:6px;border:none;background:#0f172a;color:#fff;border-radiu
 
 <script>
 
-let OWNER_PASS = "106080"; // أنت الأدمن
-
+// LOGIN
 function enter(){
   let p=document.getElementById('password').value;
 
-  if(p===OWNER_PASS){
+  if(p==="106080"){
     document.getElementById('login').style.display='none';
+    document.getElementById('status').innerText='⚡ ONLINE';
   } else {
     alert("Wrong password");
   }
 }
 
-// LOAD
+// LOAD MESSAGES
 function loadMsgs(){
   let msgs = JSON.parse(localStorage.getItem("msgs") || "[]");
   let box = document.getElementById("msgs");
@@ -212,34 +309,29 @@ function loadMsgs(){
     let actions=document.createElement("div");
     actions.className="actions";
 
-    // EDIT (only owner or message owner)
+    // EDIT
     let edit=document.createElement("button");
     edit.className="edit";
     edit.textContent="✏";
 
     edit.onclick=()=>{
-      let newText = prompt("Edit message:", m.text);
+      let newText=prompt("Edit message",m.text);
       if(newText){
-        msgs[i].text = newText;
-        localStorage.setItem("msgs", JSON.stringify(msgs));
+        msgs[i].text=newText;
+        localStorage.setItem("msgs",JSON.stringify(msgs));
         loadMsgs();
       }
     };
 
-    // DELETE (owner OR message owner)
+    // DELETE
     let del=document.createElement("button");
     del.className="del";
     del.textContent="🗑";
 
     del.onclick=()=>{
-      let isOwner = document.getElementById('password').value === OWNER_PASS;
-      let isSender = true; // local demo
-
-      if(isOwner || isSender){
-        msgs.splice(i,1);
-        localStorage.setItem("msgs", JSON.stringify(msgs));
-        loadMsgs();
-      }
+      msgs.splice(i,1);
+      localStorage.setItem("msgs",JSON.stringify(msgs));
+      loadMsgs();
     };
 
     actions.appendChild(edit);
@@ -251,7 +343,7 @@ function loadMsgs(){
     box.appendChild(div);
   });
 
-  box.scrollTop = box.scrollHeight;
+  box.scrollTop=box.scrollHeight;
 }
 
 // SEND
@@ -261,20 +353,20 @@ function send(){
 
   if(!m.value)return;
 
-  let msgs = JSON.parse(localStorage.getItem("msgs") || "[]");
+  let msgs=JSON.parse(localStorage.getItem("msgs")||"[]");
 
   msgs.push({
-    name: u.value || "Guest",
-    text: m.value
+    name:u.value||"Guest",
+    text:m.value
   });
 
-  localStorage.setItem("msgs", JSON.stringify(msgs));
+  localStorage.setItem("msgs",JSON.stringify(msgs));
 
   m.value="";
   loadMsgs();
 }
 
-// ENTER SEND
+// ENTER KEY
 document.addEventListener("keydown",e=>{
   if(e.key==="Enter" && document.activeElement.id==="msg"){
     send();
