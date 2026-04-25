@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ramy Profile - BY RAMY</title>
+<title>Ramy Profile - GOD SYSTEM V2</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -118,6 +118,18 @@ canvas{
   color:#4fc3ff;
 }
 
+/* RADIO UNDER NAME */
+.radio-btn{
+  margin-top:5px;
+  padding:6px 10px;
+  background:#38bdf8;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  color:#000;
+  font-size:12px;
+}
+
 /* INFO */
 .grid{
   margin-top:15px;
@@ -165,7 +177,7 @@ canvas{
   font-size:12px;
 }
 
-/* MESSAGE */
+/* MSG */
 .msg{
   display:flex;
   justify-content:space-between;
@@ -208,19 +220,6 @@ canvas{
   cursor:pointer;
 }
 
-.radio-btn{
-  position:fixed;
-  bottom:15px;
-  left:15px;
-  padding:10px;
-  background:#38bdf8;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  color:#000;
-  z-index:999;
-}
-
 #audioPlayer{display:none;}
 </style>
 </head>
@@ -229,11 +228,10 @@ canvas{
 
 <canvas id="bg"></canvas>
 
+<!-- AUDIO -->
 <audio id="audioPlayer" loop>
   <source src="https://stream.radiojar.com/8s5u5tpdtwzuv" type="audio/mpeg">
 </audio>
-
-<button class="radio-btn" onclick="toggleRadio()">🎧 Quran Radio</button>
 
 <!-- LOGIN -->
 <div class="login" id="login">
@@ -252,17 +250,32 @@ canvas{
 <div class="container">
 <div class="profile">
 
+<!-- TOP -->
 <div class="top">
 <img src="https://xatimg.com/image/RKP5IrStF45l.png">
+
 <div>
 <div class="name">Ramy</div>
-<div>@iegypt • ID: 106080</div>
+
+<!-- RADIO UNDER NAME -->
+<button class="radio-btn" onclick="toggleRadio()">🎧 Quran Radio</button>
+
+<div style="font-size:12px;margin-top:5px">@iegypt • ID: 106080</div>
 </div>
 </div>
 
+<!-- INFO -->
 <div class="grid">
-<div class="card">⚡ I love trading on xat</div>
-<div class="card">❤️ Dolly is my life ❤️</div>
+<div class="card">⚡ I love trading on xat website</div>
+<div class="card">❤️ I got involved with Dolly ❤️</div>
+</div>
+
+<!-- LINKS (RESTORED) -->
+<div class="grid">
+<a class="world" href="https://xat.com/2ra" target="_blank">https://xat.com/2ra</a>
+<a class="world" href="https://xat.com/7reqa" target="_blank">https://xat.com/7reqa</a>
+<a class="world" href="https://xat.com/trade" target="_blank">https://xat.com/trade</a>
+<a class="world" href="https://xat.com/cambio" target="_blank">https://xat.com/cambio</a>
 </div>
 
 <!-- CHAT -->
@@ -289,7 +302,7 @@ style="width:100%;padding:6px;border:none;background:#0f172a;color:#fff;border-r
 
 <script>
 
-/* LOGIN */
+/* LOGIN ENTER FIX */
 function enter(){
   let p=document.getElementById('password').value;
 
@@ -301,7 +314,6 @@ function enter(){
   }
 }
 
-/* 🔥 ENTER LOGIN */
 document.getElementById("password").addEventListener("keydown",e=>{
   if(e.key==="Enter") enter();
 });
@@ -320,7 +332,7 @@ function toggleRadio(){
   }
 }
 
-/* CHAT DATA */
+/* CHAT */
 function send(){
   let m=document.getElementById('msg');
   let u=document.getElementById('username');
@@ -336,12 +348,11 @@ function send(){
   });
 
   localStorage.setItem("msgs",JSON.stringify(msgs));
-
   m.value="";
   load();
 }
 
-/* LOAD CHAT */
+/* LOAD + EDIT + DELETE */
 function load(){
   let msgs=JSON.parse(localStorage.getItem("msgs")||"[]");
   let box=document.getElementById("msgs");
@@ -358,21 +369,19 @@ function load(){
     let actions=document.createElement("div");
     actions.className="actions";
 
-    // EDIT
     let edit=document.createElement("button");
     edit.className="edit";
     edit.textContent="✏";
 
     edit.onclick=()=>{
-      let newText=prompt("Edit message",m.text);
-      if(newText){
-        msgs[i].text=newText;
+      let t=prompt("Edit",m.text);
+      if(t){
+        msgs[i].text=t;
         localStorage.setItem("msgs",JSON.stringify(msgs));
         load();
       }
     };
 
-    // DELETE (only owner)
     let del=document.createElement("button");
     del.className="del";
     del.textContent="🗑";
@@ -384,7 +393,7 @@ function load(){
         localStorage.setItem("msgs",JSON.stringify(msgs));
         load();
       } else {
-        alert("You can only delete your own messages");
+        alert("You can only delete your own message");
       }
     };
 
@@ -400,7 +409,7 @@ function load(){
 
 load();
 
-/* ENTER KEY SEND MESSAGE */
+/* ENTER SEND MESSAGE */
 document.addEventListener("keydown",e=>{
   if(e.key==="Enter" && document.activeElement.id==="msg"){
     send();
