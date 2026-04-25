@@ -1,4 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramy Profile - GOD SYSTEM V2</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  background: radial-gradient(circle at top,#010514,#020617);
+  color:#fff;
+  overflow:hidden;
+}
+
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+}
+
+/* LOGIN */
+.login{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(12px);
+  z-index:50;
+}
+.login-box{
+  width:300px;
+  padding:18px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+}
+.login-box input{
+  width:100%;
+  margin:8px 0;
+  padding:9px;
+  background:#0f172a;
+  border:none;
+  color:#fff;
+  border-radius:8px;
+}
+.login-box button{
+  width:100%;
+  padding:9px;
+  background:linear-gradient(45deg,#0ea5e9,#1e3a8a);
+  border:none;
+  color:#fff;
+  cursor:pointer;
+  border-radius:8px;
+}
+
+/* TOP */
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  padding:8px 15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  z-index:10;
+  font-size:13px;
+}
+
+.status{color:#38bdf8}
+
+/* MAIN */
+.container{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+}
+
+.profile{
+  width:900px;
+  max-width:95%;
+  background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  padding:20px;
+  backdrop-filter:blur(18px);
+  box-shadow:0 0 50px rgba(0,140,255,0.25);
+}
+
+.top{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.top img{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  border:2px solid #00c3ff;
+}
+
+.name{
+  font-size:32px;
+  font-weight:700;
+  color:#4fc3ff;
+}
+
+/* INFO */
+.grid{
+  margin-top:15px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:12px;
+  border-radius:15px;
+  font-size:13px;
+}
+
+/* CHAT */
+.chat{
+  margin-top:15px;
+  background:rgba(0,0,0,0.4);
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.chat-header{
+  padding:8px;
+  background:linear-gradient(45deg,#0ea5e9,#1e3a8a);
+  font-size:12px;
+}
+
+.chat-msgs{
+  height:140px;
+  overflow-y:auto;
+  padding:8px;
+  font-size:12px;
+}
+
+.chat-input{
+  display:flex;
+}
+
+.chat-input input{
+  flex:1;
+  padding:6px;
+  border:none;
+  background:#0f172a;
+  color:#fff;
+}
+
+.chat-input button{
+  padding:6px;
+  border:none;
+  background:#38bdf8;
+  cursor:pointer;
+}
+
+#audioPlayer{display:none;}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<!-- AUDIO -->
+<audio id="audioPlayer" loop>
+  <source src="https://stream.radiojar.com/8s5u5tpdtwzuv" type="audio/mpeg">
+</audio>
+
+<!-- LOGIN -->
+<div class="login" id="login">
+  <div class="login-box">
+    <h3>ACCESS</h3>
+    <input id="password" type="password">
+    <button onclick="enter()">Enter</button>
+  </div>
+</div>
+
+<div class="topbar">
+  <div class="status" id="status">⚡ OFFLINE</div>
+  <div>GOD SYSTEM V2</div>
+</div>
+
+<div class="container">
+<div class="profile">
+
+<div class="top">
+<img src="https://xatimg.com/image/RKP5IrStF45l.png">
+<div>
+<div class="name">Ramy</div>
+<div>@iegypt • ID: 106080</div>
+</div>
+</div>
+
+<!-- INFO -->
+<div class="grid">
+<div class="card">⚡ Trading on xat</div>
+<div class="card">❤️ Dolly ❤️</div>
+</div>
+
+<!-- CHAT -->
+<div class="chat">
+<div class="chat-header">Public Chat</div>
+
+<div class="chat-msgs" id="msgs"></div>
+
+<div class="chat-input">
+<input id="msg" placeholder="Write message...">
+<button onclick="send()">Send</button>
+</div>
+
+</div>
+
+</div>
+</div>
+
 <script>
-<!-- code by https://www.html-code-generator.com -->
-document.write(unescape('%3C%21DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22en%22%3E%0A%3Chead%3E%0A%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0A%3Ctitle%3ERAMY%20ASSASSIN%20VIP%20SYSTEM%3C/title%3E%0A%0A%3Clink%20href%3D%22https%3A//fonts.googleapis.com/css2%3Ffamily%3DMontserrat%3Awght@300%3B400%3B600%3B800%26display%3Dswap%22%20rel%3D%22stylesheet%22%3E%0A%0A%3Cstyle%3E%0Abody%2Chtml%7B%0Amargin%3A0%3B%0Apadding%3A0%3B%0Afont-family%3AMontserrat%3B%0Aoverflow-x%3Ahidden%3B%0Abackground%3Ablack%3B%0Acolor%3Awhite%3B%0A%7D%0A%0A/*%20%uD83D%uDD10%20LOGIN%20SCREEN%20*/%0A%23loginScreen%7B%0Aposition%3Afixed%3B%0Awidth%3A100%25%3B%0Aheight%3A100%25%3B%0Abackground%3Aurl%28%27https%3A//xatimg.com/image/voMrCZnfZql3.jpg%27%29%3B%0Abackground-size%3Acover%3B%0Abackground-position%3Acenter%3B%0Adisplay%3Aflex%3B%0Ajustify-content%3Acenter%3B%0Aalign-items%3Acenter%3B%0Az-index%3A9999%3B%0Aoverflow%3Ahidden%3B%0Aanimation%3AloginMove%2018s%20infinite%20alternate%20ease-in-out%3B%0A%7D%0A%0A%23loginScreen%3A%3Aafter%7B%0Acontent%3A%22%22%3B%0Aposition%3Aabsolute%3B%0Awidth%3A100%25%3B%0Aheight%3A100%25%3B%0Abackground%3Argba%280%2C0%2C0%2C0.55%29%3B%0A%7D%0A%0A@keyframes%20loginMove%7B%0A0%25%7Btransform%3Ascale%281%29%20translate%280%2C0%29%3B%7D%0A50%25%7Btransform%3Ascale%281.08%29%20translate%28-10px%2C10px%29%3B%7D%0A100%25%7Btransform%3Ascale%281.05%29%20translate%2810px%2C-10px%29%3B%7D%0A%7D%0A%0A.loginBox%7B%0Aposition%3Arelative%3B%0Az-index%3A2%3B%0Apadding%3A30px%3B%0Abackground%3Argba%280%2C0%2C0%2C0.8%29%3B%0Aborder%3A1px%20solid%20red%3B%0Abox-shadow%3A0%200%2040px%20red%3B%0Atext-align%3Acenter%3B%0Abackdrop-filter%3Ablur%286px%29%3B%0A%7D%0A%0A.loginBox%20input%7B%0Apadding%3A10px%3B%0Abackground%3Ablack%3B%0Aborder%3A1px%20solid%20red%3B%0Acolor%3Ared%3B%0Amargin-top%3A10px%3B%0A%7D%0A%0A.loginBox%20button%7B%0Apadding%3A10px%3B%0Amargin-top%3A10px%3B%0Abackground%3Ablack%3B%0Aborder%3A1px%20solid%20red%3B%0Acolor%3Ared%3B%0Acursor%3Apointer%3B%0A%7D%0A%0A/*%20%uD83C%uDF0C%20INSIDE%20BACKGROUND%20*/%0A.background-container%7B%0Aposition%3Afixed%3B%0Atop%3A0%3B%0Aleft%3A0%3B%0Awidth%3A100%25%3B%0Aheight%3A100%25%3B%0Az-index%3A-1%3B%0Abackground%3Aurl%28%27https%3A//xatimg.com/image/dx5xk8bPns9a.jpg%27%29%3B%0Abackground-size%3Acover%3B%0Abackground-position%3Acenter%3B%0Abackground-repeat%3Ano-repeat%3B%0Aanimation%3AinsideMove%2025s%20infinite%20alternate%20ease-in-out%3B%0Afilter%3Abrightness%280.75%29%20contrast%281.2%29%3B%0A%7D%0A%0A.background-container%3A%3Aafter%7B%0Acontent%3A%22%22%3B%0Aposition%3Aabsolute%3B%0Atop%3A0%3B%0Aleft%3A0%3B%0Awidth%3A100%25%3B%0Aheight%3A100%25%3B%0Abackground%3Argba%280%2C0%2C0%2C0.6%29%3B%0A%7D%0A%0A@keyframes%20insideMove%7B%0A0%25%7B%0Atransform%3Ascale%281%29%20translate%280%2C0%29%3B%0A%7D%0A50%25%7B%0Atransform%3Ascale%281.08%29%20translate%28-15px%2C10px%29%3B%0A%7D%0A100%25%7B%0Atransform%3Ascale%281.05%29%20translate%2810px%2C-15px%29%3B%0A%7D%0A%7D%0A%0A/*%20WRAPPER%20*/%0A.wrapper%7B%0Aposition%3Arelative%3B%0Az-index%3A10%3B%0Apadding%3A20px%3B%0A%7D%0A%0A/*%20NAV%20*/%0Anav%20ul%7B%0Adisplay%3Aflex%3B%0Ajustify-content%3Acenter%3B%0Agap%3A15px%3B%0Alist-style%3Anone%3B%0Apadding%3A10px%3B%0Abackground%3Argba%280%2C0%2C0%2C0.6%29%3B%0Aborder%3A1px%20solid%20red%3B%0A%7D%0A%0Anav%20ul%20li%7B%0Acursor%3Apointer%3B%0Acolor%3A%23ccc%3B%0Atransition%3A0.3s%3B%0A%7D%0A%0Anav%20ul%20li%3Ahover%7B%0Acolor%3Ared%3B%0A%7D%0A%0A/*%20CARDS%20*/%0A.glass-card%7B%0Abackground%3Argba%280%2C0%2C0%2C0.7%29%3B%0Aborder%3A1px%20solid%20rgba%28255%2C0%2C60%2C0.5%29%3B%0Apadding%3A20px%3B%0Amargin%3A10px%3B%0Aborder-radius%3A15px%3B%0Abox-shadow%3A0%200%2025px%20rgba%28255%2C0%2C60%2C0.3%29%3B%0Abackdrop-filter%3Ablur%285px%29%3B%0A%7D%0A%0A/*%20PROFILE%20IMAGE%20*/%0A.profile-img%7B%0Awidth%3A200px%3B%0Aborder-radius%3A20px%3B%0Aborder%3A2px%20solid%20red%3B%0A%7D%0A%0A/*%20SECTIONS%20*/%0A.page-section%7B%0Adisplay%3Anone%3B%0A%7D%0A%0A.page-section.active%7B%0Adisplay%3Ablock%3B%0A%7D%0A%0A/*%20HERO%20*/%0A.hero%7B%0Atext-align%3Acenter%3B%0Apadding%3A80px%2020px%3B%0A%7D%0A%0A.hero%20h1%7B%0Afont-size%3A60px%3B%0Atext-shadow%3A0%200%2025px%20red%3B%0A%7D%0A%0A/*%20AUDIO%20*/%0Aaudio%2Ciframe%7B%0Awidth%3A100%25%3B%0Amargin-top%3A10px%3B%0A%7D%0A%3C/style%3E%0A%3C/head%3E%0A%0A%3Cbody%3E%0A%0A%3C%21--%20%uD83D%uDD10%20LOGIN%20--%3E%0A%3Cdiv%20id%3D%22loginScreen%22%3E%0A%3Cdiv%20class%3D%22loginBox%22%3E%0A%3Ch2%3E%uD83D%uDD10%20RAMY%20ACCESS%3C/h2%3E%0A%3Cinput%20type%3D%22password%22%20id%3D%22pass%22%20placeholder%3D%22ENTER%20PASSWORD%22%3E%0A%3Cbr%3E%0A%3Cbutton%20onclick%3D%22checkPass%28%29%22%3EENTER%3C/button%3E%0A%3C/div%3E%0A%3C/div%3E%0A%0A%3C%21--%20%uD83C%uDF0C%20BACKGROUND%20--%3E%0A%3Cdiv%20class%3D%22background-container%22%3E%3C/div%3E%0A%0A%3C%21--%20CONTENT%20--%3E%0A%3Cdiv%20class%3D%22wrapper%22%3E%0A%0A%3Cnav%3E%0A%3Cul%3E%0A%3Cli%20onclick%3D%22show%28%27home%27%29%22%3EHOME%3C/li%3E%0A%3Cli%20onclick%3D%22show%28%27profile%27%29%22%3EPROFILE%3C/li%3E%0A%3Cli%20onclick%3D%22show%28%27music%27%29%22%3EMUSIC%3C/li%3E%0A%3Cli%20onclick%3D%22show%28%27gallery%27%29%22%3EGALLERY%3C/li%3E%0A%3Cli%20onclick%3D%22show%28%27video%27%29%22%3EVIDEO%3C/li%3E%0A%3C/ul%3E%0A%3C/nav%3E%0A%0A%3C%21--%20HOME%20--%3E%0A%3Cdiv%20id%3D%22home%22%20class%3D%22page-section%20active%20hero%22%3E%0A%3Ch1%3E%uD83D%uDC51%20RAMY%20ASSASSIN%20MODE%3C/h1%3E%0A%3Cp%3EAGE%3A%2035%20%7C%20STATUS%3A%20ONLINE%20%uD83D%uDFE2%3C/p%3E%0A%3Cp%3ECYBER%20STEALTH%20WORLD%20ACTIVE%20%uD83D%uDC80%3C/p%3E%0A%3C/div%3E%0A%0A%3C%21--%20PROFILE%20--%3E%0A%3Cdiv%20id%3D%22profile%22%20class%3D%22page-section%22%3E%0A%3Cdiv%20class%3D%22glass-card%22%3E%0A%3Ch2%3E%uD83D%uDC64%20RAMY%20PROFILE%3C/h2%3E%0A%3Cimg%20class%3D%22profile-img%22%20src%3D%22https%3A//i.pinimg.com/736x/65/5a/7d/655a7d9d1945d77bb455b02c74d55aa8.jpg%22%3E%0A%3Cp%3ENAME%3A%20RAMY%3C/p%3E%0A%3Cp%3EID%3A%20106080%3C/p%3E%0A%3Cp%3EAGE%3A%2035%3C/p%3E%0A%3Cp%3ESTATUS%3A%20ONLINE%20%uD83D%uDFE2%3C/p%3E%0A%3C/div%3E%0A%3C/div%3E%0A%0A%3C%21--%20MUSIC%20--%3E%0A%3Cdiv%20id%3D%22music%22%20class%3D%22page-section%22%3E%0A%3Cdiv%20class%3D%22glass-card%22%3E%0A%3Ch2%3E%uD83C%uDFA7%20MUSIC%3C/h2%3E%0A%0A%3Caudio%20controls%20autoplay%20loop%3E%0A%3Csource%20src%3D%22ojitos.mp3%22%20type%3D%22audio/mpeg%22%3E%0A%3C/audio%3E%0A%0A%3Ciframe%20src%3D%22https%3A//www.youtube.com/embed/4ulSR860HyU%22%3E%3C/iframe%3E%0A%3C/div%3E%0A%3C/div%3E%0A%0A%3C%21--%20GALLERY%20--%3E%0A%3Cdiv%20id%3D%22gallery%22%20class%3D%22page-section%22%3E%0A%3Cdiv%20class%3D%22glass-card%22%3E%0A%3Ch2%3E%uD83D%uDDBC%uFE0F%20GALLERY%3C/h2%3E%0A%3Cimg%20class%3D%22profile-img%22%20src%3D%22https%3A//xatimg.com/image/JyFHMCdyDiHE.jpg%22%3E%0A%3Cimg%20class%3D%22profile-img%22%20src%3D%22https%3A//xatimg.com/image/dx5xk8bPns9a.jpg%22%3E%0A%3C/div%3E%0A%3C/div%3E%0A%0A%3C%21--%20VIDEO%20--%3E%0A%3Cdiv%20id%3D%22video%22%20class%3D%22page-section%22%3E%0A%3Cdiv%20class%3D%22glass-card%22%3E%0A%3Ch2%3E%uD83D%uDCFD%uFE0F%20VIDEO%3C/h2%3E%0A%3Ciframe%20src%3D%22https%3A//www.youtube.com/embed/QYyFc222o1s%22%3E%3C/iframe%3E%0A%3C/div%3E%0A%3C/div%3E%0A%0A%3C/div%3E%0A%0A%3Cscript%3E%0A%0A/*%20%uD83D%uDD10%20PASSWORD%20*/%0Afunction%20checkPass%28%29%7B%0Alet%20p%3Ddocument.getElementById%28%22pass%22%29.value%3B%0Aif%28p%3D%3D%3D%22111991%22%29%7B%0Adocument.getElementById%28%22loginScreen%22%29.style.display%3D%22none%22%3B%0A%7Delse%7B%0Aalert%28%22%u274C%20WRONG%20PASSWORD%22%29%3B%0A%7D%0A%7D%0A%0A/*%20NAV%20*/%0Afunction%20show%28id%29%7B%0Adocument.querySelectorAll%28%22.page-section%22%29.forEach%28s%3D%3Es.classList.remove%28%22active%22%29%29%3B%0Adocument.getElementById%28id%29.classList.add%28%22active%22%29%3B%0A%7D%0A%0A%3C/script%3E%0A%0A%3C/body%3E%0A%3C/html%3E%0A'));
+
+// LOGIN
+function enter(){
+  let p=document.getElementById('password').value;
+
+  if(p==="106080"){
+    document.getElementById('login').style.display='none';
+    document.getElementById('status').innerText='⚡ ONLINE';
+  } else {
+    alert("Wrong password");
+  }
+}
+
+// CHAT SYSTEM (PUBLIC LOCAL STORAGE)
+function loadMsgs(){
+  let msgs = JSON.parse(localStorage.getItem("msgs") || "[]");
+  let box = document.getElementById("msgs");
+  box.innerHTML = "";
+
+  msgs.forEach(m=>{
+    let d=document.createElement("div");
+    d.textContent = m.name + ": " + m.text;
+    box.appendChild(d);
+  });
+
+  box.scrollTop = box.scrollHeight;
+}
+
+function send(){
+  let m=document.getElementById('msg');
+  if(!m.value)return;
+
+  let msgs = JSON.parse(localStorage.getItem("msgs") || "[]");
+
+  msgs.push({
+    name: "Guest",
+    text: m.value
+  });
+
+  localStorage.setItem("msgs", JSON.stringify(msgs));
+
+  m.value="";
+  loadMsgs();
+}
+
+loadMsgs();
+
+// BG
+const c=document.getElementById('bg');
+const x=c.getContext('2d');
+c.width=innerWidth;
+c.height=innerHeight;
+
+let p=[];
+for(let i=0;i<60;i++){
+  p.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
+}
+
+function a(){
+  x.clearRect(0,0,c.width,c.height);
+  x.fillStyle="#38bdf8";
+  p.forEach(o=>{
+    x.beginPath();
+    x.arc(o.x,o.y,o.r,0,6.28);
+    x.fill();
+  });
+  requestAnimationFrame(a);
+}
+a();
+
 </script>
+
+</body>
+</html>
