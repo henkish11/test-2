@@ -184,7 +184,7 @@ canvas{
   cursor:pointer;
 }
 
-/* MSG */
+/* MESSAGE */
 .msg{
   margin:4px 0;
   padding:5px;
@@ -214,7 +214,6 @@ canvas{
 
 <canvas id="bg"></canvas>
 
-<!-- AUDIO -->
 <audio id="audioPlayer" loop>
   <source src="https://stream.radiojar.com/8s5u5tpdtwzuv" type="audio/mpeg">
 </audio>
@@ -261,6 +260,28 @@ canvas{
 <a class="world" href="https://xat.com/cambio" target="_blank">https://xat.com/cambio</a>
 </div>
 
+<!-- CHAT -->
+<div class="chat">
+
+<div class="chat-header">Public Chat</div>
+
+<!-- USER -->
+<div style="padding:5px;">
+<input id="username" placeholder="Your name"
+style="width:100%;padding:6px;border:none;background:#0f172a;color:#fff;border-radius:6px;">
+</div>
+
+<!-- MSGS -->
+<div class="chat-msgs" id="msgs"></div>
+
+<!-- INPUT -->
+<div class="chat-input">
+<input id="msg" placeholder="Write message...">
+<button onclick="send()">Send</button>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -278,13 +299,6 @@ function enter(){
   }
 }
 
-/* 🔥 ENTER KEY LOGIN FIX */
-document.getElementById("password").addEventListener("keydown", function(e){
-  if(e.key === "Enter"){
-    enter();
-  }
-});
-
 /* RADIO */
 let radio=document.getElementById("audioPlayer");
 let playing=false;
@@ -298,6 +312,31 @@ function toggleRadio(){
     playing=false;
   }
 }
+
+/* SEND MESSAGE */
+function send(){
+  let m=document.getElementById('msg');
+  let u=document.getElementById('username');
+
+  if(!m.value) return;
+
+  let d=document.createElement("div");
+  d.className="msg";
+  d.textContent = (u.value || "Guest") + ": " + m.value;
+
+  document.getElementById("msgs").appendChild(d);
+
+  m.value="";
+}
+
+/* ENTER KEY FOR CHAT */
+document.addEventListener("keydown",function(e){
+  if(e.key==="Enter"){
+    if(document.activeElement.id==="msg"){
+      send();
+    }
+  }
+});
 
 /* BG */
 const c=document.getElementById('bg');
