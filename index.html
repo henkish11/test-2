@@ -59,7 +59,7 @@ canvas{
   border-radius:8px;
 }
 
-/* TOP */
+/* TOPBAR */
 .topbar{
   position:fixed;
   top:0;
@@ -98,6 +98,7 @@ canvas{
   box-shadow:0 0 50px rgba(0,140,255,0.25);
 }
 
+/* TOP */
 .top{
   display:flex;
   gap:15px;
@@ -117,7 +118,7 @@ canvas{
   color:#4fc3ff;
 }
 
-/* INFO */
+/* ORIGINAL INFO (UNCHANGED) */
 .grid{
   margin-top:15px;
   display:grid;
@@ -129,6 +130,17 @@ canvas{
   background:rgba(255,255,255,0.05);
   padding:12px;
   border-radius:15px;
+  font-size:13px;
+}
+
+/* LINKS (UNCHANGED) */
+.world{
+  display:block;
+  padding:10px;
+  border-radius:10px;
+  background:rgba(0,195,255,0.1);
+  text-decoration:none;
+  color:#fff;
   font-size:13px;
 }
 
@@ -181,7 +193,6 @@ canvas{
 
 <canvas id="bg"></canvas>
 
-<!-- AUDIO -->
 <audio id="audioPlayer" loop>
   <source src="https://stream.radiojar.com/8s5u5tpdtwzuv" type="audio/mpeg">
 </audio>
@@ -203,6 +214,7 @@ canvas{
 <div class="container">
 <div class="profile">
 
+<!-- ORIGINAL DATA (UNCHANGED) -->
 <div class="top">
 <img src="https://xatimg.com/image/RKP5IrStF45l.png">
 <div>
@@ -211,13 +223,19 @@ canvas{
 </div>
 </div>
 
-<!-- INFO -->
 <div class="grid">
-<div class="card">⚡ Trading on xat</div>
-<div class="card">❤️ Dolly ❤️</div>
+<div class="card">⚡I love trading on the xat website</div>
+<div class="card">❤️I got involved with Dolly and she's my whole life❤️</div>
 </div>
 
-<!-- CHAT -->
+<div class="grid">
+<a class="world" href="https://xat.com/2ra" target="_blank">https://xat.com/2ra</a>
+<a class="world" href="https://xat.com/7reqa" target="_blank">https://xat.com/7reqa</a>
+<a class="world" href="https://xat.com/trade" target="_blank">https://xat.com/trade</a>
+<a class="world" href="https://xat.com/cambio" target="_blank">https://xat.com/cambio</a>
+</div>
+
+<!-- PUBLIC CHAT ADDED -->
 <div class="chat">
 <div class="chat-header">Public Chat</div>
 
@@ -247,11 +265,11 @@ function enter(){
   }
 }
 
-// CHAT SYSTEM (PUBLIC LOCAL STORAGE)
+// PUBLIC CHAT
 function loadMsgs(){
   let msgs = JSON.parse(localStorage.getItem("msgs") || "[]");
   let box = document.getElementById("msgs");
-  box.innerHTML = "";
+  box.innerHTML="";
 
   msgs.forEach(m=>{
     let d=document.createElement("div");
@@ -269,11 +287,11 @@ function send(){
   let msgs = JSON.parse(localStorage.getItem("msgs") || "[]");
 
   msgs.push({
-    name: "Guest",
-    text: m.value
+    name:"Guest",
+    text:m.value
   });
 
-  localStorage.setItem("msgs", JSON.stringify(msgs));
+  localStorage.setItem("msgs",JSON.stringify(msgs));
 
   m.value="";
   loadMsgs();
