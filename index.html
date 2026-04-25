@@ -184,28 +184,27 @@ canvas{
   cursor:pointer;
 }
 
-/* MESSAGE */
+/* MSG */
 .msg{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   margin:4px 0;
   padding:5px;
   background:rgba(255,255,255,0.05);
   border-radius:6px;
 }
 
-.actions button{
-  margin-left:4px;
+/* RADIO */
+.radio-btn{
+  position:fixed;
+  bottom:15px;
+  left:15px;
+  padding:10px;
+  background:#38bdf8;
   border:none;
-  font-size:10px;
+  border-radius:8px;
   cursor:pointer;
-  padding:2px 5px;
-  border-radius:4px;
+  color:#000;
+  z-index:999;
 }
-
-.edit{background:orange;}
-.del{background:red;}
 
 #audioPlayer{display:none;}
 </style>
@@ -214,6 +213,13 @@ canvas{
 <body>
 
 <canvas id="bg"></canvas>
+
+<!-- AUDIO -->
+<audio id="audioPlayer" loop>
+  <source src="https://stream.radiojar.com/8s5u5tpdtwzuv" type="audio/mpeg">
+</audio>
+
+<button class="radio-btn" onclick="toggleRadio()">🎧 Quran Radio</button>
 
 <!-- LOGIN -->
 <div class="login" id="login">
@@ -249,24 +255,10 @@ canvas{
 
 <!-- LINKS -->
 <div class="grid">
-<div class="card">https://xat.com/2ra</div>
-<div class="card">https://xat.com/7reqa</div>
-<div class="card">https://xat.com/trade</div>
-<div class="card">https://xat.com/cambio</div>
-</div>
-
-<!-- CHAT -->
-<div class="chat">
-
-<div class="chat-header">Chat</div>
-
-<div class="chat-msgs" id="msgs"></div>
-
-<div class="chat-input">
-<input id="msg" placeholder="Write message...">
-<button onclick="send()">Send</button>
-</div>
-
+<a class="world" href="https://xat.com/2ra" target="_blank">https://xat.com/2ra</a>
+<a class="world" href="https://xat.com/7reqa" target="_blank">https://xat.com/7reqa</a>
+<a class="world" href="https://xat.com/trade" target="_blank">https://xat.com/trade</a>
+<a class="world" href="https://xat.com/cambio" target="_blank">https://xat.com/cambio</a>
 </div>
 
 </div>
@@ -274,7 +266,7 @@ canvas{
 
 <script>
 
-// LOGIN FUNCTION
+/* LOGIN */
 function enter(){
   let p=document.getElementById('password').value;
 
@@ -286,27 +278,28 @@ function enter(){
   }
 }
 
-// 👇 ENTER KEY LOGIN (NEW FIX)
-document.getElementById("password").addEventListener("keydown",function(e){
-  if(e.key==="Enter"){
+/* 🔥 ENTER KEY LOGIN FIX */
+document.getElementById("password").addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
     enter();
   }
 });
 
-// CHAT (LOCAL)
-function send(){
-  let m=document.getElementById('msg');
-  if(!m.value)return;
+/* RADIO */
+let radio=document.getElementById("audioPlayer");
+let playing=false;
 
-  let d=document.createElement("div");
-  d.className="msg";
-  d.textContent="You: "+m.value;
-
-  document.getElementById("msgs").appendChild(d);
-  m.value="";
+function toggleRadio(){
+  if(!playing){
+    radio.play();
+    playing=true;
+  } else {
+    radio.pause();
+    playing=false;
+  }
 }
 
-// BG
+/* BG */
 const c=document.getElementById('bg');
 const x=c.getContext('2d');
 c.width=innerWidth;
