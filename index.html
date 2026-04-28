@@ -12,7 +12,13 @@ body{
   color:#00ffcc;
 }
 
-/* TOP HACKER ANIMATED BOXES */
+/* 💀 NEON GLOBAL EFFECT */
+body, .name, h4, .chat-links a{
+  text-shadow:0 0 5px #00ffcc, 0 0 15px #00ffcc, 0 0 25px #00ffcc;
+  animation: neonGlow 2s infinite alternate;
+}
+
+/* 🔥 TOP BOXES (HACKER ANIMATION) */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -31,7 +37,6 @@ body{
   overflow:hidden;
 }
 
-/* moving hacker glow effect */
 .box::after{
   content:"";
   position:absolute;
@@ -90,7 +95,7 @@ body{
 }
 
 .name{
-  font-size:40px;
+  font-size:42px;
   font-weight:bold;
   text-shadow:0 0 25px #00ffcc;
 }
@@ -143,8 +148,10 @@ body{
   text-align:center;
   color:#66ccff;
   margin-bottom:10px;
+  text-shadow:0 0 10px #66ccff;
 }
 
+/* GRID */
 .songs-grid{
   display:flex;
   gap:10px;
@@ -172,6 +179,7 @@ body{
   color:#ffff66;
   font-size:12.5px;
   text-shadow:0 0 10px #ffff66;
+  animation:pulseYellow 1.8s infinite alternate;
 }
 
 /* BUTTONS */
@@ -198,12 +206,35 @@ body{
   box-shadow:0 0 10px #ff2b2b;
 }
 
+/* ✨ NEON ANIMATIONS */
+@keyframes neonGlow{
+  0%{
+    text-shadow:0 0 5px #00ffcc, 0 0 10px #00ffcc;
+    opacity:0.8;
+  }
+  100%{
+    text-shadow:0 0 25px #00ffcc, 0 0 45px #00ffcc;
+    opacity:1;
+  }
+}
+
+@keyframes pulseYellow{
+  0%{
+    text-shadow:0 0 5px #ffff66;
+    opacity:0.7;
+  }
+  100%{
+    text-shadow:0 0 20px #ffff66, 0 0 35px #ffff66;
+    opacity:1;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- 🔥 HACKER TOP IMAGES -->
+<!-- TOP HACKER IMAGES -->
 <div class="container">
 
 <div class="box" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b');"></div>
@@ -255,17 +286,9 @@ body{
 
 <div class="songs-grid">
 
-<!-- COL 1 -->
 <div class="songs-col">
-
-<div class="song-row">
-<span class="song-name">نفسي أطمن بيك</span>
-<div class="song-actions">
-<button class="play" onclick="playSong(0)">▶</button>
-<button class="stop" onclick="stopSong()">⏹</button>
-</div>
-</div>
-
+<!-- 11 SONGS -->
+<div class="song-row"><span class="song-name">نفسي أطمن بيك</span><div class="song-actions"><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">الشعر الأسود</span><div class="song-actions"><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">حبي الأولاني</span><div class="song-actions"><button class="play" onclick="playSong(2)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">كوابيس</span><div class="song-actions"><button class="play" onclick="playSong(3)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
@@ -276,12 +299,10 @@ body{
 <div class="song-row"><span class="song-name">بحبها</span><div class="song-actions"><button class="play" onclick="playSong(8)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">فيكي سر</span><div class="song-actions"><button class="play" onclick="playSong(9)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">حياتي قصيدة</span><div class="song-actions"><button class="play" onclick="playSong(10)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
-
 </div>
 
-<!-- COL 2 -->
 <div class="songs-col">
-
+<!-- 11 SONGS -->
 <div class="song-row"><span class="song-name">لسه</span><div class="song-actions"><button class="play" onclick="playSong(11)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">مش زي غيرها</span><div class="song-actions"><button class="play" onclick="playSong(12)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">نسند بعض</span><div class="song-actions"><button class="play" onclick="playSong(13)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
@@ -293,6 +314,7 @@ body{
 <div class="song-row"><span class="song-name">ذكريات</span><div class="song-actions"><button class="play" onclick="playSong(19)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">حبيتك ليه</span><div class="song-actions"><button class="play" onclick="playSong(20)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">توأمي</span><div class="song-actions"><button class="play" onclick="playSong(21)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
+</div>
 
 </div>
 
@@ -311,11 +333,11 @@ body{
 
 <script>
 
-const audio = document.getElementById("audio");
-const quran = document.getElementById("quran");
-const music = document.getElementById("music");
+const audio=document.getElementById("audio");
+const quran=document.getElementById("quran");
+const music=document.getElementById("music");
 
-const songs = [
+const songs=[
 "https://j.top4top.io/m_3769le8x51.mp3",
 "https://k.top4top.io/m_3769enq6z2.mp3",
 "https://l.top4top.io/m_3769auk3d3.mp3",
@@ -341,24 +363,24 @@ const songs = [
 ];
 
 function playSong(i){
-  audio.src = songs[i];
-  audio.play();
+audio.src=songs[i];
+audio.play();
 }
 
 function stopSong(){
-  audio.pause();
-  audio.currentTime = 0;
+audio.pause();
+audio.currentTime=0;
 }
 
 function toggleRadio(type){
-  if(type==="quran"){
-    music.pause();
-    quran.paused ? quran.play() : quran.pause();
-  }
-  if(type==="music"){
-    quran.pause();
-    music.paused ? music.play() : music.pause();
-  }
+if(type==="quran"){
+music.pause();
+quran.paused?quran.play():quran.pause();
+}
+if(type==="music"){
+quran.pause();
+music.paused?music.play():music.pause();
+}
 }
 
 </script>
