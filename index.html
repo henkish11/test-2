@@ -53,7 +53,7 @@ body{
   gap:20px;
 }
 
-/* ================= LEFT SIDE ================= */
+/* LEFT */
 .left-side{
   width:28%;
   border-right:1px solid rgba(0,255,204,0.2);
@@ -79,15 +79,11 @@ body{
   font-size:38px;
   font-weight:bold;
   color:#00ffcc;
-  text-shadow:
-    0 0 5px #00ffcc,
-    0 0 15px #00ffcc,
-    0 0 25px #00ffcc;
-  animation:nameFloat 2.5s infinite;
-  letter-spacing:2px;
+  text-shadow:0 0 25px #00ffcc;
+  animation:float 2.5s infinite;
 }
 
-@keyframes nameFloat{
+@keyframes float{
   0%{transform:translateY(0);}
   50%{transform:translateY(-3px);}
   100%{transform:translateY(0);}
@@ -99,7 +95,6 @@ body{
   padding:10px;
   border:1px solid rgba(0,255,204,0.2);
   border-radius:10px;
-  background:rgba(0,255,204,0.05);
 }
 
 .radio-box button{
@@ -114,7 +109,7 @@ body{
   cursor:pointer;
 }
 
-/* CHAT LINKS */
+/* CHAT */
 .chat-links{
   margin-top:20px;
   display:flex;
@@ -128,9 +123,7 @@ body{
   padding:8px;
   border:1px solid rgba(0,255,204,0.3);
   border-radius:6px;
-  font-size:13px;
   text-align:center;
-  background:rgba(0,255,204,0.05);
   transition:0.3s;
 }
 
@@ -139,84 +132,102 @@ body{
   color:#000;
 }
 
-/* ================= SONGS ================= */
-.songs-list{
+/* RIGHT SIDE */
+.right-side{
+  flex:1;
+  padding-left:15px;
+}
+
+/* SONGS BOX */
+.songs-inner{
+  width:100%;
+  height:100%;
+  border-radius:14px;
+  background:rgba(0,0,0,0.25);
+  border:1px solid rgba(0,255,204,0.15);
+  padding:12px;
+  box-shadow:0 0 25px rgba(0,255,204,0.15);
+}
+
+/* TITLE */
+.songs-title{
+  text-align:center;
+  color:#66ccff;
+  margin-bottom:10px;
+  animation:glow 2s infinite;
+}
+
+/* GRID */
+.songs-grid{
+  display:flex;
+  gap:10px;
+}
+
+.songs-col{
+  flex:1;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:6px;
 }
 
 /* ROW */
 .song-row{
-  width:100%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-
-  padding:10px 12px;
+  padding:8px;
   border-radius:10px;
-
   background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,0,0.15);
-
-  box-shadow:0 0 10px rgba(255,255,0,0.08);
+  border:1px solid rgba(255,255,0,0.12);
   transition:0.3s;
 }
 
 .song-row:hover{
-  transform:scale(1.01);
-  box-shadow:0 0 18px rgba(255,255,0,0.25);
+  transform:scale(1.02);
 }
 
 /* NAME */
 .song-name{
   color:#ffff66;
-  font-size:13px;
-  font-weight:bold;
-  text-shadow:0 0 10px #ffff66;
-  animation:yellowPulse 1.8s infinite;
-}
-
-@keyframes yellowPulse{
-  0%{opacity:1;}
-  50%{opacity:0.3;}
-  100%{opacity:1;}
+  font-size:12.5px;
+  animation:pulse 1.8s infinite;
 }
 
 /* BUTTONS */
 .song-actions{
   display:flex;
-  gap:8px;
+  gap:6px;
 }
 
 .play{
   background:#00ccff;
   border:none;
-  padding:6px 12px;
+  padding:4px 10px;
   border-radius:8px;
   cursor:pointer;
-  color:#000;
-  font-weight:bold;
-  box-shadow:0 0 12px #00ccff;
-  animation:btnGlow 1.5s infinite;
+  box-shadow:0 0 10px #00ccff;
 }
 
 .stop{
   background:#ff2b2b;
   border:none;
-  padding:6px 12px;
+  padding:4px 10px;
   border-radius:8px;
   cursor:pointer;
-  color:#fff;
-  font-weight:bold;
-  box-shadow:0 0 12px #ff2b2b;
-  animation:btnGlow 1.5s infinite;
+  box-shadow:0 0 10px #ff2b2b;
 }
 
-@keyframes btnGlow{
-  0%{filter:brightness(1);}
-  50%{filter:brightness(1.6);}
-  100%{filter:brightness(1);}
+/* ANIMATIONS */
+@keyframes pulse{
+  0%{opacity:1;}
+  50%{opacity:0.3;}
+  100%{opacity:1;}
+}
+
+@keyframes glow{
+  0%{opacity:1;}
+  50%{opacity:0.4;}
+  100%{opacity:1;}
 }
 
 </style>
@@ -224,7 +235,7 @@ body{
 
 <body>
 
-<!-- TOP IMAGES -->
+<!-- TOP -->
 <div class="container">
 <div class="box" style="background-image:url('https://xatimg.com/image/Kn9aywnuvpVo.jpg');"></div>
 <div class="box" style="background-image:url('https://xatimg.com/image/RKBN2koMEBaq.jpg');"></div>
@@ -266,17 +277,17 @@ body{
 <!-- RIGHT -->
 <div class="right-side">
 
-<div class="songs-list">
+<div class="songs-inner">
 
-<div class="song-row">
-  <span class="song-name">نفسي أطمن بيك</span>
-  <div class="song-actions">
-    <button class="play" onclick="playSong(0)">▶</button>
-    <button class="stop" onclick="stopSong(0)">⏹</button>
-  </div>
-</div>
+<div class="songs-title">🎵 songs</div>
 
-<div class="song-row"><span class="song-name">الشعر الأسود</span><div class="song-actions"><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stopSong(1)">⏹</button></div></div>
+<div class="songs-grid">
+
+<!-- COL 1 -->
+<div class="songs-col">
+
+<div class="song-row"><span class="song-name">نفسي أطمن بيك</span></div>
+<div class="song-row"><span class="song-name">الشعر الأسود</span></div>
 <div class="song-row"><span class="song-name">حبي الأولاني</span></div>
 <div class="song-row"><span class="song-name">كوابيس</span></div>
 <div class="song-row"><span class="song-name">مش تمام</span></div>
@@ -286,6 +297,11 @@ body{
 <div class="song-row"><span class="song-name">بحبها</span></div>
 <div class="song-row"><span class="song-name">فيكي سر</span></div>
 <div class="song-row"><span class="song-name">حياتي قصيدة</span></div>
+
+</div>
+
+<!-- COL 2 -->
+<div class="songs-col">
 
 <div class="song-row"><span class="song-name">لسه</span></div>
 <div class="song-row"><span class="song-name">مش زي غيرها</span></div>
@@ -307,65 +323,32 @@ body{
 
 </div>
 
+</div>
+
 <script>
 
-let audio = new Audio();
-let current = -1;
+let quran = document.getElementById("quran");
+let music = document.getElementById("music");
 
-const songs = [
+function playRadio(type){
+  if(type==="quran"){
+    music.pause();
+    quran.paused ? quran.play() : quran.pause();
+  }else{
+    quran.pause();
+    music.paused ? music.play() : music.pause();
+  }
+}
+
+let audio = new Audio();
+let current=-1;
+
+const songs=[
 "j.top4top.io/m_3769le8x51.mp3",
 "k.top4top.io/m_3769enq6z2.mp3",
 "l.top4top.io/m_3769auk3d3.mp3",
-"a.top4top.io/m_3769kdadn4.mp3",
-"b.top4top.io/m_3769kg8sd5.mp3",
-"c.top4top.io/m_3769ien0c6.mp3",
-"d.top4top.io/m_3769yw3257.mp3",
-"e.top4top.io/m_3769yb3k29.mp3",
-"f.top4top.io/m_37690zriz10.mp3",
-"b.top4top.io/m_3769lxi681.mp3",
-"c.top4top.io/m_3769g0kg52.mp3",
-"d.top4top.io/m_3769xz8mi3.mp3",
-"e.top4top.io/m_3769o93s34.mp3",
-"f.top4top.io/m_3769c3tql5.mp3",
-"g.top4top.io/m_3769r7bcu6.mp3",
-"l.top4top.io/m_3769p7dkd1.mp3",
-"a.top4top.io/m_37697muuj2.mp3",
-"b.top4top.io/m_3769i9yd13.mp3",
-"c.top4top.io/m_3769ou0bt4.mp3",
-"d.top4top.io/m_37697zirj5.mp3",
-"e.top4top.io/m_3769rnmrk6.mp3",
-"d.top4top.io/m_3769a1jgw1.mp3"
+"a.top4top.io/m_3769kdadn4.mp3"
 ];
-
-function playSong(i){
-  if(current !== -1) audio.pause();
-  audio.src = "https://" + songs[i];
-  audio.play();
-  current = i;
-}
-
-function stopSong(i){
-  if(current === i){
-    audio.pause();
-    audio.currentTime = 0;
-    current = -1;
-  }
-}
-
-function playRadio(id){
-  let q = document.getElementById("quran");
-  let m = document.getElementById("music");
-
-  if(id === "quran"){
-    m.pause();
-    q.paused ? q.play() : q.pause();
-  }
-
-  if(id === "music"){
-    q.pause();
-    m.paused ? m.play() : m.pause();
-  }
-}
 
 </script>
 
