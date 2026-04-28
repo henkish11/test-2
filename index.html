@@ -12,22 +12,28 @@ body{
   color:#00ffcc;
 }
 
-/* TOP 3 BOXES */
+/* TOP BOXES (تصغير بسيط) */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  padding:20px;
+  gap:12px;
+  padding:18px;
 }
 
 .box{
   width:100%;
-  aspect-ratio:4/3;
-  border-radius:14px;
+  aspect-ratio:4/3;   /* ثابتة الشكل */
+  border-radius:12px;
   background-size:cover;
   background-position:center;
   border:1px solid rgba(0,255,204,0.2);
-  box-shadow:0 0 15px rgba(0,255,204,0.2);
+  box-shadow:0 0 12px rgba(0,255,204,0.18);
+  transition:0.3s;
+}
+
+/* hover خفيف */
+.box:hover{
+  transform:scale(1.03);
 }
 
 /* MAIN */
@@ -76,7 +82,7 @@ body{
   text-shadow:0 0 25px #00ffcc;
 }
 
-/* CHAT LINKS */
+/* CHAT */
 .chat-links a{
   display:block;
   text-decoration:none;
@@ -94,7 +100,7 @@ body{
   padding-left:15px;
 }
 
-/* SONG AREA */
+/* SONGS */
 .songs-inner{
   width:100%;
   border-radius:14px;
@@ -187,9 +193,13 @@ body{
 
 <!-- TOP -->
 <div class="container">
+
 <div class="box" style="background-image:url('https://xatimg.com/image/Kn9aywnuvpVo.jpg');"></div>
+
 <div class="box" style="background-image:url('https://xatimg.com/image/RKBN2koMEBaq.jpg');"></div>
+
 <div class="box" style="background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg');"></div>
+
 </div>
 
 <!-- MAIN -->
@@ -197,7 +207,7 @@ body{
 
 <div class="big-box">
 
-<!-- LEFT PANEL -->
+<!-- LEFT -->
 <div class="left-side">
 
   <div class="profile">
@@ -205,7 +215,6 @@ body{
     <div class="name">RAMY</div>
   </div>
 
-  <!-- RADIOS (رجعناهم مكانهم الطبيعي) -->
   <div class="radio-box">
     <h4>📖 Quran Radio</h4>
     <button class="radio-btn" onclick="toggleRadio('quran')">PLAY / STOP</button>
@@ -216,7 +225,6 @@ body{
     <button class="radio-btn" onclick="toggleRadio('music')">PLAY / STOP</button>
   </div>
 
-  <!-- CHATS -->
   <div class="chat-links">
     <a href="https://xat.com/2ra" target="_blank">2RA</a>
     <a href="https://xat.com/7reqa" target="_blank">7REQA</a>
@@ -226,7 +234,7 @@ body{
 
 </div>
 
-<!-- RIGHT PANEL -->
+<!-- RIGHT -->
 <div class="right-side">
 
 <div class="songs-inner">
@@ -235,9 +243,8 @@ body{
 
 <div class="songs-grid">
 
-<!-- COLUMN 1 (11 songs) -->
 <div class="songs-col">
-
+<!-- 11 songs -->
 <div class="song-row"><span class="song-name">نفسي أطمن بيك</span><div class="song-actions"><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">الشعر الأسود</span><div class="song-actions"><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">حبي الأولاني</span><div class="song-actions"><button class="play" onclick="playSong(2)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
@@ -249,12 +256,10 @@ body{
 <div class="song-row"><span class="song-name">بحبها</span><div class="song-actions"><button class="play" onclick="playSong(8)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">فيكي سر</span><div class="song-actions"><button class="play" onclick="playSong(9)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">حياتي قصيدة</span><div class="song-actions"><button class="play" onclick="playSong(10)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
-
 </div>
 
-<!-- COLUMN 2 (11 songs) -->
 <div class="songs-col">
-
+<!-- 11 songs -->
 <div class="song-row"><span class="song-name">لسه</span><div class="song-actions"><button class="play" onclick="playSong(11)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">مش زي غيرها</span><div class="song-actions"><button class="play" onclick="playSong(12)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">نسند بعض</span><div class="song-actions"><button class="play" onclick="playSong(13)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
@@ -266,7 +271,6 @@ body{
 <div class="song-row"><span class="song-name">ذكريات</span><div class="song-actions"><button class="play" onclick="playSong(19)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">حبيتك ليه</span><div class="song-actions"><button class="play" onclick="playSong(20)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
 <div class="song-row"><span class="song-name">توأمي</span><div class="song-actions"><button class="play" onclick="playSong(21)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
-
 </div>
 
 </div>
@@ -277,7 +281,6 @@ body{
 
 </div>
 
-<!-- AUDIO SYSTEM -->
 <audio id="audio"></audio>
 <audio id="quran" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
 <audio id="music" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
@@ -324,12 +327,10 @@ function stopSong(){
 }
 
 function toggleRadio(type){
-
   if(type === "quran"){
     music.pause();
     quran.paused ? quran.play() : quran.pause();
   }
-
   if(type === "music"){
     quran.pause();
     music.paused ? music.play() : music.pause();
