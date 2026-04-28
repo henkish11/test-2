@@ -48,7 +48,7 @@ body{
 
 .big-box{
   width:95%;
-  min-height:600px;
+  min-height:650px;
   border-radius:14px;
   background:rgba(0,255,204,0.05);
   box-shadow:0 0 20px rgba(0,255,204,0.2);
@@ -56,96 +56,91 @@ body{
 }
 
 /* ===================== */
-/* PROFILE HEADER */
+/* TITLE */
 /* ===================== */
-.profile-header{
-  display:flex;
-  gap:20px;
-  align-items:flex-start;
-}
-
-/* IMAGE */
-.avatar img{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  border:2px solid #00ffcc;
-  box-shadow:0 0 15px #00ffcc;
-}
-
-/* NAME */
-.name{
-  font-size:22px;
+.title{
+  text-align:center;
+  font-size:55px;
   font-weight:bold;
   color:#00ffcc;
-  text-shadow:0 0 10px #00ffcc;
-  animation:pulse 1.5s infinite;
+  text-shadow:0 0 25px #00ffcc;
+  margin-bottom:20px;
+  animation:pulse 2s infinite;
 }
 
 @keyframes pulse{
-  0%{opacity:1; text-shadow:0 0 5px #00ffcc;}
-  50%{opacity:0.6; text-shadow:0 0 20px #00ffcc;}
-  100%{opacity:1; text-shadow:0 0 5px #00ffcc;}
+  0%{opacity:1; text-shadow:0 0 10px #00ffcc;}
+  50%{opacity:0.6; text-shadow:0 0 25px #00ffcc;}
+  100%{opacity:1; text-shadow:0 0 10px #00ffcc;}
 }
 
+/* ===================== */
 /* RADIOS */
-.radios{
+/* ===================== */
+.radio-grid{
   display:flex;
-  gap:15px;
-  margin-top:10px;
+  justify-content:center;
+  gap:20px;
+  margin-bottom:15px;
 }
 
-.radio-box{
-  padding:10px;
-  border:1px solid rgba(0,255,204,0.2);
+.radio-card{
+  padding:15px;
+  border:1px solid rgba(0,255,204,0.3);
   border-radius:10px;
   background:rgba(0,255,204,0.05);
+  text-align:center;
+  width:200px;
 }
 
-.radio-box h4{
-  margin:0 0 5px 0;
-  font-size:13px;
+.radio-card h4{
+  margin-bottom:10px;
 }
 
-/* CONTROL BUTTON */
-.control{
-  margin-top:15px;
-}
-
-.control button{
-  padding:15px 10px;
+.radio-card button{
+  width:100%;
+  padding:10px;
   border:none;
   background:#00ffcc;
   color:#000;
   font-weight:bold;
-  border-radius:8px;
-  writing-mode:vertical-rl;
+  border-radius:6px;
   cursor:pointer;
-  box-shadow:0 0 10px #00ffcc;
 }
 
-.control button:hover{
+.radio-card button:hover{
   background:#00ffaa;
 }
 
-/* LINKS */
+/* ===================== */
+/* LINKS (SHAT) */
+/* ===================== */
 .links{
-  margin-top:20px;
   display:flex;
-  gap:10px;
+  justify-content:center;
+  gap:12px;
+  margin-top:25px;
+  flex-wrap:wrap;
 }
 
-.links a{
-  color:#00ffcc;
+.chat-btn{
+  padding:10px 18px;
+  border:1px solid rgba(0,255,204,0.4);
+  border-radius:8px;
   text-decoration:none;
-  padding:6px 10px;
-  border:1px solid rgba(0,255,204,0.3);
-  border-radius:6px;
-  font-size:12px;
+  color:#00ffcc;
+  font-weight:bold;
+  background:rgba(0,255,204,0.05);
+  box-shadow:0 0 10px rgba(0,255,204,0.15);
+  transition:0.3s;
+  letter-spacing:1px;
 }
 
-.links a:hover{
-  background:rgba(0,255,204,0.1);
+.chat-btn:hover{
+  background:#00ffcc;
+  color:#000;
+  box-shadow:0 0 20px #00ffcc;
+  transform:translateY(-3px);
 }
 
 </style>
@@ -164,53 +159,39 @@ body{
 
 </div>
 
-<!-- BIG SECTION -->
+<!-- BIG SYSTEM -->
 <div class="data-section">
 
 <div class="big-box">
 
-  <!-- PROFILE -->
-  <div class="profile-header">
+  <!-- TITLE -->
+  <div class="title">RAMY</div>
 
-    <!-- IMAGE -->
-    <div class="avatar">
-      <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
+  <!-- RADIOS -->
+  <div class="radio-grid">
+
+    <div class="radio-card">
+      <h4>📖 Quran Radio</h4>
+      <button onclick="playRadio('quran')">PLAY / STOP</button>
     </div>
 
-    <!-- INFO -->
-    <div class="info">
-
-      <div class="name">RAMY</div>
-
-      <!-- RADIOS -->
-      <div class="radios">
-
-        <div class="radio-box">
-          <h4>📖 Quran Radio</h4>
-          <audio id="quran" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
-        </div>
-
-        <div class="radio-box">
-          <h4>🎧 Music Radio</h4>
-          <audio id="music" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
-        </div>
-
-      </div>
-
-      <!-- BUTTON -->
-      <div class="control">
-        <button onclick="toggleAll()">PLAY / STOP</button>
-      </div>
-
+    <div class="radio-card">
+      <h4>🎧 Music Radio</h4>
+      <button onclick="playRadio('music')">PLAY / STOP</button>
     </div>
+
   </div>
+
+  <!-- AUDIO -->
+  <audio id="quran" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
+  <audio id="music" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
 
   <!-- LINKS -->
   <div class="links">
-    <a href="https://xat.com/2ra" target="_blank">2ra</a>
-    <a href="https://xat.com/7reqa" target="_blank">7reqa</a>
-    <a href="https://xat.com/trade" target="_blank">trade</a>
-    <a href="https://xat.com/cambio" target="_blank">cambio</a>
+    <a class="chat-btn" href="https://xat.com/2ra" target="_blank">2RA</a>
+    <a class="chat-btn" href="https://xat.com/7reqa" target="_blank">7REQA</a>
+    <a class="chat-btn" href="https://xat.com/trade" target="_blank">TRADE</a>
+    <a class="chat-btn" href="https://xat.com/cambio" target="_blank">CAMBIO</a>
   </div>
 
 </div>
@@ -219,20 +200,36 @@ body{
 
 <script>
 
-let playing = false;
+let current = null;
 
-function toggleAll(){
+function playRadio(id){
   let q = document.getElementById("quran");
   let m = document.getElementById("music");
 
-  if(!playing){
-    q.play();
-    m.play();
-    playing = true;
-  }else{
-    q.pause();
+  if(id === "quran"){
     m.pause();
-    playing = false;
+    m.currentTime = 0;
+
+    if(q.paused){
+      q.play();
+      current = "quran";
+    }else{
+      q.pause();
+      current = null;
+    }
+  }
+
+  if(id === "music"){
+    q.pause();
+    q.currentTime = 0;
+
+    if(m.paused){
+      m.play();
+      current = "music";
+    }else{
+      m.pause();
+      current = null;
+    }
   }
 }
 
