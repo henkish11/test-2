@@ -12,7 +12,7 @@ body{
   color:#00ffcc;
 }
 
-/* TOP IMAGES */
+/* ================= TOP IMAGES ================= */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -35,7 +35,7 @@ body{
   transform:scale(1.04);
 }
 
-/* BIG BOX */
+/* ================= BIG BOX ================= */
 .data-section{
   display:flex;
   justify-content:center;
@@ -44,7 +44,7 @@ body{
 
 .big-box{
   width:95%;
-  min-height:780px;
+  min-height:850px;
   border-radius:14px;
   background:rgba(0,255,204,0.05);
   box-shadow:0 0 20px rgba(0,255,204,0.2);
@@ -53,7 +53,7 @@ body{
   gap:20px;
 }
 
-/* LEFT SIDE */
+/* ================= LEFT SIDE ================= */
 .left-side{
   width:28%;
   border-right:1px solid rgba(0,255,204,0.2);
@@ -67,31 +67,26 @@ body{
   gap:18px;
 }
 
-/* الصورة الشخصية */
 .profile img{
-  width:90px;
-  height:90px;
+  width:95px;
+  height:95px;
   border-radius:50%;
   border:3px solid #00ffcc;
   box-shadow:0 0 25px #00ffcc;
-  transition:0.3s;
 }
 
-/* الاسم المجسم */
 .name{
-  font-size:34px;
+  font-size:38px;
   font-weight:bold;
   color:#00ffcc;
   text-shadow:
     0 0 5px #00ffcc,
     0 0 15px #00ffcc,
-    0 0 25px #00ffcc,
-    2px 2px 5px #000;
+    0 0 25px #00ffcc;
   animation:nameFloat 2.5s infinite;
   letter-spacing:2px;
 }
 
-/* حركة الاسم */
 @keyframes nameFloat{
   0%{transform:translateY(0);}
   50%{transform:translateY(-3px);}
@@ -105,11 +100,6 @@ body{
   border:1px solid rgba(0,255,204,0.2);
   border-radius:10px;
   background:rgba(0,255,204,0.05);
-}
-
-.radio-box h4{
-  margin:0 0 5px 0;
-  font-size:13px;
 }
 
 .radio-box button{
@@ -149,42 +139,40 @@ body{
   color:#000;
 }
 
-/* SONGS PANEL */
-.songs-panel{
-  margin-top:20px;
-  padding:15px;
-  border:1px solid rgba(0,255,204,0.2);
+/* ================= SONGS BOX ================= */
+.songs-box{
+  margin-top:15px;
+  padding:12px;
   border-radius:12px;
-  background:rgba(0,255,204,0.05);
+  border:1px solid rgba(0,255,204,0.2);
+  background:rgba(0,255,204,0.04);
 }
 
 /* TITLE */
 .songs-title{
   text-align:center;
-  font-size:16px;
+  font-size:14px;
   color:#66ccff;
-  font-weight:bold;
-  text-shadow:0 0 12px #66ccff;
-  animation:pulseBlue 2s infinite;
+  text-shadow:0 0 10px #66ccff;
+  animation:glowTitle 1.8s infinite;
   margin-bottom:10px;
 }
 
-@keyframes pulseBlue{
-  0%{opacity:1;}
-  50%{opacity:0.5;}
-  100%{opacity:1;}
-}
-
 .music-icon{
-  margin-right:6px;
+  margin-right:5px;
   animation:iconPulse 1.8s infinite;
-  text-shadow:0 0 10px #66ccff;
 }
 
 @keyframes iconPulse{
-  0%{opacity:1; transform:scale(1);}
-  50%{opacity:0.4; transform:scale(1.2);}
-  100%{opacity:1; transform:scale(1);}
+  0%{opacity:1;}
+  50%{opacity:0.3;}
+  100%{opacity:1;}
+}
+
+@keyframes glowTitle{
+  0%{opacity:1;}
+  50%{opacity:0.4;}
+  100%{opacity:1;}
 }
 
 /* GRID */
@@ -200,19 +188,32 @@ body{
   gap:6px;
 }
 
-/* SONG ITEM */
+/* SONG */
 .song{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:6px;
-  border:1px solid rgba(0,255,204,0.2);
   border-radius:6px;
+  border:1px solid rgba(255,255,0,0.2);
+}
+
+/* SONG NAME (YELLOW NEON PULSE) */
+.song-name{
+  color:#ffff66;
+  text-shadow:0 0 10px #ffff66;
+  animation:yellowPulse 1.5s infinite;
   font-size:12px;
 }
 
+@keyframes yellowPulse{
+  0%{opacity:1;}
+  50%{opacity:0.3;}
+  100%{opacity:1;}
+}
+
 /* BUTTONS */
-.btns{
+.controls{
   display:flex;
   gap:5px;
 }
@@ -222,8 +223,8 @@ body{
   border:none;
   padding:4px 8px;
   border-radius:4px;
+  animation:btnPulse 1.5s infinite;
   cursor:pointer;
-  animation:pulseBtn 2s infinite;
 }
 
 .stop{
@@ -231,12 +232,11 @@ body{
   border:none;
   padding:4px 8px;
   border-radius:4px;
-  color:#fff;
+  animation:btnPulse 1.5s infinite;
   cursor:pointer;
-  animation:pulseBtn 2s infinite;
 }
 
-@keyframes pulseBtn{
+@keyframes btnPulse{
   0%{box-shadow:0 0 5px currentColor;}
   50%{box-shadow:0 0 15px currentColor;}
   100%{box-shadow:0 0 5px currentColor;}
@@ -289,18 +289,49 @@ body{
 <!-- RIGHT -->
 <div class="right-side">
 
-<div class="songs-panel">
+<div class="songs-box">
 
 <div class="songs-title">
   <span class="music-icon">🎵</span>
   songs
 </div>
 
-<!-- باقي نفس الأغاني (محفوظة كما هي) -->
-
 <div class="songs-grid">
-<div class="songs-col"></div>
-<div class="songs-col"></div>
+
+<!-- COL 1 -->
+<div class="songs-col">
+
+<div class="song"><span class="song-name">نفسي أطمن بيك</span><div class="controls"><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stopSong(0)">⏹</button></div></div>
+<div class="song"><span class="song-name">الشعر الأسود</span></div>
+<div class="song"><span class="song-name">حبي الأولاني</span></div>
+<div class="song"><span class="song-name">كوابيس</span></div>
+<div class="song"><span class="song-name">مش تمام</span></div>
+<div class="song"><span class="song-name">مشوار الحب</span></div>
+<div class="song"><span class="song-name">صاحبة الجلالة</span></div>
+<div class="song"><span class="song-name">عملالي عمل</span></div>
+<div class="song"><span class="song-name">بحبها</span></div>
+<div class="song"><span class="song-name">فيكي سر</span></div>
+<div class="song"><span class="song-name">حياتي قصيدة</span></div>
+
+</div>
+
+<!-- COL 2 -->
+<div class="songs-col">
+
+<div class="song"><span class="song-name">لسه</span></div>
+<div class="song"><span class="song-name">مش زي غيرها</span></div>
+<div class="song"><span class="song-name">نسند بعض</span></div>
+<div class="song"><span class="song-name">وش السعد</span></div>
+<div class="song"><span class="song-name">يا حظ بيه</span></div>
+<div class="song"><span class="song-name">ياللي ناسيني</span></div>
+<div class="song"><span class="song-name">هلوسة</span></div>
+<div class="song"><span class="song-name">قصة حب</span></div>
+<div class="song"><span class="song-name">ذكريات</span></div>
+<div class="song"><span class="song-name">حبيتك ليه</span></div>
+<div class="song"><span class="song-name">توأمي</span></div>
+
+</div>
+
 </div>
 
 </div>
