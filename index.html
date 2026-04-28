@@ -12,7 +12,29 @@ body{
   color:#00ffcc;
 }
 
-/* TOP HACKER BOXES */
+/* ✨ NEON TEXT */
+*{
+  transition:0.25s ease;
+}
+
+.neon{
+  text-shadow:0 0 5px #00ffcc,0 0 10px #00ffcc,0 0 20px #00ffcc;
+}
+
+/* HOVER ZOOM */
+.box,.song-row,.chat-links a,.radio-box,.media-btn{
+  transition:0.25s;
+}
+
+.box:hover,
+.song-row:hover,
+.chat-links a:hover,
+.radio-box:hover,
+.media-btn:hover{
+  transform:scale(1.05);
+}
+
+/* TOP BOXES */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -27,28 +49,9 @@ body{
   background-position:center;
   border:1px solid rgba(0,255,204,0.2);
   box-shadow:0 0 15px rgba(0,255,204,0.2);
-  position:relative;
-  overflow:hidden;
 }
 
-.box::after{
-  content:"";
-  position:absolute;
-  width:200%;
-  height:200%;
-  top:-50%;
-  left:-50%;
-  background:linear-gradient(120deg,transparent,rgba(0,255,204,0.25),transparent);
-  transform:rotate(25deg);
-  animation:scan 3s linear infinite;
-}
-
-@keyframes scan{
-  0%{transform:translateX(-100%) rotate(25deg);}
-  100%{transform:translateX(100%) rotate(25deg);}
-}
-
-/* MAIN LAYOUT */
+/* MAIN */
 .data-section{
   display:flex;
   justify-content:center;
@@ -66,20 +69,18 @@ body{
   flex-direction:column;
 }
 
-/* CONTENT */
 .content{
   display:flex;
   gap:20px;
 }
 
-/* LEFT SIDE */
+/* LEFT */
 .left-side{
   width:28%;
   border-right:1px solid rgba(0,255,204,0.2);
   padding-right:15px;
 }
 
-/* PROFILE */
 .profile{
   display:flex;
   align-items:center;
@@ -96,12 +97,11 @@ body{
 
 .name{
   font-size:42px;
-  text-shadow:0 0 20px #00ffcc;
 }
 
 /* RADIO */
 .radio-box{
-  margin-top:15px;
+  margin-top:10px;
   padding:10px;
   border:1px solid rgba(0,255,204,0.2);
   border-radius:10px;
@@ -113,6 +113,9 @@ body{
   border:none;
   border-radius:8px;
   cursor:pointer;
+  background:#00ccff;
+  color:#fff;
+  box-shadow:0 0 10px #00ccff;
 }
 
 /* CHAT */
@@ -127,7 +130,7 @@ body{
   text-align:center;
 }
 
-/* RIGHT SIDE */
+/* RIGHT */
 .right-side{
   flex:1;
   padding-left:15px;
@@ -142,11 +145,11 @@ body{
 
 .songs-title{
   text-align:center;
+  font-size:18px;
   color:#66ccff;
   text-shadow:0 0 10px #66ccff;
 }
 
-/* SONG GRID */
 .songs-grid{
   display:flex;
   gap:10px;
@@ -159,6 +162,7 @@ body{
   gap:6px;
 }
 
+/* SONG */
 .song-row{
   display:flex;
   justify-content:space-between;
@@ -174,177 +178,181 @@ body{
   text-shadow:0 0 10px #ffff66;
 }
 
-.song-actions{
-  display:flex;
-  gap:6px;
+.song-actions button{
+  cursor:pointer;
+  border:none;
+  padding:5px 10px;
+  border-radius:8px;
 }
 
 .play{
   background:#00ccff;
-  border:none;
-  padding:5px 10px;
-  border-radius:8px;
-  cursor:pointer;
   box-shadow:0 0 10px #00ccff;
 }
 
 .stop{
   background:#ff2b2b;
-  border:none;
-  padding:5px 10px;
-  border-radius:8px;
-  cursor:pointer;
   box-shadow:0 0 10px #ff2b2b;
 }
 
-/* MEDIA BAR FULL WIDTH */
+/* MEDIA */
 .media-bar{
   margin-top:25px;
   width:100%;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:16px 22px;
+  align-items:center;
+  padding:16px;
   border-radius:16px;
-  background:linear-gradient(90deg,rgba(0,255,204,0.08),rgba(0,0,0,0.25),rgba(0,255,204,0.08));
-  border:1px solid rgba(0,255,204,0.35);
-  box-shadow:0 0 30px rgba(0,255,204,0.25);
+  background:rgba(0,255,204,0.05);
+  border:1px solid rgba(0,255,204,0.3);
 }
 
 #seek{
-  width:42%;
-  accent-color:#00ffcc;
+  width:40%;
 }
 
 .media-btn{
-  background:linear-gradient(145deg,#00ccff,#0077ff);
+  background:#00ccff;
   border:none;
-  padding:12px 24px;
-  border-radius:12px;
+  padding:10px 20px;
+  border-radius:10px;
   cursor:pointer;
-  color:#fff;
-  font-weight:bold;
-  box-shadow:0 0 25px #00ccff;
 }
 
 #volume{
   width:25%;
-  accent-color:#ff2b2b;
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOP -->
-<div class="container">
-<div class="box" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b');"></div>
-<div class="box" style="background-image:url('https://images.unsplash.com/photo-1555949963-aa79dcee981c');"></div>
-<div class="box" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5');"></div>
-</div>
-
-<!-- MAIN -->
 <div class="data-section">
-
 <div class="big-box">
 
 <div class="content">
 
-<!-- LEFT SIDE (RETURNED ORIGINAL PLACE) -->
+<!-- LEFT -->
 <div class="left-side">
 
 <div class="profile">
 <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
-<div class="name">RAMY</div>
+<div class="name neon">RAMY</div>
 </div>
 
-<div class="radio-box">
-<h4>📖 Quran Radio</h4>
-<button class="radio-btn" onclick="toggleRadio('quran')">PLAY</button>
+<!-- RADIO -->
+<div class="radio-box neon">
+<h4>📻 Quran Radio</h4>
+<button class="radio-btn" onclick="toggleRadio(0)">PLAY</button>
 </div>
 
-<div class="radio-box">
+<div class="radio-box neon">
 <h4>🎧 Music Radio</h4>
-<button class="radio-btn" onclick="toggleRadio('music')">PLAY</button>
+<button class="radio-btn" onclick="toggleRadio(1)">PLAY</button>
 </div>
 
-<div class="chat-links">
-<a href="https://xat.com/2ra">2RA</a>
-<a href="https://xat.com/7reqa">7REQA</a>
-<a href="https://xat.com/trade">TRADE</a>
-<a href="https://xat.com/cambio">CAMBIO</a>
+<!-- CHAT -->
+<div class="chat-links neon">
+<a href="https://xat.com/2ra" target="_blank">2RA</a>
+<a href="https://xat.com/7reqa" target="_blank">7REQA</a>
+<a href="https://xat.com/trade" target="_blank">TRADE</a>
+<a href="https://xat.com/cambio" target="_blank">CAMBIO</a>
 </div>
 
 </div>
 
-<!-- RIGHT SIDE -->
+<!-- RIGHT -->
 <div class="right-side">
 
 <div class="songs-inner">
 
-<div class="songs-title">🎵 songs</div>
+<div class="songs-title neon">🎵 SONGS</div>
 
 <div class="songs-grid">
 
-<!-- 11 LEFT -->
+<!-- LEFT -->
 <div class="songs-col">
-<div class="song-row"><span class="song-name">نفسي أطمن بيك</span><div class="song-actions"><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
-<div class="song-row"><span class="song-name">الشعر الأسود</span><div class="song-actions"><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
-<div class="song-row"><span class="song-name">حبي الأولاني</span></div>
-<div class="song-row"><span class="song-name">كوابيس</span></div>
-<div class="song-row"><span class="song-name">مش تمام</span></div>
-<div class="song-row"><span class="song-name">مشوار الحب</span></div>
-<div class="song-row"><span class="song-name">صاحبة الجلالة</span></div>
-<div class="song-row"><span class="song-name">عملالي عمل</span></div>
-<div class="song-row"><span class="song-name">بحبها</span></div>
-<div class="song-row"><span class="song-name">فيكي سر</span></div>
-<div class="song-row"><span class="song-name">حياتي قصيدة</span></div>
+
+<div class="song-row neon">
+<span class="song-name">نفسي أطمن بيك</span>
+<div class="song-actions">
+<button class="play" onclick="playSong(0)">▶</button>
+<button class="stop" onclick="stopSong()">⏹</button>
+</div>
 </div>
 
-<!-- 11 RIGHT -->
+<div class="song-row neon">
+<span class="song-name">الشعر الأسود</span>
+<div class="song-actions">
+<button class="play" onclick="playSong(1)">▶</button>
+<button class="stop" onclick="stopSong()">⏹</button>
+</div>
+</div>
+
+<div class="song-row neon"><span>حبي الأولاني</span></div>
+<div class="song-row neon"><span>كوابيس</span></div>
+<div class="song-row neon"><span>مش تمام</span></div>
+<div class="song-row neon"><span>مشوار الحب</span></div>
+<div class="song-row neon"><span>صاحبة الجلالة</span></div>
+<div class="song-row neon"><span>عملالي عمل</span></div>
+<div class="song-row neon"><span>بحبها</span></div>
+<div class="song-row neon"><span>فيكي سر</span></div>
+<div class="song-row neon"><span>حياتي قصيدة</span></div>
+
+</div>
+
+<!-- RIGHT -->
 <div class="songs-col">
-<div class="song-row"><span class="song-name">لسه</span></div>
-<div class="song-row"><span class="song-name">مش زي غيرها</span></div>
-<div class="song-row"><span class="song-name">نسند بعض</span></div>
-<div class="song-row"><span class="song-name">وش السعد</span></div>
-<div class="song-row"><span class="song-name">يا حظ بيه</span></div>
-<div class="song-row"><span class="song-name">ياللي ناسيني</span></div>
-<div class="song-row"><span class="song-name">هلوسة</span></div>
-<div class="song-row"><span class="song-name">قصة حب</span></div>
-<div class="song-row"><span class="song-name">ذكريات</span></div>
-<div class="song-row"><span class="song-name">حبيتك ليه</span></div>
-<div class="song-row"><span class="song-name">توأمي</span></div>
-</div>
+
+<div class="song-row neon"><span>لسه</span></div>
+<div class="song-row neon"><span>مش زي غيرها</span></div>
+<div class="song-row neon"><span>نسند بعض</span></div>
+<div class="song-row neon"><span>وش السعد</span></div>
+<div class="song-row neon"><span>يا حظ بيه</span></div>
+<div class="song-row neon"><span>ياللي ناسيني</span></div>
+<div class="song-row neon"><span>هلوسة</span></div>
+<div class="song-row neon"><span>قصة حب</span></div>
+<div class="song-row neon"><span>ذكريات</span></div>
+<div class="song-row neon"><span>حبيتك ليه</span></div>
+<div class="song-row neon"><span>توأمي</span></div>
 
 </div>
 
 </div>
 
-<!-- MEDIA BAR -->
-<div class="media-bar">
+</div>
 
-<input type="range" id="seek" value="0">
+<!-- MEDIA -->
+<div class="media-bar neon">
 
+<input type="range" id="seek">
 <button class="media-btn" onclick="togglePlay()">▶ / ⏸</button>
-
-<input type="range" id="volume" min="0" max="1" step="0.1" value="1">
-
-</div>
+<input type="range" id="volume" min="0" max="1" step="0.1">
 
 </div>
 
 </div>
-
+</div>
 </div>
 
 <!-- AUDIO -->
 <audio id="audio"></audio>
 
+<audio id="radio1" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
+<audio id="radio2" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
+
 <script>
 
 const audio=document.getElementById("audio");
-const seek=document.getElementById("seek");
-const volume=document.getElementById("volume");
+const r1=document.getElementById("radio1");
+const r2=document.getElementById("radio2");
+
+let radios=[r1,r2];
+
+function toggleRadio(i){
+radios[i].paused?radios[i].play():radios[i].pause();
+}
 
 const songs=[
 "https://j.top4top.io/m_3769le8x51.mp3",
@@ -383,16 +391,6 @@ audio.currentTime=0;
 
 function togglePlay(){
 audio.paused?audio.play():audio.pause();
-}
-
-volume.oninput=()=>audio.volume=volume.value;
-
-audio.ontimeupdate=()=>{
-seek.value=(audio.currentTime/audio.duration)*100;
-}
-
-seek.oninput=()=>{
-audio.currentTime=(seek.value/100)*audio.duration;
 }
 
 </script>
