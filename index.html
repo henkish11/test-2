@@ -217,6 +217,8 @@ color:#00ffcc;
 <div class="radio">
 <button class="quran" onclick="radio(0)">QURAN</button>
 <button class="music" onclick="radio(1)">MUSIC</button>
+
+<button style="width:100%;margin-top:8px;background:#ff2222;color:#fff;border:none;padding:8px;border-radius:8px;cursor:pointer;" onclick="stopRadio()">STOP RADIO</button>
 </div>
 
 <div class="section">CHAT ROOMS</div>
@@ -360,6 +362,11 @@ audio.currentTime=(progress.value/100)*audio.duration;
 volume.addEventListener("input",()=>{
 audio.volume=volume.value;
 });
+function stopRadio(){
+audio.pause();
+audio.currentTime=0;
+btn.innerText="▶";
+}  
 </script>
 
 </body>
