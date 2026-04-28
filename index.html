@@ -139,80 +139,37 @@ body{
   color:#000;
 }
 
-/* ================= SONGS BOX ================= */
-.songs-box{
-  margin-top:15px;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid rgba(0,255,204,0.2);
-  background:rgba(0,255,204,0.04);
-}
-
-/* TITLE */
-.songs-title{
-  text-align:center;
-  font-size:14px;
-  color:#66ccff;
-  text-shadow:0 0 10px #66ccff;
-  animation:glowTitle 1.8s infinite;
-  margin-bottom:10px;
-}
-
-.music-icon{
-  margin-right:5px;
-  animation:iconPulse 1.8s infinite;
-}
-
-@keyframes iconPulse{
-  0%{opacity:1;}
-  50%{opacity:0.3;}
-  100%{opacity:1;}
-}
-
-@keyframes glowTitle{
-  0%{opacity:1;}
-  50%{opacity:0.4;}
-  100%{opacity:1;}
-}
-
-/* GRID */
-.songs-grid{
-  display:flex;
-  gap:10px;
-}
-
-.songs-col{
-  flex:1;
+/* ================= SONGS ================= */
+.songs-list{
   display:flex;
   flex-direction:column;
-  gap:6px;
+  gap:8px;
 }
 
-/* ================= SONG CARD (NEW STYLE) ================= */
-.song-card{
+/* ROW */
+.song-row{
   width:100%;
-  height:55px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:10px 12px;
-  border-radius:12px;
+  border-radius:10px;
 
   background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,0,0.2);
+  border:1px solid rgba(255,255,0,0.15);
 
-  box-shadow:0 0 10px rgba(255,255,0,0.1);
+  box-shadow:0 0 10px rgba(255,255,0,0.08);
   transition:0.3s;
-  backdrop-filter: blur(6px);
 }
 
-.song-card:hover{
-  transform:scale(1.03);
+.song-row:hover{
+  transform:scale(1.01);
   box-shadow:0 0 18px rgba(255,255,0,0.25);
 }
 
-/* SONG NAME */
-.song-title{
+/* NAME */
+.song-name{
   color:#ffff66;
   font-size:13px;
   font-weight:bold;
@@ -227,32 +184,32 @@ body{
 }
 
 /* BUTTONS */
-.song-controls{
+.song-actions{
   display:flex;
-  gap:6px;
+  gap:8px;
 }
 
 .play{
   background:#00ccff;
   border:none;
-  padding:5px 10px;
+  padding:6px 12px;
   border-radius:8px;
   cursor:pointer;
   color:#000;
   font-weight:bold;
-  box-shadow:0 0 10px #00ccff;
+  box-shadow:0 0 12px #00ccff;
   animation:btnGlow 1.5s infinite;
 }
 
 .stop{
   background:#ff2b2b;
   border:none;
-  padding:5px 10px;
+  padding:6px 12px;
   border-radius:8px;
   cursor:pointer;
   color:#fff;
   font-weight:bold;
-  box-shadow:0 0 10px #ff2b2b;
+  box-shadow:0 0 12px #ff2b2b;
   animation:btnGlow 1.5s infinite;
 }
 
@@ -309,55 +266,38 @@ body{
 <!-- RIGHT -->
 <div class="right-side">
 
-<div class="songs-box">
+<div class="songs-list">
 
-<div class="songs-title">
-  <span class="music-icon">🎵</span>
-  songs
-</div>
-
-<div class="songs-grid">
-
-<!-- COL 1 -->
-<div class="songs-col">
-
-<div class="song-card">
-  <div class="song-title">نفسي أطمن بيك</div>
-  <div class="song-controls">
+<div class="song-row">
+  <span class="song-name">نفسي أطمن بيك</span>
+  <div class="song-actions">
     <button class="play" onclick="playSong(0)">▶</button>
     <button class="stop" onclick="stopSong(0)">⏹</button>
   </div>
 </div>
 
-<div class="song-card"><div class="song-title">الشعر الأسود</div></div>
-<div class="song-card"><div class="song-title">حبي الأولاني</div></div>
-<div class="song-card"><div class="song-title">كوابيس</div></div>
-<div class="song-card"><div class="song-title">مش تمام</div></div>
-<div class="song-card"><div class="song-title">مشوار الحب</div></div>
-<div class="song-card"><div class="song-title">صاحبة الجلالة</div></div>
-<div class="song-card"><div class="song-title">عملالي عمل</div></div>
-<div class="song-card"><div class="song-title">بحبها</div></div>
-<div class="song-card"><div class="song-title">فيكي سر</div></div>
-<div class="song-card"><div class="song-title">حياتي قصيدة</div></div>
+<div class="song-row"><span class="song-name">الشعر الأسود</span><div class="song-actions"><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stopSong(1)">⏹</button></div></div>
+<div class="song-row"><span class="song-name">حبي الأولاني</span></div>
+<div class="song-row"><span class="song-name">كوابيس</span></div>
+<div class="song-row"><span class="song-name">مش تمام</span></div>
+<div class="song-row"><span class="song-name">مشوار الحب</span></div>
+<div class="song-row"><span class="song-name">صاحبة الجلالة</span></div>
+<div class="song-row"><span class="song-name">عملالي عمل</span></div>
+<div class="song-row"><span class="song-name">بحبها</span></div>
+<div class="song-row"><span class="song-name">فيكي سر</span></div>
+<div class="song-row"><span class="song-name">حياتي قصيدة</span></div>
 
-</div>
-
-<!-- COL 2 -->
-<div class="songs-col">
-
-<div class="song-card"><div class="song-title">لسه</div></div>
-<div class="song-card"><div class="song-title">مش زي غيرها</div></div>
-<div class="song-card"><div class="song-title">نسند بعض</div></div>
-<div class="song-card"><div class="song-title">وش السعد</div></div>
-<div class="song-card"><div class="song-title">يا حظ بيه</div></div>
-<div class="song-card"><div class="song-title">ياللي ناسيني</div></div>
-<div class="song-card"><div class="song-title">هلوسة</div></div>
-<div class="song-card"><div class="song-title">قصة حب</div></div>
-<div class="song-card"><div class="song-title">ذكريات</div></div>
-<div class="song-card"><div class="song-title">حبيتك ليه</div></div>
-<div class="song-card"><div class="song-title">توأمي</div></div>
-
-</div>
+<div class="song-row"><span class="song-name">لسه</span></div>
+<div class="song-row"><span class="song-name">مش زي غيرها</span></div>
+<div class="song-row"><span class="song-name">نسند بعض</span></div>
+<div class="song-row"><span class="song-name">وش السعد</span></div>
+<div class="song-row"><span class="song-name">يا حظ بيه</span></div>
+<div class="song-row"><span class="song-name">ياللي ناسيني</span></div>
+<div class="song-row"><span class="song-name">هلوسة</span></div>
+<div class="song-row"><span class="song-name">قصة حب</span></div>
+<div class="song-row"><span class="song-name">ذكريات</span></div>
+<div class="song-row"><span class="song-name">حبيتك ليه</span></div>
+<div class="song-row"><span class="song-name">توأمي</span></div>
 
 </div>
 
