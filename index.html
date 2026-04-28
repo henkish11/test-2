@@ -172,42 +172,45 @@ background:#021017;
 }
 
 .bigplay{
-width:60px;
-height:60px;
+width:65px;
+height:65px;
 border-radius:50%;
-background:#021017;
 display:flex;
 justify-content:center;
 align-items:center;
 font-size:26px;
 cursor:pointer;
+
+/* 3D Background */
+background:linear-gradient(145deg,#021017,#06313a);
+
+/* عمق */
+box-shadow:
+6px 6px 12px #000,
+-3px -3px 8px #00ffcc33,
+inset 0 0 10px #00ffcc22;
+
+/* لون الأيقونة */
 color:#00ffcc;
 
-/* Glow */
-box-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc inset;
-
-/* Animation */
-animation:pulse 1s infinite alternate;
+/* حركة ناعمة */
+transition:all 0.2s ease;
 }
 
-/* النبض */
-@keyframes pulse{
-from{
-opacity:0.5;
-box-shadow:0 0 5px #00ffcc;
-}
-to{
-opacity:1;
-box-shadow:0 0 20px #00ffcc, 0 0 40px #00ffcc;
-}
+/* Hover */
+.bigplay:hover{
+box-shadow:
+0 0 15px #00ffcc,
+inset 0 0 10px #00ffcc;
+transform:scale(1.05);
 }
 
-input[type=range]{flex:1;}
-
-.footer{
-text-align:center;
-padding:10px;
-color:#00ffcc;
+/* ضغط الزرار */
+.bigplay:active{
+transform:scale(0.92);
+box-shadow:
+inset 4px 4px 10px #000,
+inset -2px -2px 6px #00ffcc55;
 }
 </style>
 </head>
