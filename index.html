@@ -32,15 +32,25 @@ header{
   border:1px solid rgba(0,255,204,0.3);
   border-radius:15px;
   padding:12px;
-  min-height:140px;
-  overflow:auto;
+  min-height:160px;
+  box-shadow:0 0 15px rgba(0,255,204,0.1);
+  position:relative;
+  overflow:hidden;
+}
+
+textarea{
+  width:100%;
+  height:70px;
+  background:#05060a;
+  color:#00ffcc;
+  border:1px solid #00ffcc;
 }
 
 button{
   background:#00ffcc;
   border:none;
   padding:6px 10px;
-  margin:5px;
+  margin:4px;
   border-radius:8px;
   cursor:pointer;
   font-weight:bold;
@@ -56,95 +66,124 @@ button{
 
 <div class="container">
 
-  <!-- 1 -->
-  <div class="box">
-    <h3>INPUT</h3>
-    <textarea id="input" style="width:100%;height:70px;background:#05060a;color:#00ffcc;border:1px solid #00ffcc"></textarea>
-    <button onclick="run()">RUN</button>
-  </div>
+<!-- 1 AI (BACKGROUND PANEL) -->
+<div class="box"
+style="
+background:url('https://xatimg.com/image/TT2pRTbf2GZa.jpg') center/cover no-repeat;
+">
 
-  <!-- 2 -->
-  <div class="box">
-    <h3>AI RESPONSE</h3>
-    <div id="response">...</div>
-  </div>
+<!-- overlay -->
+<div style="
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.65);
+"></div>
 
-  <!-- 3 -->
-  <div class="box">
-    <h3>STATUS</h3>
-    <div id="status">Idle</div>
-  </div>
+<div style="position:relative;z-index:2;">
+<h3>🧠 AI PANEL</h3>
 
-  <!-- 4 -->
-  <div class="box">
-    <h3>TOOLS</h3>
-    <button onclick="clearAll()">CLEAR</button>
-    <button onclick="hack()">HACK MODE</button>
-    <button onclick="boost()">BOOST</button>
-  </div>
+<textarea id="input"></textarea>
+<button onclick="ai()">ASK</button>
+<div id="aiOut">Waiting...</div>
+</div>
 
-  <!-- 5 -->
-  <div class="box">
-    <h3>LOGS</h3>
-    <div id="logs" class="small"></div>
-  </div>
+</div>
 
-  <!-- 6 -->
-  <div class="box">
-    <h3>PLAYLIST (22 SONGS)</h3>
-    <div class="small">
-      1. Song 1<br>
-      2. Song 2<br>
-      3. Song 3<br>
-      4. Song 4<br>
-      5. Song 5<br>
-      6. Song 6<br>
-      7. Song 7<br>
-      8. Song 8<br>
-      9. Song 9<br>
-      10. Song 10<br>
-      11. Song 11<br>
-      12. Song 12<br>
-      13. Song 13<br>
-      14. Song 14<br>
-      15. Song 15<br>
-      16. Song 16<br>
-      17. Song 17<br>
-      18. Song 18<br>
-      19. Song 19<br>
-      20. Song 20<br>
-      21. Song 21<br>
-      22. Song 22<br>
-    </div>
-  </div>
+<!-- 2 STATUS -->
+<div class="box">
+<h3>📊 STATUS</h3>
+<div id="status">Idle</div>
+<button onclick="changeStatus()">Change Mode</button>
+</div>
+
+<!-- 3 TOOLS -->
+<div class="box">
+<h3>🛠 TOOLS</h3>
+<button onclick="clearAll()">CLEAR</button>
+<button onclick="hack()">HACK MODE</button>
+<button onclick="boost()">BOOST</button>
+</div>
+
+<!-- 4 LOGS -->
+<div class="box">
+<h3>📜 LOGS</h3>
+<div id="logs" class="small"></div>
+</div>
+
+<!-- 5 MUSIC -->
+<div class="box">
+<h3>🎧 MUSIC</h3>
+<select id="songs">
+<option>Song 1</option>
+<option>Song 2</option>
+<option>Song 3</option>
+<option>Song 4</option>
+<option>Song 5</option>
+</select>
+<button onclick="play()">PLAY</button>
+<div id="musicOut"></div>
+</div>
+
+<!-- 6 CONTROL -->
+<div class="box">
+<h3>⚙️ CONTROL</h3>
+<button onclick="shutdown()">SHUTDOWN</button>
+<button onclick="restart()">RESTART</button>
+<button onclick="god()">GOD MODE</button>
+</div>
 
 </div>
 
 <script>
 
-function log(msg){
-  document.getElementById("logs").innerHTML += msg+"<br>";
+function log(t){
+  document.getElementById("logs").innerHTML += "» "+t+"<br>";
 }
 
-function run(){
+/* AI */
+function ai(){
   let t=document.getElementById("input").value;
-  document.getElementById("response").innerText="Processing: "+t;
-  document.getElementById("status").innerText="Running...";
-  setTimeout(()=>document.getElementById("status").innerText="Idle",1000);
+  document.getElementById("aiOut").innerText="AI: "+t;
+  log("AI request sent");
 }
 
+/* STATUS */
+function changeStatus(){
+  let s=document.getElementById("status");
+  s.innerText = (s.innerText==="Idle") ? "Running..." : "Idle";
+}
+
+/* TOOLS */
 function clearAll(){
   document.getElementById("input").value="";
-  document.getElementById("response").innerText="";
-  log("Cleared");
+  document.getElementById("aiOut").innerText="";
+  log("System cleared");
 }
 
 function hack(){
-  document.getElementById("status").innerText="HACK MODE";
-  log("Hack activated");
+  document.getElementById("status").innerText="HACK MODE ACTIVE";
+  log("Hack mode enabled");
 }
 
-function boost(){log("Boosted");}
+function boost(){
+  log("System boosted");
+}
+
+/* MUSIC */
+function play(){
+  let s=document.getElementById("songs").value;
+  document.getElementById("musicOut").innerText="Playing: "+s;
+  log("Music started");
+}
+
+/* CONTROL */
+function shutdown(){log("System shutdown");}
+function restart(){log("System restart");}
+
+function god(){
+  document.body.style.boxShadow="0 0 60px #00ffcc";
+  log("GOD MODE ACTIVATED");
+}
 
 </script>
 
