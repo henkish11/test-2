@@ -2,54 +2,27 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>RAMY SYSTEM v3.0</title>
+<title>RAMY SYSTEM</title>
 
 <style>
 body{
 margin:0;
-background:#000;
-font-family:Arial;
+background:#020b0f;
+font-family:Tahoma;
 color:#00ffcc;
-overflow:hidden;
-}
-
-/* MATRIX */
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
 }
 
 /* TOP */
 .top{
-display:grid;
-grid-template-columns:repeat(3,1fr);
+display:flex;
 gap:10px;
 padding:10px;
 }
 
-.card{
-height:160px;
+.top img{
+width:33.3%;
 border-radius:12px;
-background-size:cover;
 border:1px solid #00ffff55;
-box-shadow:0 0 20px #00ffff55;
-animation:glow 3s infinite alternate;
-}
-
-@keyframes glow{
-from{box-shadow:0 0 10px #00ffff55;}
-to{box-shadow:0 0 25px #00ffff;}
-}
-
-/* HACK TEXT */
-.hack{
-position:absolute;
-top:10px;
-right:20px;
-color:#ff00ff;
-font-weight:bold;
 }
 
 /* MAIN */
@@ -85,6 +58,35 @@ font-size:26px;
 color:#00ff88;
 }
 
+.section{
+margin-top:15px;
+color:#00ffaa;
+}
+
+/* RADIO */
+.radio button{
+width:48%;
+padding:8px;
+margin-top:8px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.quran{background:#00aa55;}
+.music{background:#6a00ff;color:#fff;}
+
+/* CHAT */
+.chat a{
+display:block;
+margin-top:8px;
+padding:8px;
+border:1px solid #00ffcc33;
+border-radius:6px;
+text-decoration:none;
+color:#00ccff;
+}
+
 /* RIGHT */
 .right{
 flex:1;
@@ -93,8 +95,13 @@ border-radius:12px;
 padding:10px;
 }
 
+.title{
+text-align:center;
+margin-bottom:10px;
+}
+
 /* SONGS */
-.songs-wrap{
+.wrapSongs{
 display:flex;
 gap:10px;
 }
@@ -104,12 +111,15 @@ gap:10px;
 .song{
 display:flex;
 justify-content:space-between;
-padding:6px;
+padding:8px;
 border-bottom:1px solid #00ffcc22;
 }
 
-.song span{color:#ffff66;}
+.song span{
+color:#ffff66;
+}
 
+/* BUTTONS */
 .play{background:#0088ff;color:#fff;border:none;}
 .stop{background:#ff2222;color:#fff;border:none;}
 
@@ -119,36 +129,33 @@ position:fixed;
 bottom:0;
 width:100%;
 background:#021017;
-display:flex;
-justify-content:center;
 padding:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-top:1px solid #00ffcc33;
 }
 
-.bigplay{
-width:70px;
-height:70px;
+.big{
+width:60px;
+height:60px;
 border-radius:50%;
 background:#00ffcc;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:25px;
 cursor:pointer;
-box-shadow:0 0 20px #00ffcc;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
-
-<div class="hack">HACKING... <span id="percent">0%</span></div>
-
+<!-- TOP -->
 <div class="top">
-<div class="card" style="background-image:url('https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif')"></div>
-<div class="card" style="background-image:url('https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif')"></div>
-<div class="card" style="background-image:url('https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif')"></div>
+<img src="https://i.postimg.cc/Dzjxjdz6/a90024f2-cd48-4bf3-b09e-cea78dc21cab.png">
+<img src="https://i.postimg.cc/Dzjxjdz6/a90024f2-cd48-4bf3-b09e-cea78dc21cab.png">
+<img src="https://i.postimg.cc/Dzjxjdz6/a90024f2-cd48-4bf3-b09e-cea78dc21cab.png">
 </div>
 
 <div class="main">
@@ -158,29 +165,48 @@ box-shadow:0 0 20px #00ffcc;
 <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
 <div class="name">RAMY</div>
 </div>
+
+<div class="section">RADIO</div>
+<div class="radio">
+<button class="quran" onclick="radio(0)">QURAN</button>
+<button class="music" onclick="radio(1)">MUSIC</button>
+</div>
+
+<div class="section">CHAT</div>
+<div class="chat">
+<a href="#">2RA</a>
+<a href="#">7REQA</a>
+<a href="#">TRADE</a>
+<a href="#">CAMBIO</a>
+</div>
 </div>
 
 <div class="right">
+<div class="title">SONGS by RAMY</div>
 
-<div class="songs-wrap">
-
-<div class="col">
-<div class="song"><span>01. نفسي أطمن بيك</span><div><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song"><span>02. الشعر الأسود</span><div><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-</div>
+<div class="wrapSongs">
 
 <div class="col">
-<div class="song"><span>12. لسه</span><div><button class="play" onclick="playSong(11)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<!-- 1-11 -->
+<div class="song"><span>01. نفسي أطمن بيك</span><button onclick="playSong(0)">▶</button></div>
+<div class="song"><span>02. الشعر الأسود</span><button onclick="playSong(1)">▶</button></div>
+...
+</div>
+
+<div class="col">
+<!-- 12-22 -->
+<div class="song"><span>12. لسه</span><button onclick="playSong(11)">▶</button></div>
+...
 </div>
 
 </div>
-
 </div>
 
 </div>
 
 <div class="player">
-<div class="bigplay" onclick="audio.play()">▶</div>
+<div>Now Playing</div>
+<div class="big" onclick="audio.play()">▶</div>
 </div>
 
 <audio id="audio"></audio>
@@ -188,47 +214,6 @@ box-shadow:0 0 20px #00ffcc;
 <script>
 let audio=document.getElementById("audio");
 
-/* HACK % */
-let p=0;
-setInterval(()=>{
-p=(p+1)%100;
-document.getElementById("percent").innerText=p+"%";
-},80);
-
-/* MATRIX */
-let canvas=document.getElementById("matrix");
-let ctx=canvas.getContext("2d");
-canvas.height=window.innerHeight;
-canvas.width=window.innerWidth;
-
-let letters="01";
-letters=letters.split("");
-
-let fontSize=14;
-let columns=canvas.width/fontSize;
-let drops=[];
-for(let x=0;x<columns;x++) drops[x]=1;
-
-function draw(){
-ctx.fillStyle="rgba(0,0,0,0.05)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="#0f0";
-ctx.font=fontSize+"px monospace";
-
-for(let i=0;i<drops.length;i++){
-let text=letters[Math.floor(Math.random()*letters.length)];
-ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-
-if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
-drops[i]=0;
-
-drops[i]++;
-}
-}
-setInterval(draw,33);
-
-/* SONGS */
 const songs=[
 "https://j.top4top.io/m_3769le8x51.mp3"
 ];
@@ -238,9 +223,13 @@ audio.src=songs[i];
 audio.play();
 }
 
-function stop(){
-audio.pause();
-audio.currentTime=0;
+let radios=[
+new Audio("https://stream.radiojar.com/8s5u5tpdtwzuv"),
+new Audio("https://audio.nrpstream.com/listen/nogoumfm/radio.mp3")
+];
+
+function radio(i){
+radios[i].paused ? radios[i].play() : radios[i].pause();
 }
 </script>
 
