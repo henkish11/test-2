@@ -183,12 +183,8 @@ font-size:20px;
 cursor:pointer;
 }
 
-/* RANGE */
-input[type=range]{
-flex:1;
-}
+input[type=range]{flex:1;}
 
-/* FOOTER */
 .footer{
 text-align:center;
 padding:10px;
@@ -206,12 +202,9 @@ color:#00ffcc;
 <div class="card" style="background-image:url('https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif')"></div>
 </div>
 
-<!-- MAIN -->
 <div class="main">
 
-<!-- LEFT -->
 <div class="left">
-
 <div class="profile">
 <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
 <div>
@@ -233,18 +226,15 @@ color:#00ffcc;
 <a href="https://xat.com/trade" target="_blank">TRADE</a>
 <a href="https://xat.com/cambio" target="_blank">CAMBIO</a>
 </div>
-
 </div>
 
-<!-- RIGHT -->
 <div class="right">
-
 <div class="title">🎵 SONGS by RAMY</div>
 
 <div class="songs-wrap">
 
-<!-- COL 1 -->
 <div class="col">
+<!-- 1-11 -->
 <div class="song"><span>01. نفسي أطمن بيك</span><div><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
 <div class="song"><span>02. الشعر الأسود</span><div><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
 <div class="song"><span>03. حبي الأولاني</span><div><button class="play" onclick="playSong(2)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
@@ -258,8 +248,8 @@ color:#00ffcc;
 <div class="song"><span>11. حياتي قصيدة</span><div><button class="play" onclick="playSong(10)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
 </div>
 
-<!-- COL 2 -->
 <div class="col">
+<!-- 12-22 -->
 <div class="song"><span>12. لسه</span><div><button class="play" onclick="playSong(11)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
 <div class="song"><span>13. مش زي غيرها</span><div><button class="play" onclick="playSong(12)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
 <div class="song"><span>14. نسند بعض</span><div><button class="play" onclick="playSong(13)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
@@ -294,10 +284,46 @@ let progress=document.getElementById("progress");
 let volume=document.getElementById("volume");
 let btn=document.getElementById("mainBtn");
 
-const songs=[ ... ]; // نفس اللي عندك
+/* SONGS */
+const songs=[
+"https://j.top4top.io/m_3769le8x51.mp3",
+"https://k.top4top.io/m_3769enq6z2.mp3",
+"https://l.top4top.io/m_3769auk3d3.mp3",
+"https://a.top4top.io/m_3769kdadn4.mp3",
+"https://b.top4top.io/m_3769kg8sd5.mp3",
+"https://c.top4top.io/m_3769ien0c6.mp3",
+"https://d.top4top.io/m_3769yw3257.mp3",
+"https://e.top4top.io/m_3769yb3k29.mp3",
+"https://f.top4top.io/m_37690zriz10.mp3",
+"https://b.top4top.io/m_3769lxi681.mp3",
+"https://c.top4top.io/m_3769g0kg52.mp3",
+"https://d.top4top.io/m_3769xz8mi3.mp3",
+"https://e.top4top.io/m_3769o93s34.mp3",
+"https://f.top4top.io/m_3769c3tql5.mp3",
+"https://g.top4top.io/m_3769r7bcu6.mp3",
+"https://l.top4top.io/m_3769p7dkd1.mp3",
+"https://a.top4top.io/m_37697muuj2.mp3",
+"https://b.top4top.io/m_3769i9yd13.mp3",
+"https://c.top4top.io/m_3769ou0bt4.mp3",
+"https://d.top4top.io/m_37697zirj5.mp3",
+"https://e.top4top.io/m_3769rnmrk6.mp3",
+"https://d.top4top.io/m_3769a1jgw1.mp3"
+];
+
+/* RADIO */
+let radioUrls=[
+"https://stream.radiojar.com/8s5u5tpdtwzuv",
+"https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"
+];
 
 function playSong(i){
 audio.src=songs[i];
+audio.play();
+btn.innerText="⏸";
+}
+
+function radio(i){
+audio.src=radioUrls[i];
 audio.play();
 btn.innerText="⏸";
 }
@@ -334,15 +360,6 @@ audio.currentTime=(progress.value/100)*audio.duration;
 volume.addEventListener("input",()=>{
 audio.volume=volume.value;
 });
-
-let radios=[
-new Audio("https://stream.radiojar.com/8s5u5tpdtwzuv"),
-new Audio("https://audio.nrpstream.com/listen/nogoumfm/radio.mp3")
-];
-
-function radio(i){
-radios[i].paused ? radios[i].play() : radios[i].pause();
-}
 </script>
 
 </body>
