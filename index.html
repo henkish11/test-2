@@ -12,7 +12,7 @@ body{
   color:#00ffcc;
 }
 
-/* TOP IMAGES */
+/* ================= TOP IMAGES ================= */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -35,7 +35,7 @@ body{
   transform:scale(1.04);
 }
 
-/* BIG BOX */
+/* ================= BIG BOX ================= */
 .data-section{
   display:flex;
   justify-content:center;
@@ -44,7 +44,7 @@ body{
 
 .big-box{
   width:95%;
-  min-height:650px;
+  min-height:750px;
   border-radius:14px;
   background:rgba(0,255,204,0.05);
   box-shadow:0 0 20px rgba(0,255,204,0.2);
@@ -53,7 +53,7 @@ body{
   gap:20px;
 }
 
-/* LEFT SIDE */
+/* ================= LEFT SIDE ================= */
 .left-side{
   width:28%;
   border-right:1px solid rgba(0,255,204,0.2);
@@ -115,7 +115,7 @@ body{
   cursor:pointer;
 }
 
-/* CHAT LINKS (LEFT SIDE BOTTOM) */
+/* CHAT LINKS */
 .chat-links{
   margin-top:20px;
   display:flex;
@@ -140,12 +140,69 @@ body{
   color:#000;
 }
 
-/* RIGHT SIDE */
+/* ================= RIGHT SIDE ================= */
 .right-side{
   flex:1;
+  padding-left:10px;
 }
 
-/* LINKS (removed center usage - kept empty space for future) */
+/* ================= SONGS ================= */
+.songs-panel{
+  margin-top:20px;
+  padding:15px;
+  border:1px solid rgba(0,255,204,0.2);
+  border-radius:12px;
+  background:rgba(0,255,204,0.05);
+}
+
+.songs-title{
+  text-align:center;
+  font-size:32px;
+  color:purple;
+  font-weight:bold;
+  text-shadow:0 0 15px purple;
+  margin-bottom:10px;
+}
+
+.songs-grid{
+  display:flex;
+  gap:10px;
+}
+
+.songs-col{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.song{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:6px;
+  border:1px solid rgba(0,255,204,0.2);
+  border-radius:6px;
+  font-size:12px;
+}
+
+.song button{
+  border:none;
+  padding:4px 8px;
+  cursor:pointer;
+  font-weight:bold;
+  border-radius:4px;
+}
+
+.song button:first-of-type{
+  background:#00ccff;
+  color:#000;
+}
+
+.song button:last-of-type{
+  background:red;
+  color:#fff;
+}
 
 </style>
 </head>
@@ -166,42 +223,75 @@ body{
 
 <div class="big-box">
 
-  <!-- LEFT SIDE -->
-  <div class="left-side">
+<!-- LEFT SIDE -->
+<div class="left-side">
 
-    <div class="profile">
-      <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
-      <div class="name">RAMY</div>
-    </div>
-
-    <!-- RADIOS -->
-    <div class="radio-box">
-      <h4>📖 Quran Radio</h4>
-      <button onclick="playRadio('quran')">PLAY / STOP</button>
-    </div>
-
-    <div class="radio-box">
-      <h4>🎧 Music Radio</h4>
-      <button onclick="playRadio('music')">PLAY / STOP</button>
-    </div>
-
-    <!-- CHAT LINKS (LEFT SIDE) -->
-    <div class="chat-links">
-      <a href="https://xat.com/2ra" target="_blank">2RA</a>
-      <a href="https://xat.com/7reqa" target="_blank">7REQA</a>
-      <a href="https://xat.com/trade" target="_blank">TRADE</a>
-      <a href="https://xat.com/cambio" target="_blank">CAMBIO</a>
-    </div>
-
+  <div class="profile">
+    <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
+    <div class="name">RAMY</div>
   </div>
 
-  <!-- RIGHT SIDE -->
-  <div class="right-side">
-
-    <audio id="quran" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
-    <audio id="music" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
-
+  <div class="radio-box">
+    <h4>📖 Quran Radio</h4>
+    <button onclick="playRadio('quran')">PLAY / STOP</button>
   </div>
+
+  <div class="radio-box">
+    <h4>🎧 Music Radio</h4>
+    <button onclick="playRadio('music')">PLAY / STOP</button>
+  </div>
+
+  <!-- CHAT LINKS -->
+  <div class="chat-links">
+    <a href="https://xat.com/2ra" target="_blank">2RA</a>
+    <a href="https://xat.com/7reqa" target="_blank">7REQA</a>
+    <a href="https://xat.com/trade" target="_blank">TRADE</a>
+    <a href="https://xat.com/cambio" target="_blank">CAMBIO</a>
+  </div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="right-side">
+
+<!-- SONGS -->
+<div class="songs-panel">
+
+<div class="songs-title">SONG</div>
+
+<div class="songs-grid">
+
+<div class="songs-col">
+<div class="song"><span>Song 1</span><button onclick="playSong(0)">▶</button><button onclick="stopSong(0)">⏹</button></div>
+<div class="song"><span>Song 2</span><button onclick="playSong(1)">▶</button><button onclick="stopSong(1)">⏹</button></div>
+<div class="song"><span>Song 3</span><button onclick="playSong(2)">▶</button><button onclick="stopSong(2)">⏹</button></div>
+<div class="song"><span>Song 4</span><button onclick="playSong(3)">▶</button><button onclick="stopSong(3)">⏹</button></div>
+<div class="song"><span>Song 5</span><button onclick="playSong(4)">▶</button><button onclick="stopSong(4)">⏹</button></div>
+<div class="song"><span>Song 6</span><button onclick="playSong(5)">▶</button><button onclick="stopSong(5)">⏹</button></div>
+<div class="song"><span>Song 7</span><button onclick="playSong(6)">▶</button><button onclick="stopSong(6)">⏹</button></div>
+<div class="song"><span>Song 8</span><button onclick="playSong(7)">▶</button><button onclick="stopSong(7)">⏹</button></div>
+<div class="song"><span>Song 9</span><button onclick="playSong(8)">▶</button><button onclick="stopSong(8)">⏹</button></div>
+<div class="song"><span>Song 10</span><button onclick="playSong(9)">▶</button><button onclick="stopSong(9)">⏹</button></div>
+<div class="song"><span>Song 11</span><button onclick="playSong(10)">▶</button><button onclick="stopSong(10)">⏹</button></div>
+</div>
+
+<div class="songs-col">
+<div class="song"><span>Song 12</span><button onclick="playSong(11)">▶</button><button onclick="stopSong(11)">⏹</button></div>
+<div class="song"><span>Song 13</span><button onclick="playSong(12)">▶</button><button onclick="stopSong(12)">⏹</button></div>
+<div class="song"><span>Song 14</span><button onclick="playSong(13)">▶</button><button onclick="stopSong(13)">⏹</button></div>
+<div class="song"><span>Song 15</span><button onclick="playSong(14)">▶</button><button onclick="stopSong(14)">⏹</button></div>
+<div class="song"><span>Song 16</span><button onclick="playSong(15)">▶</button><button onclick="stopSong(15)">⏹</button></div>
+<div class="song"><span>Song 17</span><button onclick="playSong(16)">▶</button><button onclick="stopSong(16)">⏹</button></div>
+<div class="song"><span>Song 18</span><button onclick="playSong(17)">▶</button><button onclick="stopSong(17)">⏹</button></div>
+<div class="song"><span>Song 19</span><button onclick="playSong(18)">▶</button><button onclick="stopSong(18)">⏹</button></div>
+<div class="song"><span>Song 20</span><button onclick="playSong(19)">▶</button><button onclick="stopSong(19)">⏹</button></div>
+<div class="song"><span>Song 21</span><button onclick="playSong(20)">▶</button><button onclick="stopSong(20)">⏹</button></div>
+<div class="song"><span>Song 22</span><button onclick="playSong(21)">▶</button><button onclick="stopSong(21)">⏹</button></div>
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -209,6 +299,50 @@ body{
 
 <script>
 
+const songs = [
+"j.top4top.io/m_3769le8x51.mp3",
+"k.top4top.io/m_3769enq6z2.mp3",
+"l.top4top.io/m_3769auk3d3.mp3",
+"a.top4top.io/m_3769kdadn4.mp3",
+"b.top4top.io/m_3769kg8sd5.mp3",
+"c.top4top.io/m_3769ien0c6.mp3",
+"d.top4top.io/m_3769yw3257.mp3",
+"e.top4top.io/m_3769yb3k29.mp3",
+"f.top4top.io/m_37690zriz10.mp3",
+"b.top4top.io/m_3769lxi681.mp3",
+"c.top4top.io/m_3769g0kg52.mp3",
+"d.top4top.io/m_3769xz8mi3.mp3",
+"e.top4top.io/m_3769o93s34.mp3",
+"f.top4top.io/m_3769c3tql5.mp3",
+"g.top4top.io/m_3769r7bcu6.mp3",
+"l.top4top.io/m_3769p7dkd1.mp3",
+"a.top4top.io/m_37697muuj2.mp3",
+"b.top4top.io/m_3769i9yd13.mp3",
+"c.top4top.io/m_3769ou0bt4.mp3",
+"d.top4top.io/m_37697zirj5.mp3",
+"e.top4top.io/m_3769rnmrk6.mp3",
+"d.top4top.io/m_3769a1jgw1.mp3"
+];
+
+let audio = new Audio();
+let current = -1;
+
+function playSong(i){
+  if(current !== -1) audio.pause();
+  audio.src = "https://" + songs[i];
+  audio.play();
+  current = i;
+}
+
+function stopSong(i){
+  if(current === i){
+    audio.pause();
+    audio.currentTime = 0;
+    current = -1;
+  }
+}
+
+/* RADIOS */
 function playRadio(id){
 
   let q = document.getElementById("quran");
@@ -227,6 +361,10 @@ function playRadio(id){
 }
 
 </script>
+
+<!-- HIDDEN RADIOS -->
+<audio id="quran" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
+<audio id="music" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
 
 </body>
 </html>
