@@ -53,9 +53,9 @@ body{
   gap:20px;
 }
 
-/* LEFT PROFILE SIDE */
+/* LEFT SIDE */
 .left-side{
-  width:25%;
+  width:28%;
   border-right:1px solid rgba(0,255,204,0.2);
   padding-right:15px;
 }
@@ -65,7 +65,6 @@ body{
   display:flex;
   align-items:center;
   gap:10px;
-  margin-bottom:10px;
 }
 
 .profile img{
@@ -116,36 +115,37 @@ body{
   cursor:pointer;
 }
 
-/* RIGHT SIDE */
-.right-side{
-  flex:1;
-  padding-left:10px;
-}
-
-/* LINKS */
-.links{
+/* CHAT LINKS (LEFT SIDE BOTTOM) */
+.chat-links{
+  margin-top:20px;
   display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-top:25px;
-  flex-wrap:wrap;
+  flex-direction:column;
+  gap:8px;
 }
 
-.chat-btn{
-  padding:10px 18px;
-  border:1px solid rgba(0,255,204,0.4);
-  border-radius:8px;
+.chat-links a{
   text-decoration:none;
   color:#00ffcc;
-  font-weight:bold;
+  padding:8px;
+  border:1px solid rgba(0,255,204,0.3);
+  border-radius:6px;
+  font-size:13px;
+  text-align:center;
   background:rgba(0,255,204,0.05);
   transition:0.3s;
 }
 
-.chat-btn:hover{
+.chat-links a:hover{
   background:#00ffcc;
   color:#000;
 }
+
+/* RIGHT SIDE */
+.right-side{
+  flex:1;
+}
+
+/* LINKS (removed center usage - kept empty space for future) */
 
 </style>
 </head>
@@ -161,7 +161,7 @@ body{
 
 </div>
 
-<!-- BIG BOX -->
+<!-- BIG SYSTEM -->
 <div class="data-section">
 
 <div class="big-box">
@@ -169,7 +169,6 @@ body{
   <!-- LEFT SIDE -->
   <div class="left-side">
 
-    <!-- PROFILE -->
     <div class="profile">
       <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
       <div class="name">RAMY</div>
@@ -186,22 +185,21 @@ body{
       <button onclick="playRadio('music')">PLAY / STOP</button>
     </div>
 
+    <!-- CHAT LINKS (LEFT SIDE) -->
+    <div class="chat-links">
+      <a href="https://xat.com/2ra" target="_blank">2RA</a>
+      <a href="https://xat.com/7reqa" target="_blank">7REQA</a>
+      <a href="https://xat.com/trade" target="_blank">TRADE</a>
+      <a href="https://xat.com/cambio" target="_blank">CAMBIO</a>
+    </div>
+
   </div>
 
   <!-- RIGHT SIDE -->
   <div class="right-side">
 
-    <!-- AUDIO -->
     <audio id="quran" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
     <audio id="music" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
-
-    <!-- LINKS -->
-    <div class="links">
-      <a class="chat-btn" href="https://xat.com/2ra" target="_blank">2RA</a>
-      <a class="chat-btn" href="https://xat.com/7reqa" target="_blank">7REQA</a>
-      <a class="chat-btn" href="https://xat.com/trade" target="_blank">TRADE</a>
-      <a class="chat-btn" href="https://xat.com/cambio" target="_blank">CAMBIO</a>
-    </div>
 
   </div>
 
@@ -218,14 +216,12 @@ function playRadio(id){
 
   if(id === "quran"){
     m.pause(); m.currentTime = 0;
-    if(q.paused) q.play();
-    else q.pause();
+    q.paused ? q.play() : q.pause();
   }
 
   if(id === "music"){
     q.pause(); q.currentTime = 0;
-    if(m.paused) m.play();
-    else m.pause();
+    m.paused ? m.play() : m.pause();
   }
 
 }
