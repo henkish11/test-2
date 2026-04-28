@@ -20,13 +20,13 @@ body{
   grid-template-columns:repeat(3,1fr);
   gap:15px;
   padding:20px;
+  justify-items:center;
 }
 
 /* IMAGE BOX */
 .box{
-  position:relative;
-  width:100%;
-  aspect-ratio:1/1;
+  width:40cm;
+  height:40cm;
   border-radius:12px;
   overflow:hidden;
   background-size:cover;
@@ -36,10 +36,10 @@ body{
 }
 
 .box:hover{
-  transform:scale(1.03);
+  transform:scale(1.02);
 }
 
-/* PASSWORD OVERLAY */
+/* PASSWORD */
 .overlay{
   position:absolute;
   inset:0;
@@ -71,36 +71,26 @@ button{
   font-weight:bold;
 }
 
-button:hover{
-  background:#00ffaa;
-}
-
 /* ===================== */
 /* DATA SECTION */
 /* ===================== */
 .data-section{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  display:flex;
+  justify-content:center;
   padding:20px;
 }
 
-/* BIG MERGED BOX */
+/* BIG BOX */
 .big-box{
-  grid-column:1/-1;
+  width:90%;
+  height:60cm;
   padding:20px;
   border-radius:12px;
   background:rgba(0,255,204,0.05);
   box-shadow:
     0 0 15px #00ffcc30,
     inset 0 0 10px #00ffcc20;
-  transition:0.3s;
-}
-
-.big-box:hover{
-  box-shadow:
-    0 0 25px #00ffcc,
-    inset 0 0 15px #00ffcc;
+  overflow:auto;
 }
 
 /* TITLE */
@@ -117,13 +107,12 @@ button:hover{
   gap:20px;
 }
 
-/* SUB TITLES */
+/* SUB */
 .grid-inside h4{
   margin-bottom:10px;
   text-shadow:0 0 5px #00ffcc;
 }
 
-/* LINES */
 .line{
   border-bottom:1px solid rgba(0,255,204,0.3);
   padding:6px 0;
@@ -135,19 +124,14 @@ button:hover{
 
 <body>
 
-<!-- ===================== -->
 <!-- الصور -->
-<!-- ===================== -->
 <div class="container">
 
-<!-- BOX 1 -->
 <div class="box" style="background-image:url('https://xatimg.com/image/Kn9aywnuvpVo.jpg');"></div>
 
-<!-- BOX 2 -->
 <div class="box" style="background-image:url('https://xatimg.com/image/RKBN2koMEBaq.jpg');"></div>
 
-<!-- BOX 3 (باسورد) -->
-<div class="box" style="background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg');">
+<div class="box" style="background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg'); position:relative;">
   <div class="overlay" id="lock">
     <input type="password" id="pass" placeholder="ENTER PASSWORD">
     <button onclick="unlock()">ENTER</button>
@@ -156,9 +140,7 @@ button:hover{
 
 </div>
 
-<!-- ===================== -->
-<!-- البيانات (مربع واحد كبير) -->
-<!-- ===================== -->
+<!-- المربع الكبير -->
 <div class="data-section">
 
 <div class="big-box">
@@ -167,7 +149,6 @@ button:hover{
 
   <div class="grid-inside">
 
-    <!-- PROFILE -->
     <div>
       <h4>👤 PROFILE</h4>
       <div class="line">Name: Ramy</div>
@@ -176,7 +157,6 @@ button:hover{
       <div class="line">Status: Online</div>
     </div>
 
-    <!-- CHATS -->
     <div>
       <h4>💬 CHATS</h4>
       <div class="line">Chat 1</div>
@@ -185,7 +165,6 @@ button:hover{
       <div class="line">Chat 4</div>
     </div>
 
-    <!-- SYSTEM -->
     <div>
       <h4>🔥 SYSTEM</h4>
       <div class="line">Power: Active</div>
@@ -200,14 +179,10 @@ button:hover{
 
 </div>
 
-<!-- ===================== -->
-<!-- SCRIPT -->
-<!-- ===================== -->
 <script>
 function unlock(){
   let p = document.getElementById("pass").value;
-
-  if(p === "1234"){ // غير الباسورد هنا
+  if(p === "1234"){
     document.getElementById("lock").style.display = "none";
   }else{
     alert("Wrong Password ❌");
