@@ -7,108 +7,78 @@
 <style>
 body{
   margin:0;
-  background: radial-gradient(circle at center, #050505, #000);
+  background:#000;
   font-family:Arial;
-  color:#00ffcc;
 }
 
 /* GRID */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  gap:15px;
   padding:20px;
 }
 
-/* BOX STYLE (Neon) */
+/* BOX = صورة */
 .box{
   position:relative;
-  border-radius:15px;
-  background:rgba(0,255,204,0.05);
-  backdrop-filter: blur(5px);
+  width:100%;
+  aspect-ratio:1/1; /* يخليهم مربعات */
+  border-radius:12px;
   overflow:hidden;
-  height:230px;
-  box-shadow:
-    0 0 10px #00ffcc,
-    0 0 20px #00ffcc40,
-    inset 0 0 10px #00ffcc20;
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 0 15px rgba(0,255,204,0.3);
+}
+
+/* Hover */
+.box:hover{
+  transform:scale(1.03);
   transition:0.3s;
 }
 
-/* Glow Animation */
-.box::before{
-  content:"";
+/* PASSWORD PANEL */
+.overlay{
   position:absolute;
-  width:150%;
-  height:150%;
-  background:linear-gradient(45deg,transparent,#00ffcc,transparent);
-  top:-50%;
-  left:-50%;
-  animation:rotate 6s linear infinite;
-}
-
-@keyframes rotate{
-  0%{transform:rotate(0deg);}
-  100%{transform:rotate(360deg);}
-}
-
-/* inner content */
-.box::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  background:#000;
-  border-radius:13px;
-}
-
-/* content fix */
-.box *{
-  position:relative;
-  z-index:2;
-}
-
-/* Hover Effect */
-.box:hover{
-  transform:scale(1.05);
-  box-shadow:
-    0 0 20px #00ffcc,
-    0 0 40px #00ffcc;
-}
-
-/* TITLE */
-h3{
-  margin:10px;
-  text-align:center;
-  letter-spacing:2px;
-  text-shadow:0 0 10px #00ffcc;
-}
-
-/* MUSIC */
-.music{
-  padding:10px;
-}
-
-/* SONG */
-.song{
+  inset:0;
+  background:rgba(0,0,0,0.75);
   display:flex;
-  justify-content:space-between;
-  padding:6px;
-  border-bottom:1px solid rgba(0,255,204,0.2);
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+/* INPUT */
+input{
+  padding:10px;
+  border:none;
+  outline:none;
+  border-radius:6px;
+  background:#111;
+  color:#00ffcc;
+  text-align:center;
+  box-shadow:0 0 10px #00ffcc;
+}
+
+/* BUTTON */
+button{
+  padding:8px 20px;
+  border:none;
+  border-radius:6px;
+  background:#00ffcc;
+  color:#000;
   cursor:pointer;
-  font-size:13px;
-  transition:0.2s;
+  font-weight:bold;
 }
 
-.song:hover{
-  background:#00ffcc20;
-  transform:translateX(5px);
+button:hover{
+  background:#00ffaa;
 }
 
-/* PLAYER */
-audio{
-  width:100%;
-  margin-top:10px;
-  filter:drop-shadow(0 0 5px #00ffcc);
+/* hidden content */
+.hidden{
+  display:none;
 }
 
 </style>
@@ -118,65 +88,35 @@ audio{
 
 <div class="container">
 
-<!-- MUSIC BOX -->
-<div class="box music">
-<h3>🎧 MUSIC PLAYER</h3>
-<div id="list"></div>
-<audio id="player" controls></audio>
+<!-- BOX 1 -->
+<div class="box" style="background-image:url('https://xatimg.com/image/Kn9aywnuvpVo.jpg');"></div>
+
+<!-- BOX 2 -->
+<div class="box" style="background-image:url('https://xatimg.com/image/RKBN2koMEBaq.jpg');"></div>
+
+<!-- BOX 3 (Password) -->
+<div class="box" style="background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg');">
+
+  <div class="overlay" id="lock">
+    <input type="password" id="pass" placeholder="ENTER PASSWORD">
+    <button onclick="unlock()">ENTER</button>
+  </div>
+
 </div>
-
-<!-- باقي البوكسات -->
-<div class="box"><h3>⚡ SYSTEM</h3></div>
-<div class="box"><h3>💬 CHATS</h3></div>
-
-<div class="box"><h3>👤 PROFILE</h3></div>
-<div class="box"><h3>🔥 POWERS</h3></div>
-<div class="box"><h3>🧠 AI PANEL</h3></div>
 
 </div>
 
 <script>
 
-const songs = [
-["نفسي أطمن بيك","https://j.top4top.io/m_3769le8x51.mp3"],
-["الشعر الأسود","https://k.top4top.io/m_3769enq6z2.mp3"],
-["حبي الأولاني","https://l.top4top.io/m_3769auk3d3.mp3"],
-["كوابيس","https://a.top4top.io/m_3769kdadn4.mp3"],
-["مش تمام","https://b.top4top.io/m_3769kg8sd5.mp3"],
-["مشوار الحب","https://c.top4top.io/m_3769ien0c6.mp3"],
-["صاحبة الجلالة","https://d.top4top.io/m_3769yw3257.mp3"],
-["عملالي عمل","https://e.top4top.io/m_3769yb3k29.mp3"],
-["بحبها","https://f.top4top.io/m_37690zriz10.mp3"],
-["فيكي سر","https://b.top4top.io/m_3769lxi681.mp3"],
-["حياتي قصيدة","https://c.top4top.io/m_3769g0kg52.mp3"],
-["لسه","https://d.top4top.io/m_3769xz8mi3.mp3"],
-["مش زي غيرها","https://e.top4top.io/m_3769o93s34.mp3"],
-["نسند بعض","https://f.top4top.io/m_3769c3tql5.mp3"],
-["وش السعد","https://g.top4top.io/m_3769r7bcu6.mp3"],
-["يا حظ بيه","https://l.top4top.io/m_3769p7dkd1.mp3"],
-["ياللي ناسيني","https://a.top4top.io/m_37697muuj2.mp3"],
-["هلوسة","https://b.top4top.io/m_3769i9yd13.mp3"],
-["قصة حب","https://c.top4top.io/m_3769ou0bt4.mp3"],
-["ذكريات","https://d.top4top.io/m_37697zirj5.mp3"],
-["حبيتك ليه","https://e.top4top.io/m_3769rnmrk6.mp3"],
-["توأمي","https://d.top4top.io/m_3769a1jgw1.mp3"]
-];
+function unlock(){
+  let p = document.getElementById("pass").value;
 
-const list = document.getElementById("list");
-const player = document.getElementById("player");
-
-songs.forEach(s => {
-  let div = document.createElement("div");
-  div.className = "song";
-  div.innerHTML = "🎵 " + s[0];
-
-  div.onclick = () => {
-    player.src = s[1];
-    player.play();
-  };
-
-  list.appendChild(div);
-});
+  if(p === "1234"){ // غير الباسورد من هنا
+    document.getElementById("lock").style.display = "none";
+  }else{
+    alert("Wrong Password ❌");
+  }
+}
 
 </script>
 
