@@ -172,15 +172,34 @@ background:#021017;
 }
 
 .bigplay{
-width:50px;
-height:50px;
+width:60px;
+height:60px;
 border-radius:50%;
-background:#00ffcc;
+background:#021017;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:20px;
+font-size:26px;
 cursor:pointer;
+color:#00ffcc;
+
+/* Glow */
+box-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc inset;
+
+/* Animation */
+animation:pulse 1s infinite alternate;
+}
+
+/* النبض */
+@keyframes pulse{
+from{
+opacity:0.5;
+box-shadow:0 0 5px #00ffcc;
+}
+to{
+opacity:1;
+box-shadow:0 0 20px #00ffcc, 0 0 40px #00ffcc;
+}
 }
 
 input[type=range]{flex:1;}
