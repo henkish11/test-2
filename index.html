@@ -12,7 +12,7 @@ body{
   color:#00ffcc;
 }
 
-/* TOP */
+/* TOP 3 BOXES */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -30,7 +30,7 @@ body{
   box-shadow:0 0 15px rgba(0,255,204,0.2);
 }
 
-/* BIG */
+/* MAIN */
 .data-section{
   display:flex;
   justify-content:center;
@@ -55,6 +55,7 @@ body{
   padding-right:15px;
 }
 
+/* PROFILE */
 .profile{
   display:flex;
   align-items:center;
@@ -62,17 +63,29 @@ body{
 }
 
 .profile img{
-  width:90px;
-  height:90px;
+  width:95px;
+  height:95px;
   border-radius:50%;
   border:3px solid #00ffcc;
   box-shadow:0 0 20px #00ffcc;
 }
 
 .name{
-  font-size:36px;
+  font-size:40px;
   font-weight:bold;
-  text-shadow:0 0 20px #00ffcc;
+  text-shadow:0 0 25px #00ffcc;
+}
+
+/* CHAT LINKS */
+.chat-links a{
+  display:block;
+  text-decoration:none;
+  color:#00ffcc;
+  padding:8px;
+  margin-top:6px;
+  border:1px solid rgba(0,255,204,0.3);
+  border-radius:6px;
+  text-align:center;
 }
 
 /* RIGHT */
@@ -81,7 +94,7 @@ body{
   padding-left:15px;
 }
 
-/* SONG BOX */
+/* SONG AREA */
 .songs-inner{
   width:100%;
   border-radius:14px;
@@ -108,7 +121,7 @@ body{
   gap:6px;
 }
 
-/* ROW */
+/* SONG ROW */
 .song-row{
   display:flex;
   justify-content:space-between;
@@ -149,6 +162,24 @@ body{
   box-shadow:0 0 10px #ff2b2b;
 }
 
+/* RADIO */
+.radio-box{
+  margin-top:15px;
+  padding:10px;
+  border:1px solid rgba(0,255,204,0.2);
+  border-radius:10px;
+}
+
+.radio-btn{
+  width:100%;
+  margin-top:5px;
+  padding:8px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
 </style>
 </head>
 
@@ -166,15 +197,36 @@ body{
 
 <div class="big-box">
 
-<!-- LEFT -->
+<!-- LEFT PANEL -->
 <div class="left-side">
+
   <div class="profile">
     <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
     <div class="name">RAMY</div>
   </div>
+
+  <!-- RADIOS (رجعناهم مكانهم الطبيعي) -->
+  <div class="radio-box">
+    <h4>📖 Quran Radio</h4>
+    <button class="radio-btn" onclick="toggleRadio('quran')">PLAY / STOP</button>
+  </div>
+
+  <div class="radio-box">
+    <h4>🎧 Music Radio</h4>
+    <button class="radio-btn" onclick="toggleRadio('music')">PLAY / STOP</button>
+  </div>
+
+  <!-- CHATS -->
+  <div class="chat-links">
+    <a href="https://xat.com/2ra" target="_blank">2RA</a>
+    <a href="https://xat.com/7reqa" target="_blank">7REQA</a>
+    <a href="https://xat.com/trade" target="_blank">TRADE</a>
+    <a href="https://xat.com/cambio" target="_blank">CAMBIO</a>
+  </div>
+
 </div>
 
-<!-- RIGHT -->
+<!-- RIGHT PANEL -->
 <div class="right-side">
 
 <div class="songs-inner">
@@ -183,7 +235,7 @@ body{
 
 <div class="songs-grid">
 
-<!-- COL 1 -->
+<!-- COLUMN 1 (11 songs) -->
 <div class="songs-col">
 
 <div class="song-row"><span class="song-name">نفسي أطمن بيك</span><div class="song-actions"><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
@@ -200,7 +252,7 @@ body{
 
 </div>
 
-<!-- COL 2 -->
+<!-- COLUMN 2 (11 songs) -->
 <div class="songs-col">
 
 <div class="song-row"><span class="song-name">لسه</span><div class="song-actions"><button class="play" onclick="playSong(11)">▶</button><button class="stop" onclick="stopSong()">⏹</button></div></div>
@@ -225,11 +277,16 @@ body{
 
 </div>
 
+<!-- AUDIO SYSTEM -->
 <audio id="audio"></audio>
+<audio id="quran" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
+<audio id="music" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
 
 <script>
 
 const audio = document.getElementById("audio");
+const quran = document.getElementById("quran");
+const music = document.getElementById("music");
 
 const songs = [
 "https://j.top4top.io/m_3769le8x51.mp3",
@@ -264,6 +321,19 @@ function playSong(i){
 function stopSong(){
   audio.pause();
   audio.currentTime = 0;
+}
+
+function toggleRadio(type){
+
+  if(type === "quran"){
+    music.pause();
+    quran.paused ? quran.play() : quran.pause();
+  }
+
+  if(type === "music"){
+    quran.pause();
+    music.paused ? music.play() : music.pause();
+  }
 }
 
 </script>
