@@ -20,13 +20,13 @@ body{
   grid-template-columns:repeat(3,1fr);
   gap:15px;
   padding:20px;
-  justify-items:center;
 }
 
-/* IMAGE BOX */
+/* IMAGE BOX (أصغر شوية) */
 .box{
-  width:40cm;
-  height:40cm;
+  width:100%;
+  aspect-ratio:1/1;
+  max-height:260px; /* 👈 تصغير */
   border-radius:12px;
   overflow:hidden;
   background-size:cover;
@@ -36,7 +36,7 @@ body{
 }
 
 .box:hover{
-  transform:scale(1.02);
+  transform:scale(1.03);
 }
 
 /* PASSWORD */
@@ -80,17 +80,16 @@ button{
   padding:20px;
 }
 
-/* BIG BOX */
+/* BIG BOX (أطول) */
 .big-box{
-  width:90%;
-  height:60cm;
+  width:95%;
+  min-height:500px; /* 👈 أطول */
   padding:20px;
   border-radius:12px;
   background:rgba(0,255,204,0.05);
   box-shadow:
     0 0 15px #00ffcc30,
     inset 0 0 10px #00ffcc20;
-  overflow:auto;
 }
 
 /* TITLE */
