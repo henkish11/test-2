@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RAMY SYSTEM FINAL FIXED</title>
+<title>RAMY SYSTEM FULL RESTORE</title>
 
 <style>
 body{
@@ -27,16 +27,17 @@ height:98vh;
 background:rgba(0,255,204,0.05);
 border-radius:15px;
 box-shadow:0 0 25px rgba(0,255,204,0.2);
-padding:12px;
+padding:10px;
 display:flex;
 flex-direction:column;
 }
 
+/* TOP IMAGES */
 .container{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:8px;
-height:20vh;
+height:18vh;
 }
 
 .box{
@@ -48,6 +49,7 @@ transition:0.3s;
 
 .box:hover{transform:scale(1.05);}
 
+/* MAIN AREA */
 .content{
 flex:1;
 display:flex;
@@ -55,6 +57,7 @@ gap:15px;
 margin-top:10px;
 }
 
+/* LEFT */
 .left{
 width:28%;
 border-right:1px solid rgba(0,255,204,0.2);
@@ -76,9 +79,16 @@ box-shadow:0 0 20px #00ffcc;
 
 .name{
 font-size:38px;
-text-shadow:0 0 15px #00ffcc;
+animation:glow 1.5s infinite;
 }
 
+@keyframes glow{
+0%{text-shadow:0 0 5px #00ffcc;}
+50%{text-shadow:0 0 20px #00ffcc;}
+100%{text-shadow:0 0 5px #00ffcc;}
+}
+
+/* CHAT LINKS */
 .chat a{
 display:block;
 margin-top:5px;
@@ -112,13 +122,10 @@ border:1px solid rgba(255,255,0,0.12);
 
 .song span{
 color:#ffff66;
-text-shadow:0 0 6px #ffff66;
+text-shadow:0 0 8px #ffff66;
 }
 
-.btns{
-display:flex;
-gap:4px;
-}
+.btns{display:flex;gap:4px;}
 
 button{
 border:none;
@@ -130,23 +137,22 @@ cursor:pointer;
 .play{background:#00ccff;}
 .stop{background:#ff2b2b;}
 
-/* MEDIA */
+/* MEDIA BAR */
 .media{
-width:100%;
 position:absolute;
 bottom:0;
 left:0;
+width:100%;
+height:70px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:10px;
-background:rgba(0,255,204,0.05);
+background:rgba(0,255,204,0.08);
 border-top:1px solid rgba(0,255,204,0.3);
 }
 
-.media input{
-width:35%;
-}
+.media input{width:30%;}
 </style>
 </head>
 
@@ -155,7 +161,7 @@ width:35%;
 <div class="wrap">
 <div class="big">
 
-<!-- TOP -->
+<!-- TOP IMAGES -->
 <div class="container">
 <div class="box" style="background-image:url('https://xatimg.com/image/Kn9aywnuvpVo.jpg')"></div>
 <div class="box" style="background-image:url('https://xatimg.com/image/RKBN2koMEBaq.jpg')"></div>
@@ -164,7 +170,7 @@ width:35%;
 
 <div class="content">
 
-<!-- LEFT -->
+<!-- LEFT SIDE -->
 <div class="left">
 
 <div class="profile">
@@ -176,7 +182,7 @@ width:35%;
 <button onclick="radio(0)">QURAN</button>
 <button onclick="radio(1)">MUSIC</button>
 
-<!-- CHAT (FIXED NEW TAB) -->
+<!-- CHAT FIXED -->
 <div class="chat">
 <a href="https://xat.com/2ra" target="_blank">2RA</a>
 <a href="https://xat.com/7reqa" target="_blank">7REQA</a>
@@ -186,12 +192,12 @@ width:35%;
 
 </div>
 
-<!-- RIGHT -->
+<!-- RIGHT SIDE -->
 <div style="flex:1">
 
 <div class="song-grid">
 
-<!-- 💀 22 SONGS FULLY RESTORED -->
+<!-- 💀 22 SONGS FULL RESTORED -->
 
 <div class="song"><span>نفسي أطمن بيك</span><div class="btns"><button class="play" onclick="play(0)">▶</button><button class="stop" onclick="stop()">⏹</button></div></div>
 <div class="song"><span>الشعر الأسود</span><div class="btns"><button class="play" onclick="play(1)">▶</button><button class="stop" onclick="stop()">⏹</button></div></div>
@@ -234,8 +240,6 @@ width:35%;
 
 </div>
 
-</div>
-
 <!-- AUDIO -->
 <audio id="audio"></audio>
 
@@ -255,7 +259,30 @@ function radio(i){
 radios[i].paused?radios[i].play():radios[i].pause();
 }
 
-const songs=[/* نفس الروابط */];
+const songs=[
+"https://j.top4top.io/m_3769le8x51.mp3",
+"https://k.top4top.io/m_3769enq6z2.mp3",
+"https://l.top4top.io/m_3769auk3d3.mp3",
+"https://a.top4top.io/m_3769kdadn4.mp3",
+"https://b.top4top.io/m_3769kg8sd5.mp3",
+"https://c.top4top.io/m_3769ien0c6.mp3",
+"https://d.top4top.io/m_3769yw3257.mp3",
+"https://e.top4top.io/m_3769yb3k29.mp3",
+"https://f.top4top.io/m_37690zriz10.mp3",
+"https://b.top4top.io/m_3769lxi681.mp3",
+"https://c.top4top.io/m_3769g0kg52.mp3",
+"https://d.top4top.io/m_3769xz8mi3.mp3",
+"https://e.top4top.io/m_3769o93s34.mp3",
+"https://f.top4top.io/m_3769c3tql5.mp3",
+"https://g.top4top.io/m_3769r7bcu6.mp3",
+"https://l.top4top.io/m_3769p7dkd1.mp3",
+"https://a.top4top.io/m_37697muuj2.mp3",
+"https://b.top4top.io/m_3769i9yd13.mp3",
+"https://c.top4top.io/m_3769ou0bt4.mp3",
+"https://d.top4top.io/m_37697zirj5.mp3",
+"https://e.top4top.io/m_3769rnmrk6.mp3",
+"https://d.top4top.io/m_3769a1jgw1.mp3"
+];
 
 function play(i){
 audio.src=songs[i];
