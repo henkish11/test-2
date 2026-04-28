@@ -71,7 +71,6 @@ font-size:12px;
 color:#00ff88;
 }
 
-/* SECTIONS */
 .section{
 margin-top:15px;
 font-size:18px;
@@ -167,21 +166,26 @@ padding:10px;
 border:1px solid #00ffcc33;
 border-radius:12px;
 display:flex;
-justify-content:space-between;
 align-items:center;
+gap:10px;
 background:#021017;
 }
 
 .bigplay{
-width:60px;
-height:60px;
+width:50px;
+height:50px;
 border-radius:50%;
 background:#00ffcc;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:22px;
+font-size:20px;
 cursor:pointer;
+}
+
+/* RANGE */
+input[type=range]{
+flex:1;
 }
 
 /* FOOTER */
@@ -275,9 +279,9 @@ color:#00ffcc;
 
 <!-- PLAYER -->
 <div class="player">
-<div>Now Playing</div>
-<div class="bigplay" onclick="audio.play()">▶</div>
-<input type="range" min="0" max="100">
+<div class="bigplay" onclick="togglePlay()" id="mainBtn">▶</div>
+<input type="range" id="progress" value="0" min="0" max="100">
+<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
 </div>
 
 <div class="footer">⚡ RAMY SYSTEM v2.0 ⚡</div>
@@ -286,41 +290,50 @@ color:#00ffcc;
 
 <script>
 let audio=document.getElementById("audio");
+let progress=document.getElementById("progress");
+let volume=document.getElementById("volume");
+let btn=document.getElementById("mainBtn");
 
-const songs=[
-"https://j.top4top.io/m_3769le8x51.mp3",
-"https://k.top4top.io/m_3769enq6z2.mp3",
-"https://l.top4top.io/m_3769auk3d3.mp3",
-"https://a.top4top.io/m_3769kdadn4.mp3",
-"https://b.top4top.io/m_3769kg8sd5.mp3",
-"https://c.top4top.io/m_3769ien0c6.mp3",
-"https://d.top4top.io/m_3769yw3257.mp3",
-"https://e.top4top.io/m_3769yb3k29.mp3",
-"https://f.top4top.io/m_37690zriz10.mp3",
-"https://b.top4top.io/m_3769lxi681.mp3",
-"https://c.top4top.io/m_3769g0kg52.mp3",
-"https://d.top4top.io/m_3769xz8mi3.mp3",
-"https://e.top4top.io/m_3769o93s34.mp3",
-"https://f.top4top.io/m_3769c3tql5.mp3",
-"https://g.top4top.io/m_3769r7bcu6.mp3",
-"https://l.top4top.io/m_3769p7dkd1.mp3",
-"https://a.top4top.io/m_37697muuj2.mp3",
-"https://b.top4top.io/m_3769i9yd13.mp3",
-"https://c.top4top.io/m_3769ou0bt4.mp3",
-"https://d.top4top.io/m_37697zirj5.mp3",
-"https://e.top4top.io/m_3769rnmrk6.mp3",
-"https://d.top4top.io/m_3769a1jgw1.mp3"
-];
+const songs=[ ... ]; // نفس اللي عندك
 
 function playSong(i){
 audio.src=songs[i];
 audio.play();
+btn.innerText="⏸";
 }
 
 function stop(){
 audio.pause();
 audio.currentTime=0;
+btn.innerText="▶";
+progress.value=0;
 }
+
+function togglePlay(){
+if(audio.paused){
+audio.play();
+btn.innerText="⏸";
+}else{
+audio.pause();
+btn.innerText="▶";
+}
+}
+
+audio.addEventListener("timeupdate",()=>{
+if(audio.duration){
+progress.value=(audio.currentTime/audio.duration)*100;
+}
+});
+
+progress.addEventListener("input",()=>{
+if(audio.duration){
+audio.currentTime=(progress.value/100)*audio.duration;
+}
+});
+
+volume.addEventListener("input",()=>{
+audio.volume=volume.value;
+});
 
 let radios=[
 new Audio("https://stream.radiojar.com/8s5u5tpdtwzuv"),
