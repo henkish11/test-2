@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RAMY SYSTEM FINAL</title>
+<title>RAMY SYSTEM FULL</title>
 
 <style>
 body{
@@ -10,8 +10,28 @@ margin:0;
 background:#000;
 font-family:Arial;
 color:#00ffcc;
+overflow:hidden;
+}
+
+/* FULL SCREEN WRAPPER */
+.wrap{
+width:100vw;
+height:100vh;
 display:flex;
 justify-content:center;
+align-items:center;
+}
+
+/* MAIN BOX */
+.big{
+width:98vw;
+height:98vh;
+background:rgba(0,255,204,0.05);
+border-radius:15px;
+box-shadow:0 0 25px rgba(0,255,204,0.2);
+padding:12px;
+display:flex;
+flex-direction:column;
 }
 
 /* NEON */
@@ -19,37 +39,28 @@ justify-content:center;
 text-shadow:0 0 6px #00ffcc,0 0 15px #00ffcc;
 }
 
-/* TOP BOXES */
+/* TOP */
 .container{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:10px;
-width:95%;
-margin-top:10px;
+gap:8px;
+height:14vh;
 }
 
 .box{
-height:110px;
 border-radius:10px;
 background-size:cover;
 background-position:center;
 border:1px solid rgba(0,255,204,0.2);
-box-shadow:0 0 15px rgba(0,255,204,0.2);
+box-shadow:0 0 12px rgba(0,255,204,0.2);
 }
 
-/* MAIN */
-.big{
-width:95%;
-background:rgba(0,255,204,0.05);
-border-radius:15px;
-margin-top:10px;
-padding:15px;
-box-shadow:0 0 25px rgba(0,255,204,0.2);
-}
-
-.flex{
+/* CONTENT */
+.content{
+flex:1;
 display:flex;
-gap:20px;
+gap:15px;
+margin-top:10px;
 }
 
 /* LEFT */
@@ -66,21 +77,21 @@ gap:10px;
 }
 
 .profile img{
-width:90px;
-height:90px;
+width:85px;
+height:85px;
 border-radius:50%;
 border:3px solid #00ffcc;
 box-shadow:0 0 20px #00ffcc;
 }
 
 .name{
-font-size:40px;
+font-size:38px;
 }
 
 /* CHAT */
 .chat a{
 display:block;
-margin-top:6px;
+margin-top:5px;
 padding:6px;
 text-decoration:none;
 color:#00ffcc;
@@ -89,27 +100,27 @@ text-align:center;
 border-radius:6px;
 }
 
-/* SONG GRID */
+/* SONGS */
 .song-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:8px;
-width:100%;
+gap:6px;
+overflow:auto;
+max-height:55vh;
 }
 
 .song{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:10px;
+padding:8px;
 border-radius:10px;
-border:1px solid rgba(255,255,0,0.2);
 background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,0,0.15);
 }
 
 .song span{
 color:#ffff66;
-text-shadow:0 0 10px #ffff66;
 }
 
 /* BUTTONS */
@@ -125,11 +136,11 @@ cursor:pointer;
 
 /* MEDIA */
 .media{
-margin-top:15px;
+margin-top:8px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:12px;
+padding:10px;
 border-radius:12px;
 border:1px solid rgba(0,255,204,0.3);
 }
@@ -142,7 +153,9 @@ width:35%;
 
 <body>
 
-<div>
+<div class="wrap">
+
+<div class="big">
 
 <!-- TOP -->
 <div class="container">
@@ -151,10 +164,8 @@ width:35%;
 <div class="box" style="background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg')"></div>
 </div>
 
-<!-- MAIN -->
-<div class="big">
-
-<div class="flex">
+<!-- CONTENT -->
+<div class="content">
 
 <!-- LEFT -->
 <div class="left">
@@ -164,7 +175,7 @@ width:35%;
 <div class="name neon">RAMY</div>
 </div>
 
-<h3 class="neon">📻 RADIO</h3>
+<h3 class="neon">RADIO</h3>
 <button onclick="toggleRadio(0)">QURAN</button>
 <button onclick="toggleRadio(1)">MUSIC</button>
 
@@ -184,8 +195,7 @@ width:35%;
 
 <div class="song-grid">
 
-<!-- 22 SONGS FULL NAMES -->
-
+<!-- 22 SONGS -->
 <div class="song"><span>نفسي أطمن بيك</span><div><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stop()">⏹</button></div></div>
 <div class="song"><span>الشعر الأسود</span><div><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stop()">⏹</button></div></div>
 
@@ -221,11 +231,11 @@ width:35%;
 
 </div>
 
-<!-- MEDIA -->
+<!-- MEDIA CONTROLS FIXED -->
 <div class="media neon">
-<input type="range">
+<input type="range" id="seek">
 <button onclick="toggle()">▶/⏸</button>
-<input type="range">
+<input type="range" id="vol" min="0" max="1" step="0.1">
 </div>
 
 </div>
@@ -245,6 +255,8 @@ width:35%;
 <script>
 
 let audio=document.getElementById("audio");
+let seek=document.getElementById("seek");
+let vol=document.getElementById("vol");
 
 let radios=[
 document.getElementById("r1"),
@@ -255,6 +267,7 @@ function toggleRadio(i){
 radios[i].paused ? radios[i].play() : radios[i].pause();
 }
 
+/* SONGS */
 const songs=[
 "https://j.top4top.io/m_3769le8x51.mp3",
 "https://k.top4top.io/m_3769enq6z2.mp3",
@@ -289,6 +302,20 @@ function stop(){
 audio.pause();
 audio.currentTime=0;
 }
+
+/* SEEK FIX */
+audio.addEventListener("timeupdate",()=>{
+seek.value=(audio.currentTime/audio.duration)*100 || 0;
+});
+
+seek.addEventListener("input",()=>{
+audio.currentTime=(seek.value/100)*audio.duration;
+});
+
+/* VOLUME FIX */
+vol.addEventListener("input",()=>{
+audio.volume=vol.value;
+});
 
 function toggle(){
 audio.paused ? audio.play() : audio.pause();
