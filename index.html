@@ -12,7 +12,9 @@ body{
   color:#00ffcc;
 }
 
+/* ===================== */
 /* TOP IMAGES */
+/* ===================== */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -36,7 +38,7 @@ body{
 }
 
 /* ===================== */
-/* BIG SECTION */
+/* BIG BOX */
 /* ===================== */
 .data-section{
   display:flex;
@@ -50,59 +52,34 @@ body{
   border-radius:14px;
   background:rgba(0,255,204,0.05);
   box-shadow:0 0 20px rgba(0,255,204,0.2);
+  padding:20px;
+}
+
+/* ===================== */
+/* PROFILE HEADER */
+/* ===================== */
+.profile-header{
   display:flex;
-  padding:15px;
-  gap:15px;
+  gap:20px;
+  align-items:flex-start;
 }
 
-/* LEFT CHAT LINKS */
-.sidebar{
-  width:18%;
-  border-right:1px solid rgba(0,255,204,0.2);
-  padding-right:10px;
-}
-
-.sidebar a{
-  display:block;
-  color:#00ffcc;
-  text-decoration:none;
-  margin:10px 0;
-  font-size:13px;
-  padding:5px;
-  border-bottom:1px solid rgba(0,255,204,0.2);
-}
-
-.sidebar a:hover{
-  background:rgba(0,255,204,0.1);
-}
-
-/* CENTER */
-.center{
-  flex:1;
-  padding:10px;
-}
-
-/* PROFILE */
-.profile{
-  text-align:center;
-  margin-bottom:15px;
-}
-
-.profile img{
-  width:120px;
-  height:120px;
+/* IMAGE */
+.avatar img{
+  width:140px;
+  height:140px;
   border-radius:50%;
   border:2px solid #00ffcc;
   box-shadow:0 0 15px #00ffcc;
 }
 
+/* NAME */
 .name{
-  margin-top:10px;
-  font-size:20px;
+  font-size:22px;
   font-weight:bold;
   color:#00ffcc;
-  animation:pulse 1.5s infinite;
   text-shadow:0 0 10px #00ffcc;
+  animation:pulse 1.5s infinite;
 }
 
 @keyframes pulse{
@@ -114,37 +91,61 @@ body{
 /* RADIOS */
 .radios{
   display:flex;
-  justify-content:center;
-  gap:20px;
+  gap:15px;
   margin-top:10px;
 }
 
-audio{
-  width:45%;
+.radio-box{
+  padding:10px;
+  border:1px solid rgba(0,255,204,0.2);
+  border-radius:10px;
+  background:rgba(0,255,204,0.05);
+}
+
+.radio-box h4{
+  margin:0 0 5px 0;
+  font-size:13px;
 }
 
 /* CONTROL BUTTON */
 .control{
-  display:flex;
-  justify-content:center;
   margin-top:15px;
 }
 
-button{
+.control button{
   padding:15px 10px;
   border:none;
   background:#00ffcc;
   color:#000;
   font-weight:bold;
-  cursor:pointer;
   border-radius:8px;
   writing-mode:vertical-rl;
-  text-orientation:upright;
+  cursor:pointer;
   box-shadow:0 0 10px #00ffcc;
 }
 
-button:hover{
+.control button:hover{
   background:#00ffaa;
+}
+
+/* LINKS */
+.links{
+  margin-top:20px;
+  display:flex;
+  gap:10px;
+}
+
+.links a{
+  color:#00ffcc;
+  text-decoration:none;
+  padding:6px 10px;
+  border:1px solid rgba(0,255,204,0.3);
+  border-radius:6px;
+  font-size:12px;
+}
+
+.links a:hover{
+  background:rgba(0,255,204,0.1);
 }
 
 </style>
@@ -163,40 +164,54 @@ button:hover{
 
 </div>
 
-<!-- BIG BOX -->
+<!-- BIG SECTION -->
 <div class="data-section">
 
 <div class="big-box">
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-<a href="https://xat.com/2ra" target="_blank">2ra</a>
-<a href="https://xat.com/7reqa" target="_blank">7reqa</a>
-<a href="https://xat.com/trade" target="_blank">trade</a>
-<a href="https://xat.com/cambio" target="_blank">cambio</a>
-</div>
+  <!-- PROFILE -->
+  <div class="profile-header">
 
-<!-- CENTER -->
-<div class="center">
+    <!-- IMAGE -->
+    <div class="avatar">
+      <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
+    </div>
 
-<!-- PROFILE -->
-<div class="profile">
-<img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
-<div class="name">RAMY</div>
-</div>
+    <!-- INFO -->
+    <div class="info">
 
-<!-- RADIOS -->
-<div class="radios">
-<audio id="r1" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
-<audio id="r2" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
-</div>
+      <div class="name">RAMY</div>
 
-<!-- CONTROL -->
-<div class="control">
-<button onclick="toggleRadio()">PLAY / STOP</button>
-</div>
+      <!-- RADIOS -->
+      <div class="radios">
 
-</div>
+        <div class="radio-box">
+          <h4>📖 Quran Radio</h4>
+          <audio id="quran" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
+        </div>
+
+        <div class="radio-box">
+          <h4>🎧 Music Radio</h4>
+          <audio id="music" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
+        </div>
+
+      </div>
+
+      <!-- BUTTON -->
+      <div class="control">
+        <button onclick="toggleAll()">PLAY / STOP</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LINKS -->
+  <div class="links">
+    <a href="https://xat.com/2ra" target="_blank">2ra</a>
+    <a href="https://xat.com/7reqa" target="_blank">7reqa</a>
+    <a href="https://xat.com/trade" target="_blank">trade</a>
+    <a href="https://xat.com/cambio" target="_blank">cambio</a>
+  </div>
 
 </div>
 
@@ -206,17 +221,17 @@ button:hover{
 
 let playing = false;
 
-function toggleRadio(){
-  let r1 = document.getElementById("r1");
-  let r2 = document.getElementById("r2");
+function toggleAll(){
+  let q = document.getElementById("quran");
+  let m = document.getElementById("music");
 
   if(!playing){
-    r1.play();
-    r2.play();
+    q.play();
+    m.play();
     playing = true;
   }else{
-    r1.pause();
-    r2.pause();
+    q.pause();
+    m.pause();
     playing = false;
   }
 }
