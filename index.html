@@ -7,51 +7,110 @@
 <style>
 body{
   margin:0;
-  background:#000;
+  background: radial-gradient(circle at center, #050505, #000);
   font-family:Arial;
   color:#00ffcc;
 }
 
+/* GRID */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:15px;
+  gap:20px;
   padding:20px;
 }
 
-/* BOXES */
+/* BOX STYLE (Neon) */
 .box{
-  border:1px solid #00ffcc;
-  border-radius:12px;
+  position:relative;
+  border-radius:15px;
   background:rgba(0,255,204,0.05);
-  box-shadow:0 0 15px rgba(0,255,204,0.15);
-  height:220px;
-  overflow:auto;
+  backdrop-filter: blur(5px);
+  overflow:hidden;
+  height:230px;
+  box-shadow:
+    0 0 10px #00ffcc,
+    0 0 20px #00ffcc40,
+    inset 0 0 10px #00ffcc20;
+  transition:0.3s;
 }
 
-/* MUSIC PANEL */
+/* Glow Animation */
+.box::before{
+  content:"";
+  position:absolute;
+  width:150%;
+  height:150%;
+  background:linear-gradient(45deg,transparent,#00ffcc,transparent);
+  top:-50%;
+  left:-50%;
+  animation:rotate 6s linear infinite;
+}
+
+@keyframes rotate{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+
+/* inner content */
+.box::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  background:#000;
+  border-radius:13px;
+}
+
+/* content fix */
+.box *{
+  position:relative;
+  z-index:2;
+}
+
+/* Hover Effect */
+.box:hover{
+  transform:scale(1.05);
+  box-shadow:
+    0 0 20px #00ffcc,
+    0 0 40px #00ffcc;
+}
+
+/* TITLE */
+h3{
+  margin:10px;
+  text-align:center;
+  letter-spacing:2px;
+  text-shadow:0 0 10px #00ffcc;
+}
+
+/* MUSIC */
 .music{
   padding:10px;
 }
 
+/* SONG */
 .song{
   display:flex;
   justify-content:space-between;
-  padding:5px;
+  padding:6px;
   border-bottom:1px solid rgba(0,255,204,0.2);
   cursor:pointer;
   font-size:13px;
+  transition:0.2s;
 }
 
 .song:hover{
-  background:rgba(0,255,204,0.1);
+  background:#00ffcc20;
+  transform:translateX(5px);
 }
 
 /* PLAYER */
 audio{
   width:100%;
   margin-top:10px;
+  filter:drop-shadow(0 0 5px #00ffcc);
 }
+
 </style>
 </head>
 
@@ -61,22 +120,18 @@ audio{
 
 <!-- MUSIC BOX -->
 <div class="box music">
-
 <h3>🎧 MUSIC PLAYER</h3>
-
 <div id="list"></div>
-
 <audio id="player" controls></audio>
-
 </div>
 
-<!-- empty panels (زي الداشبورد) -->
-<div class="box"></div>
-<div class="box"></div>
+<!-- باقي البوكسات -->
+<div class="box"><h3>⚡ SYSTEM</h3></div>
+<div class="box"><h3>💬 CHATS</h3></div>
 
-<div class="box"></div>
-<div class="box"></div>
-<div class="box"></div>
+<div class="box"><h3>👤 PROFILE</h3></div>
+<div class="box"><h3>🔥 POWERS</h3></div>
+<div class="box"><h3>🧠 AI PANEL</h3></div>
 
 </div>
 
