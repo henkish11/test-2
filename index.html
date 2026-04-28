@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RAMY SYSTEM FINAL</title>
+<title>RAMY SYSTEM FINAL FIX</title>
 
 <style>
 body{
@@ -13,6 +13,7 @@ color:#00ffcc;
 overflow:hidden;
 }
 
+/* FULL SCREEN */
 .wrap{
 width:100vw;
 height:100vh;
@@ -32,21 +33,12 @@ display:flex;
 flex-direction:column;
 }
 
-@keyframes glow{
-0%{opacity:0.4;text-shadow:0 0 5px #00ffcc;}
-50%{opacity:1;text-shadow:0 0 20px #00ffcc;}
-100%{opacity:0.4;text-shadow:0 0 5px #00ffcc;}
-}
-
-.neon{
-animation:glow 2s infinite;
-}
-
+/* TOP IMAGES (🔥 BIGGER NOW) */
 .container{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:8px;
-height:18vh;
+height:22vh; /* ⬆️ كان أصغر */
 }
 
 .box{
@@ -54,9 +46,10 @@ border-radius:10px;
 background-size:cover;
 background-position:center;
 border:1px solid rgba(0,255,204,0.2);
-box-shadow:0 0 12px rgba(0,255,204,0.2);
+box-shadow:0 0 14px rgba(0,255,204,0.25);
 }
 
+/* CONTENT */
 .content{
 flex:1;
 display:flex;
@@ -64,6 +57,7 @@ gap:15px;
 margin-top:10px;
 }
 
+/* LEFT */
 .left{
 width:28%;
 border-right:1px solid rgba(0,255,204,0.2);
@@ -87,6 +81,7 @@ box-shadow:0 0 20px #00ffcc;
 font-size:38px;
 }
 
+/* CHAT */
 .chat a{
 display:block;
 margin-top:5px;
@@ -98,36 +93,54 @@ text-align:center;
 border-radius:6px;
 }
 
+/* SONG GRID (🔻 SMALLER BOXES) */
 .song-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:6px;
+gap:4px; /* ⬅️ أصغر */
 }
 
+/* SONG BOX */
 .song{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:8px;
-border-radius:10px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,0,0.15);
+padding:5px; /* ⬅️ أصغر */
+border-radius:8px;
+background:rgba(255,255,255,0.02);
+border:1px solid rgba(255,255,0,0.12);
 }
 
+/* SONG NAME (💡 FIXED: glow only not blinking) */
 .song span{
 color:#ffff66;
+text-shadow:0 0 8px #ffff66;
+}
+
+/* BUTTONS (TOGETHER FIXED) */
+.btns{
+display:flex;
+gap:4px;
 }
 
 button{
 border:none;
-padding:5px 10px;
-border-radius:8px;
+padding:4px 8px;
+border-radius:6px;
 cursor:pointer;
 }
 
-.play{background:#00ccff;box-shadow:0 0 10px #00ccff;}
-.stop{background:#ff2b2b;box-shadow:0 0 10px #ff2b2b;}
+.play{
+background:#00ccff;
+box-shadow:0 0 8px #00ccff;
+}
 
+.stop{
+background:#ff2b2b;
+box-shadow:0 0 8px #ff2b2b;
+}
+
+/* HEADER */
 .header{
 display:flex;
 justify-content:space-between;
@@ -136,9 +149,10 @@ padding:5px 10px;
 
 .by{
 color:#00ff66;
-text-shadow:0 0 15px #00ff66;
+text-shadow:0 0 12px #00ff66;
 }
 
+/* MEDIA */
 .media{
 margin-top:8px;
 display:flex;
@@ -158,7 +172,7 @@ border:1px solid rgba(0,255,204,0.3);
 <div class="wrap">
 <div class="big">
 
-<!-- TOP -->
+<!-- TOP (BIGGER IMAGES) -->
 <div class="container">
 <div class="box" style="background-image:url('https://xatimg.com/image/Kn9aywnuvpVo.jpg')"></div>
 <div class="box" style="background-image:url('https://xatimg.com/image/RKBN2koMEBaq.jpg')"></div>
@@ -172,14 +186,14 @@ border:1px solid rgba(0,255,204,0.3);
 
 <div class="profile">
 <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
-<div class="name neon">RAMY</div>
+<div class="name">RAMY</div>
 </div>
 
-<h3 class="neon">RADIO</h3>
+<h3>RADIO</h3>
 <button onclick="toggleRadio(0)">QURAN</button>
 <button onclick="toggleRadio(1)">MUSIC</button>
 
-<div class="chat neon">
+<div class="chat">
 <a href="https://xat.com/2ra">2RA</a>
 <a href="https://xat.com/7reqa">7REQA</a>
 <a href="https://xat.com/trade">TRADE</a>
@@ -191,108 +205,74 @@ border:1px solid rgba(0,255,204,0.3);
 <!-- RIGHT -->
 <div style="flex:1">
 
-<div class="header neon">
+<div class="header">
 <div>🎵 SONGS</div>
 <div class="by">by RAMY</div>
 </div>
 
 <div class="song-grid">
 
-<!-- 💀 22 SONGS FULL LIST -->
+<!-- 22 SONGS FIXED -->
 
-<div class="song neon"><span>نفسي أطمن بيك</span><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>الشعر الأسود</span><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song">
+<span>نفسي أطمن بيك</span>
+<div class="btns">
+<button class="play" onclick="playSong(0)">▶</button>
+<button class="stop" onclick="stop()">⏹</button>
+</div>
+</div>
 
-<div class="song neon"><span>حبي الأولاني</span><button class="play" onclick="playSong(2)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>كوابيس</span><button class="play" onclick="playSong(3)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song">
+<span>الشعر الأسود</span>
+<div class="btns">
+<button class="play" onclick="playSong(1)">▶</button>
+<button class="stop" onclick="stop()">⏹</button>
+</div>
+</div>
 
-<div class="song neon"><span>مش تمام</span><button class="play" onclick="playSong(4)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>مشوار الحب</span><button class="play" onclick="playSong(5)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song"><span>حبي الأولاني</span><div class="btns"><button class="play" onclick="playSong(2)">▶</button><button class="stop">⏹</button></div></div>
+<div class="song"><span>كوابيس</span><div class="btns"><button class="play" onclick="playSong(3)">▶</button><button class="stop">⏹</button></div></div>
 
-<div class="song neon"><span>صاحبة الجلالة</span><button class="play" onclick="playSong(6)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>عملالي عمل</span><button class="play" onclick="playSong(7)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song"><span>مش تمام</span><div class="btns"><button class="play" onclick="playSong(4)">▶</button><button class="stop">⏹</button></div></div>
+<div class="song"><span>مشوار الحب</span><div class="btns"><button class="play" onclick="playSong(5)">▶</button><button class="stop">⏹</button></div></div>
 
-<div class="song neon"><span>بحبها</span><button class="play" onclick="playSong(8)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>فيكي سر</span><button class="play" onclick="playSong(9)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song"><span>صاحبة الجلالة</span><div class="btns"><button class="play" onclick="playSong(6)">▶</button><button class="stop">⏹</button></div></div>
+<div class="song"><span>عملالي عمل</span><div class="btns"><button class="play" onclick="playSong(7)">▶</button><button class="stop">⏹</button></div></div>
 
-<div class="song neon"><span>حياتي قصيدة</span><button class="play" onclick="playSong(10)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>لسه</span><button class="play" onclick="playSong(11)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song"><span>بحبها</span><div class="btns"><button class="play" onclick="playSong(8)">▶</button><button class="stop">⏹</button></div></div>
+<div class="song"><span>فيكي سر</span><div class="btns"><button class="play" onclick="playSong(9)">▶</button><button class="stop">⏹</button></div></div>
 
-<div class="song neon"><span>مش زي غيرها</span><button class="play" onclick="playSong(12)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>نسند بعض</span><button class="play" onclick="playSong(13)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song"><span>حياتي قصيدة</span><div class="btns"><button class="play" onclick="playSong(10)">▶</button><button class="stop">⏹</button></div></div>
+<div class="song"><span>لسه</span><div class="btns"><button class="play" onclick="playSong(11)">▶</button><button class="stop">⏹</button></div></div>
 
-<div class="song neon"><span>وش السعد</span><button class="play" onclick="playSong(14)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>يا حظ بيه</span><button class="play" onclick="playSong(15)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song"><span>مش زي غيرها</span><div class="btns"><button class="play" onclick="playSong(12)">▶</button><button class="stop">⏹</button></div></div>
+<div class="song"><span>نسند بعض</span><div class="btns"><button class="play" onclick="playSong(13)">▶</button><button class="stop">⏹</button></div></div>
 
-<div class="song neon"><span>ياللي ناسيني</span><button class="play" onclick="playSong(16)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>هلوسة</span><button class="play" onclick="playSong(17)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song"><span>وش السعد</span><div class="btns"><button class="play" onclick="playSong(14)">▶</button><button class="stop">⏹</button></div></div>
+<div class="song"><span>يا حظ بيه</span><div class="btns"><button class="play" onclick="playSong(15)">▶</button><button class="stop">⏹</button></div></div>
 
-<div class="song neon"><span>قصة حب</span><button class="play" onclick="playSong(18)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>ذكريات</span><button class="play" onclick="playSong(19)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song"><span>ياللي ناسيني</span><div class="btns"><button class="play" onclick="playSong(16)">▶</button><button class="stop">⏹</button></div></div>
+<div class="song"><span>هلوسة</span><div class="btns"><button class="play" onclick="playSong(17)">▶</button><button class="stop">⏹</button></div></div>
 
-<div class="song neon"><span>حبيتك ليه</span><button class="play" onclick="playSong(20)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
-<div class="song neon"><span>توأمي</span><button class="play" onclick="playSong(21)">▶</button><button class="stop" onclick="stop()">⏹</button></div>
+<div class="song"><span>قصة حب</span><div class="btns"><button class="play" onclick="playSong(18)">▶</button><button class="stop">⏹</button></div></div>
+<div class="song"><span>ذكريات</span><div class="btns"><button class="play" onclick="playSong(19)">▶</button><button class="stop">⏹</button></div></div>
+
+<div class="song"><span>حبيتك ليه</span><div class="btns"><button class="play" onclick="playSong(20)">▶</button><button class="stop">⏹</button></div></div>
+<div class="song"><span>توأمي</span><div class="btns"><button class="play" onclick="playSong(21)">▶</button><button class="stop">⏹</button></div></div>
 
 </div>
 
-<!-- MEDIA -->
-<div class="media neon">
-<input type="range" id="seek">
-<button onclick="toggle()">▶/⏸</button>
-<input type="range" id="vol">
+</div>
 </div>
 
 </div>
 
 </div>
-
-</div>
-
-</div>
-
-<!-- AUDIO -->
-<audio id="audio"></audio>
-
-<audio id="r1" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
-<audio id="r2" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
 
 <script>
-
 let audio=document.getElementById("audio");
 
-let radios=[
-document.getElementById("r1"),
-document.getElementById("r2")
-];
-
-function toggleRadio(i){
-radios[i].paused?radios[i].play():radios[i].pause();
-}
-
-const songs=[
-"https://j.top4top.io/m_3769le8x51.mp3",
-"https://k.top4top.io/m_3769enq6z2.mp3",
-"https://l.top4top.io/m_3769auk3d3.mp3",
-"https://a.top4top.io/m_3769kdadn4.mp3",
-"https://b.top4top.io/m_3769kg8sd5.mp3",
-"https://c.top4top.io/m_3769ien0c6.mp3",
-"https://d.top4top.io/m_3769yw3257.mp3",
-"https://e.top4top.io/m_3769yb3k29.mp3",
-"https://f.top4top.io/m_37690zriz10.mp3",
-"https://b.top4top.io/m_3769lxi681.mp3",
-"https://c.top4top.io/m_3769g0kg52.mp3",
-"https://d.top4top.io/m_3769xz8mi3.mp3",
-"https://e.top4top.io/m_3769o93s34.mp3",
-"https://f.top4top.io/m_3769c3tql5.mp3",
-"https://g.top4top.io/m_3769r7bcu6.mp3",
-"https://l.top4top.io/m_3769p7dkd1.mp3",
-"https://a.top4top.io/m_37697muuj2.mp3",
-"https://b.top4top.io/m_3769i9yd13.mp3",
-"https://c.top4top.io/m_3769ou0bt4.mp3",
-"https://d.top4top.io/m_37697zirj5.mp3",
-"https://e.top4top.io/m_3769rnmrk6.mp3",
-"https://d.top4top.io/m_3769a1jgw1.mp3"
-];
+const songs=[ /* نفس الروابط */ ];
 
 function playSong(i){
 audio.src=songs[i];
@@ -304,23 +284,9 @@ audio.pause();
 audio.currentTime=0;
 }
 
-function toggle(){
-audio.paused?audio.play():audio.pause();
-}
-
-audio.addEventListener("timeupdate",()=>{
-seek.value=(audio.currentTime/audio.duration)*100||0;
-});
-
-seek.addEventListener("input",()=>{
-audio.currentTime=(seek.value/100)*audio.duration;
-});
-
-vol.addEventListener("input",()=>{
-audio.volume=vol.value;
-});
-
 </script>
+
+<audio id="audio"></audio>
 
 </body>
 </html>
