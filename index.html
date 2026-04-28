@@ -12,9 +12,7 @@ body{
   color:#00ffcc;
 }
 
-/* ===================== */
-/* TOP GRID (الصور) */
-/* ===================== */
+/* TOP IMAGES */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -22,67 +20,23 @@ body{
   padding:20px;
 }
 
-/* IMAGE BOX (أجمل + أوضح) */
 .box{
   width:100%;
-  aspect-ratio:4/3; /* 👈 شكل مستطيل احترافي */
+  aspect-ratio:4/3;
   border-radius:14px;
-  overflow:hidden;
   background-size:cover;
   background-position:center;
-  border:1px solid rgba(0,255,204,0.25);
-  box-shadow:
-    0 0 12px rgba(0,255,204,0.25),
-    inset 0 0 10px rgba(0,255,204,0.08);
+  border:1px solid rgba(0,255,204,0.2);
+  box-shadow:0 0 15px rgba(0,255,204,0.2);
   transition:0.3s;
 }
 
-/* Hover */
 .box:hover{
   transform:scale(1.04);
-  box-shadow:
-    0 0 20px rgba(0,255,204,0.5),
-    inset 0 0 10px rgba(0,255,204,0.15);
-}
-
-/* PASSWORD OVERLAY */
-.overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.75);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-}
-
-input{
-  padding:10px;
-  border:none;
-  border-radius:6px;
-  background:#111;
-  color:#00ffcc;
-  text-align:center;
-  box-shadow:0 0 10px #00ffcc;
-}
-
-button{
-  padding:8px 20px;
-  border:none;
-  border-radius:6px;
-  background:#00ffcc;
-  color:#000;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-button:hover{
-  background:#00ffaa;
 }
 
 /* ===================== */
-/* DATA SECTION */
+/* BIG SECTION */
 /* ===================== */
 .data-section{
   display:flex;
@@ -90,43 +44,107 @@ button:hover{
   padding:20px;
 }
 
-/* BIG BOX */
 .big-box{
   width:95%;
-  min-height:550px;
-  padding:20px;
+  min-height:600px;
   border-radius:14px;
   background:rgba(0,255,204,0.05);
-  box-shadow:
-    0 0 15px rgba(0,255,204,0.2),
-    inset 0 0 10px rgba(0,255,204,0.15);
+  box-shadow:0 0 20px rgba(0,255,204,0.2);
+  display:flex;
+  padding:15px;
+  gap:15px;
 }
 
-/* TITLE */
-.big-box h3{
+/* LEFT CHAT LINKS */
+.sidebar{
+  width:18%;
+  border-right:1px solid rgba(0,255,204,0.2);
+  padding-right:10px;
+}
+
+.sidebar a{
+  display:block;
+  color:#00ffcc;
+  text-decoration:none;
+  margin:10px 0;
+  font-size:13px;
+  padding:5px;
+  border-bottom:1px solid rgba(0,255,204,0.2);
+}
+
+.sidebar a:hover{
+  background:rgba(0,255,204,0.1);
+}
+
+/* CENTER */
+.center{
+  flex:1;
+  padding:10px;
+}
+
+/* PROFILE */
+.profile{
   text-align:center;
   margin-bottom:15px;
+}
+
+.profile img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:2px solid #00ffcc;
+  box-shadow:0 0 15px #00ffcc;
+}
+
+.name{
+  margin-top:10px;
+  font-size:20px;
+  font-weight:bold;
+  color:#00ffcc;
+  animation:pulse 1.5s infinite;
   text-shadow:0 0 10px #00ffcc;
 }
 
-/* INNER GRID */
-.grid-inside{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
+@keyframes pulse{
+  0%{opacity:1; text-shadow:0 0 5px #00ffcc;}
+  50%{opacity:0.6; text-shadow:0 0 20px #00ffcc;}
+  100%{opacity:1; text-shadow:0 0 5px #00ffcc;}
+}
+
+/* RADIOS */
+.radios{
+  display:flex;
+  justify-content:center;
   gap:20px;
+  margin-top:10px;
 }
 
-/* SUB TITLES */
-.grid-inside h4{
-  margin-bottom:10px;
-  text-shadow:0 0 6px #00ffcc;
+audio{
+  width:45%;
 }
 
-/* LINES */
-.line{
-  border-bottom:1px solid rgba(0,255,204,0.25);
-  padding:6px 0;
-  font-size:14px;
+/* CONTROL BUTTON */
+.control{
+  display:flex;
+  justify-content:center;
+  margin-top:15px;
+}
+
+button{
+  padding:15px 10px;
+  border:none;
+  background:#00ffcc;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+  border-radius:8px;
+  writing-mode:vertical-rl;
+  text-orientation:upright;
+  box-shadow:0 0 10px #00ffcc;
+}
+
+button:hover{
+  background:#00ffaa;
 }
 
 </style>
@@ -134,72 +152,75 @@ button:hover{
 
 <body>
 
-<!-- الصور -->
+<!-- TOP IMAGES -->
 <div class="container">
 
 <div class="box" style="background-image:url('https://xatimg.com/image/Kn9aywnuvpVo.jpg');"></div>
 
 <div class="box" style="background-image:url('https://xatimg.com/image/RKBN2koMEBaq.jpg');"></div>
 
-<div class="box" style="position:relative; background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg');">
-
-  <div class="overlay" id="lock">
-    <input type="password" id="pass" placeholder="ENTER PASSWORD">
-    <button onclick="unlock()">ENTER</button>
-  </div>
+<div class="box" style="background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg');"></div>
 
 </div>
 
-</div>
-
-<!-- البيانات -->
+<!-- BIG BOX -->
 <div class="data-section">
 
 <div class="big-box">
 
-  <h3>⚡ RAMY SYSTEM DATA</h3>
+<!-- SIDEBAR -->
+<div class="sidebar">
+<a href="https://xat.com/2ra" target="_blank">2ra</a>
+<a href="https://xat.com/7reqa" target="_blank">7reqa</a>
+<a href="https://xat.com/trade" target="_blank">trade</a>
+<a href="https://xat.com/cambio" target="_blank">cambio</a>
+</div>
 
-  <div class="grid-inside">
+<!-- CENTER -->
+<div class="center">
 
-    <div>
-      <h4>👤 PROFILE</h4>
-      <div class="line">Name: Ramy</div>
-      <div class="line">Age: 25</div>
-      <div class="line">Country: Egypt</div>
-      <div class="line">Status: Online</div>
-    </div>
+<!-- PROFILE -->
+<div class="profile">
+<img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
+<div class="name">RAMY</div>
+</div>
 
-    <div>
-      <h4>💬 CHATS</h4>
-      <div class="line">Chat 1</div>
-      <div class="line">Chat 2</div>
-      <div class="line">Chat 3</div>
-      <div class="line">Chat 4</div>
-    </div>
+<!-- RADIOS -->
+<div class="radios">
+<audio id="r1" src="https://stream.radiojar.com/8s5u5tpdtwzuv"></audio>
+<audio id="r2" src="https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"></audio>
+</div>
 
-    <div>
-      <h4>🔥 SYSTEM</h4>
-      <div class="line">Power: Active</div>
-      <div class="line">Rank: Elite</div>
-      <div class="line">Mode: Hacker</div>
-      <div class="line">Version: V3</div>
-    </div>
+<!-- CONTROL -->
+<div class="control">
+<button onclick="toggleRadio()">PLAY / STOP</button>
+</div>
 
-  </div>
+</div>
 
 </div>
 
 </div>
 
 <script>
-function unlock(){
-  let p = document.getElementById("pass").value;
-  if(p === "1234"){
-    document.getElementById("lock").style.display = "none";
+
+let playing = false;
+
+function toggleRadio(){
+  let r1 = document.getElementById("r1");
+  let r2 = document.getElementById("r2");
+
+  if(!playing){
+    r1.play();
+    r2.play();
+    playing = true;
   }else{
-    alert("Wrong Password ❌");
+    r1.pause();
+    r2.pause();
+    playing = false;
   }
 }
+
 </script>
 
 </body>
