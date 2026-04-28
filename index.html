@@ -12,7 +12,7 @@ body{
   color:#00ffcc;
 }
 
-/* TOP IMAGES */
+/* TOP */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -28,12 +28,9 @@ body{
   background-position:center;
   border:1px solid rgba(0,255,204,0.2);
   box-shadow:0 0 15px rgba(0,255,204,0.2);
-  transition:0.3s;
 }
 
-.box:hover{ transform:scale(1.04); }
-
-/* BIG BOX */
+/* BIG */
 .data-section{
   display:flex;
   justify-content:center;
@@ -76,29 +73,16 @@ body{
 .name{
   font-size:38px;
   font-weight:bold;
-  color:#00ffcc;
   text-shadow:0 0 25px #00ffcc;
-  animation:float 2.5s infinite;
-}
-
-@keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-3px);}
-  100%{transform:translateY(0);}
 }
 
 /* CHAT */
-.chat-links{
-  margin-top:20px;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
 .chat-links a{
+  display:block;
   text-decoration:none;
   color:#00ffcc;
   padding:8px;
+  margin-top:6px;
   border:1px solid rgba(0,255,204,0.3);
   border-radius:6px;
   text-align:center;
@@ -110,7 +94,7 @@ body{
   padding-left:15px;
 }
 
-/* SONGS BOX */
+/* SONG BOX */
 .songs-inner{
   width:100%;
   border-radius:14px;
@@ -163,41 +147,36 @@ body{
   animation:pulse 1.8s infinite;
 }
 
-/* BUTTONS GROUP */
+/* BUTTONS */
 .song-actions{
   display:flex;
   gap:6px;
 }
 
-/* PLAY BUTTON */
 .play{
   background:#00ccff;
   border:none;
   padding:5px 10px;
   border-radius:8px;
   cursor:pointer;
-  font-weight:bold;
   box-shadow:0 0 10px #00ccff;
-  animation:btnGlow 1.5s infinite;
+  animation:glow 1.5s infinite;
 }
 
-/* STOP BUTTON */
 .stop{
   background:#ff2b2b;
   border:none;
   padding:5px 10px;
   border-radius:8px;
   cursor:pointer;
-  font-weight:bold;
-  color:#fff;
   box-shadow:0 0 10px #ff2b2b;
-  animation:btnGlow 1.5s infinite;
+  animation:glow 1.5s infinite;
 }
 
 /* ANIMATIONS */
-@keyframes btnGlow{
+@keyframes glow{
   0%{filter:brightness(1);}
-  50%{filter:brightness(1.7);}
+  50%{filter:brightness(1.6);}
   100%{filter:brightness(1);}
 }
 
@@ -233,10 +212,10 @@ body{
   </div>
 
   <div class="chat-links">
-    <a href="https://xat.com/2ra" target="_blank">2RA</a>
-    <a href="https://xat.com/7reqa" target="_blank">7REQA</a>
-    <a href="https://xat.com/trade" target="_blank">TRADE</a>
-    <a href="https://xat.com/cambio" target="_blank">CAMBIO</a>
+    <a href="https://xat.com/2ra">2RA</a>
+    <a href="https://xat.com/7reqa">7REQA</a>
+    <a href="https://xat.com/trade">TRADE</a>
+    <a href="https://xat.com/cambio">CAMBIO</a>
   </div>
 
 </div>
@@ -253,55 +232,34 @@ body{
 <!-- COL 1 -->
 <div class="songs-col">
 
-<div class="song-row">
-  <span class="song-name">نفسي أطمن بيك</span>
-  <div class="song-actions">
-    <button class="play" onclick="playSong(0)">▶</button>
-    <button class="stop" onclick="stopSong(0)">⏹</button>
-  </div>
-</div>
-
-<div class="song-row">
-  <span class="song-name">الشعر الأسود</span>
-  <div class="song-actions">
-    <button class="play" onclick="playSong(1)">▶</button>
-    <button class="stop" onclick="stopSong(1)">⏹</button>
-  </div>
-</div>
-
-<div class="song-row">
-  <span class="song-name">حبي الأولاني</span>
-  <div class="song-actions">
-    <button class="play" onclick="playSong(2)">▶</button>
-    <button class="stop" onclick="stopSong(2)">⏹</button>
-  </div>
-</div>
-
-<div class="song-row"><span class="song-name">كوابيس</span></div>
-<div class="song-row"><span class="song-name">مش تمام</span></div>
-<div class="song-row"><span class="song-name">مشوار الحب</span></div>
-<div class="song-row"><span class="song-name">صاحبة الجلالة</span></div>
-<div class="song-row"><span class="song-name">عملالي عمل</span></div>
-<div class="song-row"><span class="song-name">بحبها</span></div>
-<div class="song-row"><span class="song-name">فيكي سر</span></div>
-<div class="song-row"><span class="song-name">حياتي قصيدة</span></div>
+<div class="song-row"><span class="song-name">نفسي أطمن بيك</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">الشعر الأسود</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">حبي الأولاني</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">كوابيس</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">مش تمام</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">مشوار الحب</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">صاحبة الجلالة</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">عملالي عمل</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">بحبها</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">فيكي سر</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">حياتي قصيدة</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
 
 </div>
 
 <!-- COL 2 -->
 <div class="songs-col">
 
-<div class="song-row"><span class="song-name">لسه</span></div>
-<div class="song-row"><span class="song-name">مش زي غيرها</span></div>
-<div class="song-row"><span class="song-name">نسند بعض</span></div>
-<div class="song-row"><span class="song-name">وش السعد</span></div>
-<div class="song-row"><span class="song-name">يا حظ بيه</span></div>
-<div class="song-row"><span class="song-name">ياللي ناسيني</span></div>
-<div class="song-row"><span class="song-name">هلوسة</span></div>
-<div class="song-row"><span class="song-name">قصة حب</span></div>
-<div class="song-row"><span class="song-name">ذكريات</span></div>
-<div class="song-row"><span class="song-name">حبيتك ليه</span></div>
-<div class="song-row"><span class="song-name">توأمي</span></div>
+<div class="song-row"><span class="song-name">لسه</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">مش زي غيرها</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">نسند بعض</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">وش السعد</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">يا حظ بيه</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">ياللي ناسيني</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">هلوسة</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">قصة حب</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">ذكريات</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">حبيتك ليه</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
+<div class="song-row"><span class="song-name">توأمي</span><div class="song-actions"><button class="play">▶</button><button class="stop">⏹</button></div></div>
 
 </div>
 
