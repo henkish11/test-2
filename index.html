@@ -12,7 +12,7 @@ body{
   color:#00ffcc;
 }
 
-/* TOP BOXES (مصغرة جدًا) */
+/* TOP BOXES (3 images - small height) */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -22,7 +22,7 @@ body{
 
 .box{
   width:100%;
-  height:120px; /* تصغير قوي للطول */
+  height:120px;
   border-radius:10px;
   background-size:cover;
   background-position:center;
@@ -49,7 +49,7 @@ body{
   gap:20px;
 }
 
-/* LEFT SIDE */
+/* LEFT PANEL */
 .left-side{
   width:28%;
   border-right:1px solid rgba(0,255,204,0.2);
@@ -107,13 +107,13 @@ body{
   text-align:center;
 }
 
-/* RIGHT SIDE */
+/* RIGHT PANEL */
 .right-side{
   flex:1;
   padding-left:15px;
 }
 
-/* SONG BOX */
+/* SONGS BOX */
 .songs-inner{
   width:100%;
   border-radius:14px;
@@ -128,7 +128,6 @@ body{
   margin-bottom:10px;
 }
 
-/* GRID */
 .songs-grid{
   display:flex;
   gap:10px;
@@ -187,19 +186,23 @@ body{
 
 <body>
 
-<!-- TOP 3 BOXES -->
+<!-- TOP 3 IMAGES -->
 <div class="container">
-  <div class="box" style="background-image:url('https://xatimg.com/image/Kn9aywnuvpVo.jpg');"></div>
-  <div class="box" style="background-image:url('https://xatimg.com/image/RKBN2koMEBaq.jpg');"></div>
-  <div class="box" style="background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg');"></div>
+
+<div class="box" style="background-image:url('https://i.imgur.com/9QKQZ3K.jpg');"></div>
+
+<div class="box" style="background-image:url('https://i.imgur.com/3vQ7n8m.jpg');"></div>
+
+<div class="box" style="background-image:url('https://i.imgur.com/7XkJp0A.jpg');"></div>
+
 </div>
 
-<!-- MAIN -->
+<!-- MAIN SYSTEM -->
 <div class="data-section">
 
 <div class="big-box">
 
-<!-- LEFT -->
+<!-- LEFT SIDE -->
 <div class="left-side">
 
   <!-- PROFILE -->
@@ -219,7 +222,7 @@ body{
     <button class="radio-btn" onclick="toggleRadio('music')">PLAY / STOP</button>
   </div>
 
-  <!-- CHATS -->
+  <!-- CHAT LINKS -->
   <div class="chat-links">
     <a href="https://xat.com/2ra" target="_blank">2RA</a>
     <a href="https://xat.com/7reqa" target="_blank">7REQA</a>
@@ -229,7 +232,7 @@ body{
 
 </div>
 
-<!-- RIGHT -->
+<!-- RIGHT SIDE -->
 <div class="right-side">
 
 <div class="songs-inner">
