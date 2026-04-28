@@ -9,9 +9,10 @@ body{
   margin:0;
   background:#000;
   font-family:Arial;
+  color:#00ffcc;
 }
 
-/* GRID */
+/* TOP GRID (صور) */
 .container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -19,25 +20,24 @@ body{
   padding:20px;
 }
 
-/* BOX = صورة */
+/* IMAGE BOX */
 .box{
   position:relative;
   width:100%;
-  aspect-ratio:1/1; /* يخليهم مربعات */
+  aspect-ratio:1/1;
   border-radius:12px;
   overflow:hidden;
   background-size:cover;
   background-position:center;
   box-shadow:0 0 15px rgba(0,255,204,0.3);
-}
-
-/* Hover */
-.box:hover{
-  transform:scale(1.03);
   transition:0.3s;
 }
 
-/* PASSWORD PANEL */
+.box:hover{
+  transform:scale(1.03);
+}
+
+/* PASSWORD */
 .overlay{
   position:absolute;
   inset:0;
@@ -49,11 +49,9 @@ body{
   gap:10px;
 }
 
-/* INPUT */
 input{
   padding:10px;
   border:none;
-  outline:none;
   border-radius:6px;
   background:#111;
   color:#00ffcc;
@@ -61,7 +59,6 @@ input{
   box-shadow:0 0 10px #00ffcc;
 }
 
-/* BUTTON */
 button{
   padding:8px 20px;
   border:none;
@@ -69,16 +66,49 @@ button{
   background:#00ffcc;
   color:#000;
   cursor:pointer;
-  font-weight:bold;
 }
 
-button:hover{
-  background:#00ffaa;
+/* ===================== */
+/* DATA SECTION (الجديد) */
+/* ===================== */
+
+.data-section{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  padding:20px;
 }
 
-/* hidden content */
-.hidden{
-  display:none;
+/* DATA BOX */
+.data-box{
+  padding:15px;
+  border-radius:12px;
+  background:rgba(0,255,204,0.05);
+  box-shadow:
+    0 0 10px #00ffcc30,
+    inset 0 0 10px #00ffcc10;
+}
+
+/* TITLE */
+.data-box h3{
+  text-align:center;
+  margin-bottom:10px;
+  text-shadow:0 0 8px #00ffcc;
+}
+
+/* LINE */
+.line{
+  border-bottom:1px solid rgba(0,255,204,0.3);
+  padding:6px 0;
+  font-size:14px;
+}
+
+/* hover */
+.data-box:hover{
+  box-shadow:
+    0 0 20px #00ffcc,
+    inset 0 0 10px #00ffcc;
+  transition:0.3s;
 }
 
 </style>
@@ -86,38 +116,63 @@ button:hover{
 
 <body>
 
+<!-- الصور -->
 <div class="container">
 
-<!-- BOX 1 -->
 <div class="box" style="background-image:url('https://xatimg.com/image/Kn9aywnuvpVo.jpg');"></div>
 
-<!-- BOX 2 -->
 <div class="box" style="background-image:url('https://xatimg.com/image/RKBN2koMEBaq.jpg');"></div>
 
-<!-- BOX 3 (Password) -->
 <div class="box" style="background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg');">
-
   <div class="overlay" id="lock">
     <input type="password" id="pass" placeholder="ENTER PASSWORD">
     <button onclick="unlock()">ENTER</button>
   </div>
+</div>
 
+</div>
+
+<!-- البيانات -->
+<div class="data-section">
+
+<!-- BOX 1 -->
+<div class="data-box">
+  <h3>👤 PROFILE</h3>
+  <div class="line">Name: Ramy</div>
+  <div class="line">Age: 25</div>
+  <div class="line">Country: Egypt</div>
+  <div class="line">Status: Online</div>
+</div>
+
+<!-- BOX 2 -->
+<div class="data-box">
+  <h3>💬 CHATS</h3>
+  <div class="line">Chat 1</div>
+  <div class="line">Chat 2</div>
+  <div class="line">Chat 3</div>
+  <div class="line">Chat 4</div>
+</div>
+
+<!-- BOX 3 -->
+<div class="data-box">
+  <h3>🔥 SYSTEM</h3>
+  <div class="line">Power: Active</div>
+  <div class="line">Rank: Elite</div>
+  <div class="line">Mode: Hacker</div>
+  <div class="line">Version: V3</div>
 </div>
 
 </div>
 
 <script>
-
 function unlock(){
   let p = document.getElementById("pass").value;
-
-  if(p === "1234"){ // غير الباسورد من هنا
+  if(p === "1234"){
     document.getElementById("lock").style.display = "none";
   }else{
     alert("Wrong Password ❌");
   }
 }
-
 </script>
 
 </body>
