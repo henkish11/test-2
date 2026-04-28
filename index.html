@@ -22,24 +22,30 @@ body{
   padding:20px;
 }
 
-/* IMAGE BOX (أصغر شوية) */
+/* IMAGE BOX (أجمل + أوضح) */
 .box{
   width:100%;
-  aspect-ratio:1/1;
-  max-height:260px; /* 👈 تصغير */
-  border-radius:12px;
+  aspect-ratio:4/3; /* 👈 شكل مستطيل احترافي */
+  border-radius:14px;
   overflow:hidden;
   background-size:cover;
   background-position:center;
-  box-shadow:0 0 15px rgba(0,255,204,0.3);
+  border:1px solid rgba(0,255,204,0.25);
+  box-shadow:
+    0 0 12px rgba(0,255,204,0.25),
+    inset 0 0 10px rgba(0,255,204,0.08);
   transition:0.3s;
 }
 
+/* Hover */
 .box:hover{
-  transform:scale(1.03);
+  transform:scale(1.04);
+  box-shadow:
+    0 0 20px rgba(0,255,204,0.5),
+    inset 0 0 10px rgba(0,255,204,0.15);
 }
 
-/* PASSWORD */
+/* PASSWORD OVERLAY */
 .overlay{
   position:absolute;
   inset:0;
@@ -71,6 +77,10 @@ button{
   font-weight:bold;
 }
 
+button:hover{
+  background:#00ffaa;
+}
+
 /* ===================== */
 /* DATA SECTION */
 /* ===================== */
@@ -80,16 +90,16 @@ button{
   padding:20px;
 }
 
-/* BIG BOX (أطول) */
+/* BIG BOX */
 .big-box{
   width:95%;
-  min-height:500px; /* 👈 أطول */
+  min-height:550px;
   padding:20px;
-  border-radius:12px;
+  border-radius:14px;
   background:rgba(0,255,204,0.05);
   box-shadow:
-    0 0 15px #00ffcc30,
-    inset 0 0 10px #00ffcc20;
+    0 0 15px rgba(0,255,204,0.2),
+    inset 0 0 10px rgba(0,255,204,0.15);
 }
 
 /* TITLE */
@@ -106,14 +116,15 @@ button{
   gap:20px;
 }
 
-/* SUB */
+/* SUB TITLES */
 .grid-inside h4{
   margin-bottom:10px;
-  text-shadow:0 0 5px #00ffcc;
+  text-shadow:0 0 6px #00ffcc;
 }
 
+/* LINES */
 .line{
-  border-bottom:1px solid rgba(0,255,204,0.3);
+  border-bottom:1px solid rgba(0,255,204,0.25);
   padding:6px 0;
   font-size:14px;
 }
@@ -130,16 +141,18 @@ button{
 
 <div class="box" style="background-image:url('https://xatimg.com/image/RKBN2koMEBaq.jpg');"></div>
 
-<div class="box" style="background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg'); position:relative;">
+<div class="box" style="position:relative; background-image:url('https://xatimg.com/image/La8VreHLPDME.jpg');">
+
   <div class="overlay" id="lock">
     <input type="password" id="pass" placeholder="ENTER PASSWORD">
     <button onclick="unlock()">ENTER</button>
   </div>
-</div>
 
 </div>
 
-<!-- المربع الكبير -->
+</div>
+
+<!-- البيانات -->
 <div class="data-section">
 
 <div class="big-box">
