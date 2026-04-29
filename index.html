@@ -970,20 +970,6 @@ btn.innerText="▶";
 progress.value=0;
 }
 
-function toggleAutoPlay(){
-autoMode = !autoMode;
-
-let btn = document.querySelector(".auto-btn");
-
-if(autoMode){
-btn.classList.add("active");
-btn.innerText="⚡ AUTO ON ⚡";
-playNextAuto();
-}else{
-btn.classList.remove("active");
-btn.innerText="⚡ AUTO PLAY ⚡";
-}
-}
 
 audio.addEventListener("timeupdate",()=>{
 if(audio.duration){
@@ -1006,23 +992,7 @@ audio.currentTime=0;
 btn.innerText="▶";
 }  
 // ================= AUTO PLAY SYSTEM =================
-let autoMode=false;
-let currentIndex=0;
 
-function toggleAutoPlay(){
-autoMode = !autoMode;
-
-let btnAuto = document.querySelector(".auto-btn");
-
-if(autoMode){
-btnAuto.classList.add("active");
-btnAuto.innerText="⚡ AUTO ON ⚡";
-playNextAuto();
-}else{
-btnAuto.classList.remove("active");
-btnAuto.innerText="⚡ AUTO PLAY ⚡";
-}
-}
 
 function playNextAuto(){
 if(!autoMode) return;
@@ -1054,15 +1024,7 @@ currentIndex = 0;
 playNextAuto();
 };
 } 
-function togglePlay(){
-if(audio.paused){
-audio.play();
-btn.innerText="⏸";
-}else{
-audio.pause();
-btn.innerText="▶";
-}
-}  
+
 </script>
 
 </body>
