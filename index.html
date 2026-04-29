@@ -1,1071 +1,449 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RAMY SYSTEM v2.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAMY SYSTEM</title>
 
 <style>
 body{
-margin:0;
-background:#020b0f;
-font-family:Arial;
-color:#00ffcc;  
-}
-.radio-title{
-color:#ffffff;
-font-weight:bold;
-letter-spacing:2px;
-
-/* نور أبيض */
-text-shadow:0 0 5px #fff, 0 0 15px #fff, 0 0 25px #fff;
-
-/* اهتزاز + نبض */
-animation:radioGlowShake 1.2s infinite ease-in-out;
+  margin:0;
+  font-family:Arial;
+  background:#020617;
+  color:#fff;
 }
 
-/* حركة + وميض */
-@keyframes radioGlowShake{
-0%{
-opacity:0.4;
-transform:translateX(0px) scale(0.95);
-text-shadow:0 0 5px #fff;
-}
-25%{
-transform:translateX(-2px);
-}
-50%{
-opacity:1;
-transform:translateX(2px) scale(1.05);
-text-shadow:0 0 15px #fff, 0 0 30px #fff;
-}
-75%{
-transform:translateX(-1px);
-}
-100%{
-opacity:0.4;
-transform:translateX(0px) scale(0.95);
-text-shadow:0 0 5px #fff;
-}
-}  
-.glow-text{
-color:#00ffcc;
-font-weight:bold;
-letter-spacing:2px;
-margin:0 6px;
+/* ================= LOGIN ================= */
+.login{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-text-shadow:0 0 5px #00ffcc, 0 0 15px #00ffcc;
-animation:glowPulse 1.2s infinite ease-in-out;
+  background:
+    radial-gradient(circle at top,#00c3ff22,transparent 40%),
+    radial-gradient(circle at bottom,#a855f722,transparent 40%),
+    #020617;
+
+  backdrop-filter:blur(10px);
+  z-index:999;
 }
 
-/* نفس النبض للاتنين */
-@keyframes glowPulse{
-0%{
-opacity:0.3;
-transform:scale(0.95);
-}
-50%{
-opacity:1;
-transform:scale(1.05);
-}
-100%{
-opacity:0.3;
-transform:scale(0.95);
-}
-}  
+/* ✨ Glass futuristic box */
+.login-box{
+  width:320px;
+  padding:25px;
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+
+  border:1px solid rgba(0,195,255,0.25);
+
+  box-shadow:
+    0 0 25px #00c3ff33,
+    0 0 60px #00f5ff22;
+
+  text-align:center;
+
+  animation:boxFloat 4s infinite ease-in-out;
 }
 
-/* نبض */
-@keyframes ramyPulse{
-0%{
-opacity:0.3;
-transform:scale(0.95);
-}
-50%{
-opacity:1;
-transform:scale(1.05);
-}
-100%{
-opacity:0.3;
-transform:scale(0.95);
-}
-}  
-/* تأثير الهوفر الذهبي */
-.hover-gold{
-transition:all 0.3s ease;
+@keyframes boxFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
 }
 
-/* عند المرور */
-.hover-gold:hover{
-transform:scale(1.05);
-
-/* نور ذهبي */
-box-shadow:
-0 0 10px #ffd700,
-0 0 20px #ffd700,
-0 0 40px #ffcc00;
-
-/* لمعان خفيف */
-filter:brightness(1.2);
-}
-/* TOP */
-.top{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-padding:10px;
-}
-.gold-hover{
-transition:all 0.25s ease;
+.login-box h3{
+  font-size:13px;
+  letter-spacing:2px;
+  color:#00f5ff;
+  text-shadow:0 0 10px #00c3ff;
 }
 
-.gold-hover:hover{
-transform:scale(1.07);
-box-shadow:0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 40px #ffcc00;
-filter:brightness(1.2);
-border-color:#ffd700;
-color:#fff;
-text-shadow:0 0 10px #ffd700, 0 0 20px #ffd700;
+.login-box input{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+
+  border:none;
+  border-radius:12px;
+
+  background:rgba(2,6,23,0.8);
+  color:#fff;
+
+  text-align:center;
+  font-size:12px;
+
+  outline:none;
+
+  box-shadow:0 0 10px #00c3ff33;
+  transition:.3s;
 }
 
-/* Animation */
-@keyframes ramyPulse{
-0%{
-opacity:0.4;
-text-shadow:0 0 5px #00ffcc;
-}
-100%{
-opacity:1;
-text-shadow:0 0 15px #00ffcc, 0 0 30px #00ffcc;
-}
-}
-  
-.card{
-height:160px;
-border-radius:12px;
-background-size:cover;
-background-position:center;
-box-shadow:0 0 25px #00ffff55;
-border:1px solid #00ffff44;
-
-/* 👇 ده الجديد */
-cursor:pointer;
+.login-box input:focus{
+  transform:scale(1.03);
+  box-shadow:0 0 20px #00f5ff;
 }
 
-/* MAIN */
-.main{
-display:flex;
-gap:10px;
-padding:10px;
+.login-box button{
+  width:100%;
+  margin-top:12px;
+  padding:10px;
+
+  border:none;
+  border-radius:12px;
+
+  background:linear-gradient(45deg,#00c3ff,#1e3a8a,#a855f7);
+  color:#fff;
+
+  cursor:pointer;
+
+  box-shadow:0 0 20px #00c3ff33;
+  transition:.3s;
 }
 
-/* LEFT */
-.left{
-width:280px;
-background:#03141a;
-border:1px solid #00ffcc33;
-border-radius:12px;
-padding:15px;
-box-shadow:0 0 15px #00ffcc22;
+.login-box button:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 30px #00f5ff;
 }
 
-.profile{
-display:flex;
-align-items:center;
-gap:12px;
-padding-left:5px; /* تزقيه يمين بسيط */
+/* ================= TOP ================= */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  padding:10px;
+  background:#00000066;
 }
 
-.profile img{
-width:70px;
-height:70px;
-border-radius:50%;
-
-border:2px solid #00ffcc;
-
-/* نور قوي */
-box-shadow:
-0 0 10px #00ffcc,
-0 0 20px #00ffcc,
-0 0 40px #00ffcc;
-
-/* حركة + نبض */
-animation:avatarPulse 1.5s infinite ease-in-out;
-}
-
-.name{
-font-size:28px;
-color:#00ff88;
-}
-
+/* ONLINE */
 .status{
-font-size:12px;
-color:#00ff88;
+  color:#00f5ff;
+  font-weight:bold;
+  animation:blink 1.5s infinite;
+  text-shadow:0 0 10px #00f5ff;
 }
 
-.section{
-margin-top:15px;
-font-size:18px;
-color:#00ffaa;
+@keyframes blink{
+  0%,100%{opacity:1}
+  50%{opacity:0.3}
+}
+
+/* BY RAMY */
+.brand{
+  font-weight:bold;
+  background:linear-gradient(90deg,#00f5ff,#a855f7,#00c3ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:fadeGlow 2s infinite;
+}
+
+@keyframes fadeGlow{
+  0%,100%{opacity:1}
+  50%{opacity:0.3}
+}
+
+/* ================= BOX ================= */
+.box{
+  width:900px;
+  margin:70px auto;
+  background:#ffffff0a;
+  padding:15px;
+  border-radius:15px;
+}
+
+/* PROFILE */
+.top{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+/* ✨ AVATAR PULSE GLOW */
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  border:2px solid #00c3ff;
+
+  animation:avatarPulse 2.2s infinite ease-in-out;
+}
+
+@keyframes avatarPulse{
+  0%,100%{
+    box-shadow:
+      0 0 5px #00c3ff,
+      0 0 15px #00f5ff,
+      0 0 25px #00c3ff;
+    transform:scale(1);
+    opacity:1;
+  }
+
+  50%{
+    box-shadow:
+      0 0 0px #00c3ff,
+      0 0 10px #00f5ff,
+      0 0 40px #00c3ff;
+    transform:scale(1.05);
+    opacity:0.85;
+  }
+}
+
+.avatar:hover{
+  transform:scale(1.1);
+}
+
+/* NAME */
+.name{
+  font-size:44px;
+  font-weight:900;
+  background:linear-gradient(90deg,#00f5ff,#a855f7,#00c3ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:ramyGlow 2s infinite;
+}
+
+@keyframes ramyGlow{
+  0%,100%{
+    opacity:1;
+    text-shadow:0 0 10px #00c3ff,0 0 20px #00f5ff;
+  }
+  50%{
+    opacity:0.3;
+    text-shadow:0 0 5px #00c3ff;
+  }
 }
 
 /* RADIO */
-.radio button{
-width:48%;
-padding:8px;
-margin-top:8px;
-border:none;
-border-radius:8px;
-cursor: url("https://cur.cursors-4u.net/cursors/cur-9/cur817.cur"), pointer;
-font-weight:bold;
+.radio{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
 }
 
-.quran{background:#00aa55;}
-.Nogoum FM 100.6{background:#5522aa;color:#fff;}
-
-/* CHAT */
-/* CHAT ROOMS - WHITE PINK NEON */
-.chat a{
-display:block;
-margin-top:10px;
-padding:12px;
-border:1px solid #ff4fd8;
-
-font-size:18px;
-font-weight:bold;
-letter-spacing:1px;
-
-color:#fff;
-
-/* نيون أبيض + زهري */
-text-shadow:
-0 0 5px #fff,
-0 0 10px #ff4fd8,
-0 0 20px #ff4fd8,
-0 0 40px #ff4fd8;
-
-border-radius:10px;
-text-decoration:none;
-transition:0.3s;
-
-/* نبض خفيف */
-animation:chatPinkPulse 1.8s infinite ease-in-out;
+.radio-btn{
+  padding:6px 10px;
+  border:none;
+  border-radius:20px;
+  background:#00c3ff;
+  cursor:pointer;
+  transition:.2s;
 }
 
-/* نبض النيون */
-@keyframes chatPinkPulse{
-0%{
-transform:scale(0.98);
-box-shadow:0 0 5px #ff4fd8;
-opacity:0.7;
-}
-50%{
-transform:scale(1.03);
-box-shadow:0 0 20px #ff4fd8, 0 0 40px #ff4fd8;
-opacity:1;
-}
-100%{
-transform:scale(0.98);
-box-shadow:0 0 5px #ff4fd8;
-opacity:0.7;
-}
+.radio-btn:hover{transform:scale(1.1)}
+
+/* RADIO BOX */
+.radio-box{
+  margin-top:10px;
+  padding:10px;
+  background:#00c3ff22;
+  border-radius:12px;
+  display:inline-block;
+  cursor:pointer;
+  transition:.3s;
 }
 
-/* Hover أقوى */
-.chat a:hover{
-transform:scale(1.08);
-box-shadow:
-0 0 15px #fff,
-0 0 30px #ff4fd8,
-0 0 60px #ff4fd8;
+.radio-box:hover{
+  transform:scale(1.15);
+  box-shadow:0 0 25px #00c3ff;
 }
 
-/* RIGHT */
-.right{
-flex:1;
-background:#03141a;
-border-radius:12px;
-padding:10px;
-border:1px solid #00ffcc33;
+.radio-box.active{
+  transform:scale(1.2);
+  box-shadow:0 0 35px #00f5ff;
 }
 
-.title{
-text-align:center;
-font-size:20px;
-margin-bottom:10px;
+/* LINKS */
+.links a{
+  display:block;
+  margin:5px 0;
+  padding:8px;
+  background:#00c3ff22;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  transition:.2s;
+}
+
+.links a:hover{
+  transform:scale(1.08);
 }
 
 /* SONGS */
-.songs-wrap{
-display:flex;
-gap:10px;
-}
-
-.col{
-flex:1;
-}
+.wrap{display:flex;gap:10px;margin-top:10px}
+.col{flex:1}
 
 .song{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:8px 14px;
-margin:6px 0;
-border-bottom:1px solid #00ffcc22;
+  display:flex;
+  justify-content:space-between;
+  padding:6px;
+  margin:4px 0;
+  background:#00c3ff22;
+  border-radius:8px;
+  font-size:12px;
+  transition:.2s;
 }
 
-.song div{
-display:flex;
-gap:10px; /* 👈 دي الفاصلة بين ▶ و ■ */
-align-items:center;
-}
-
-.song span{
-font-size:18px; /* تكبير الخط */
-font-weight:bold;
-letter-spacing:1px;
-
-/* ألوان بتتقلب */
-animation: songRGB 3s infinite linear;
-
-/* إضاءة قوية */
-text-shadow:
-0 0 5px currentColor,
-0 0 10px currentColor,
-0 0 20px currentColor,
-0 0 40px currentColor;
-
-/* نعومة */
-transition:0.3s;
-}
-
-/* حركة RGB */
-@keyframes songRGB{
-0%{color:#00ffcc;}
-20%{color:#00aaff;}
-40%{color:#ff00ff;}
-60%{color:#ff0033;}
-80%{color:#ffee00;}
-100%{color:#00ffcc;}
-}
-
-/* BUTTONS */
-.play{
-background:#0088ff;
-border:none;
-padding:5px 10px;
-border-radius:6px;
-color:#fff;
-cursor:pointer;
-transition:all 0.2s ease;
-}
-
-.play:hover{
-transform:scale(1.2);
-box-shadow:0 0 10px #0088ff;
-}
-
-.stop{
-background:#ff2222;
-border:none;
-padding:5px 10px;
-border-radius:6px;
-color:#fff;
-cursor:pointer;
-transition:all 0.2s ease;
-}
-
-.stop:hover{
-transform:scale(1.2);
-box-shadow:0 0 10px #ff2222;
-}
-/* PLAYER */
-.player{
-margin:10px;
-padding:10px;
-border:1px solid #00ffcc33;
-border-radius:12px;
-display:flex;
-align-items:center;
-gap:10px;
-background:#021017;
-}
-
-.bigplay{
-width:60px;
-height:60px;
-border-radius:50%;
-background:#021017;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:26px;
-cursor:pointer;
-color:#00ffcc;
-
-/* Glow */
-box-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc inset;
-
-/* Animation */
-animation:pulse 1s infinite alternate;
-}
-
-/* النبض */
-@keyframes pulse{
-from{
-opacity:0.5;
-box-shadow:0 0 5px #00ffcc;
-}
-to{
-opacity:1;
-box-shadow:0 0 20px #00ffcc, 0 0 40px #00ffcc;
-}
-}
-
-/* شكل عام */
-input[type=range]{
-flex:1;
--webkit-appearance:none;
-appearance:none;
-height:6px;
-border-radius:10px;
-outline:none;
-
-/* ألوان متحركة */
-background:linear-gradient(90deg, #00ffcc, #00aaff, #ff00ff, #ffee00);
-background-size:300%;
-
-/* حركة RGB */
-animation: sliderRGB 4s linear infinite;
-
-/* Glow */
-box-shadow:0 0 10px #00ffcc;
-}
-
-/* الحركة */
-@keyframes sliderRGB{
-0%{background-position:0%;}
-100%{background-position:300%;}
-}
-
-/* الدائرة (المؤشر) */
-input[type=range]::-webkit-slider-thumb{
--webkit-appearance:none;
-width:18px;
-height:18px;
-border-radius:50%;
-background:#fff;
-cursor:pointer;
-
-/* Glow قوي */
-box-shadow:
-0 0 10px #00ffcc,
-0 0 20px #00ffcc,
-0 0 30px #00ffcc;
-
-/* تكبير بسيط */
-transition:0.2s;
-}
-
-/* Hover */
-input[type=range]::-webkit-slider-thumb:hover{
-transform:scale(1.2);
-box-shadow:
-0 0 15px #ff00ff,
-0 0 30px #ff00ff,
-0 0 50px #ff00ff;
-}
-
-.footer{
-text-align:center;
-padding:10px;
-color:#00ffcc;
-}
-.songs-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:10px 15px;
-margin-bottom:10px;
-border:1px solid #00ffcc33;
-border-radius:10px;
-background:#021017;
-box-shadow:0 0 15px #00ffcc22;
-}
-
-.songs-left,
-.songs-right{
-font-weight:bold;
-letter-spacing:2px;
-
-/* RGB ألوان بتلف */
-animation:rgbShift 2s infinite linear;
-
-/* Glow حي */
-text-shadow:0 0 10px currentColor, 0 0 20px currentColor;
-}
-
-/* تغيير الألوان */
-@keyframes rgbShift{
-0%{color:#00ffcc;}
-20%{color:#00aaff;}
-40%{color:#ff00ff;}
-60%{color:#ff0033;}
-80%{color:#ffee00;}
-100%{color:#00ffcc;}
-}
-
-/* نفس النبض */
-@keyframes glowPulse{
-0%{opacity:0.4; transform:scale(0.95);}
-50%{opacity:1; transform:scale(1.05);}
-100%{opacity:0.4; transform:scale(0.95);}
-}  
-@keyframes avatarPulse{
-0%{
-transform:scale(0.95) translateY(0px);
-box-shadow:0 0 10px #00ffcc;
-opacity:0.7;
-}
-
-50%{
-transform:scale(1.05) translateY(-3px);
-box-shadow:0 0 25px #00ffcc, 0 0 40px #00ffcc;
-opacity:1;
-}
-
-100%{
-transform:scale(0.95) translateY(0px);
-box-shadow:0 0 10px #00ffcc;
-opacity:0.7;
-}
-}
-.info-move{
-animation: moveSide 2s infinite ease-in-out;
-display:flex;
-flex-direction:column;
-}
-
-@keyframes moveSide{
-0%{transform:translateX(0px);}
-50%{transform:translateX(8px);}
-100%{transform:translateX(0px);}
-} 
-body::before{
-content:"";
-position:fixed;
-inset:0;
-pointer-events:none;
-
-/* إطار مضيء حوالين الشاشة */
-box-shadow:
-inset 0 0 40px rgba(0,255,204,0.3),
-inset 0 0 80px rgba(0,255,204,0.2),
-0 0 60px rgba(0,255,204,0.15);
-
-/* حركة ألوان */
-animation: rgbBorder 6s infinite linear;
-mix-blend-mode: screen;
-}
-
-@keyframes rgbBorder{
-0%{
-filter:hue-rotate(0deg);
-box-shadow:
-inset 0 0 40px rgba(0,255,204,0.3),
-0 0 60px rgba(0,255,204,0.15);
-}
-
-25%{
-box-shadow:
-inset 0 0 40px rgba(255,0,150,0.3),
-0 0 60px rgba(255,0,150,0.15);
-}
-
-50%{
-box-shadow:
-inset 0 0 40px rgba(0,150,255,0.3),
-0 0 60px rgba(0,150,255,0.15);
-}
-
-75%{
-box-shadow:
-inset 0 0 40px rgba(255,255,0,0.2),
-0 0 60px rgba(255,255,0,0.15);
-}
-
-100%{
-filter:hue-rotate(360deg);
-box-shadow:
-inset 0 0 40px rgba(0,255,204,0.3),
-0 0 60px rgba(0,255,204,0.15);
-}
-}  
-.volume-box{
-display:flex;
-align-items:center;
-gap:8px;
-color:#00ffcc;
-font-size:18px;
-padding:0 5px;
-}
-
-.volume-box input[type=range]{
-cursor:pointer;
-} 
-.auto-play{
-text-align:center;
-margin:15px;
-}
-
-/* الزر الأساسي */
-.auto-btn{
-position:relative;
-padding:12px 25px;
-font-size:16px;
-font-weight:bold;
-letter-spacing:2px;
-
-color:#fff;
-background:#021017;
-border:1px solid #00ffcc55;
-border-radius:12px;
-cursor:pointer;
-overflow:hidden;
-
-/* Glow */
-box-shadow:
-0 0 10px #00ffcc,
-0 0 20px #00ffcc inset;
-
-transition:0.3s;
-}
-
-/* خط RGB متحرك */
-.auto-btn::before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(
-270deg,
-#00ffcc,
-#ff00ff,
-#00aaff,
-#ffee00,
-#ff0033
-);
-background-size:600% 600%;
-animation:rgbMove 4s infinite linear;
-opacity:0.3;
-z-index:0;
-}
-
-/* النص فوق */
-.auto-btn{
-z-index:1;
-}
-
-/* Hover */
-.auto-btn:hover{
-transform:scale(1.1);
-box-shadow:
-0 0 20px #00ffcc,
-0 0 40px #ff00ff,
-0 0 60px #00aaff;
-}
-
-/* لما يشتغل */
-.auto-btn.active{
-color:#000;
-background:#00ffcc;
-box-shadow:
-0 0 20px #00ffcc,
-0 0 40px #00ffcc;
-}
-
-/* حركة الألوان */
-@keyframes rgbMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}  
-.auto-glow{
-animation:autoGlow 1.2s infinite alternate;
-}
-
-@keyframes autoGlow{
-0%{
-box-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc;
-color:#00ffcc;
-}
-50%{
-box-shadow:0 0 20px #ff00ff, 0 0 40px #ff00ff;
-color:#ff00ff;
-}
-100%{
-box-shadow:0 0 20px #ffee00, 0 0 40px #ffee00;
-color:#ffee00;
-}
-}  
-/* نخلي الجسم كله ماوس عادي */
-body{
-cursor:default;
-}
-
-/* الأغاني */
-.song{
-cursor:pointer;
-position:relative;
-}
-
-/* كسر الإحساس الافتراضي وإضافة Glow بصري */
 .song:hover{
-box-shadow:
-0 0 10px #ffd700,
-0 0 20px #ffd700,
-0 0 40px #ffcc00;
+  transform:scale(1.05);
+  box-shadow:0 0 15px #00c3ff;
 }
 
-/* Cursor دهبي وهمي (نبض بصري) */
-body::after{
-content:"✋";
-position:fixed;
-pointer-events:none;
-font-size:22px;
-color:#ffd700;
-text-shadow:
-0 0 10px #ffd700,
-0 0 20px #ffd700,
-0 0 40px #ffcc00;
-
-/* مكانه يتبع الماوس */
-transform:translate(-50%,-50%);
-
-/* نبض */
-animation:goldCursorPulse 0.8s infinite;
-mix-blend-mode:screen;
-z-index:999999;
+.song button{
+  border:none;
+  padding:3px 6px;
+  border-radius:6px;
 }
 
-/* حركة النبض */
-@keyframes goldCursorPulse{
-0%{
-opacity:0.4;
-transform:scale(0.9) translate(-50%,-50%);
-}
-50%{
-opacity:1;
-transform:scale(1.2) translate(-50%,-50%);
-}
-100%{
-opacity:0.4;
-transform:scale(0.9) translate(-50%,-50%);
-}
-}  
-.song, a, button{
-cursor: pointer;
-}
+.play{background:#00c3ff}
+.stop{background:#ff4d4d}
 
-/* تأثير hover فقط */
-.song:hover{
-box-shadow:
-0 0 10px #ffd700,
-0 0 20px #ffd700,
-0 0 40px #ffcc00;
-transition:0.3s;
-} 
-.red-glow{
-background:#220000;
-color:#ff2b2b;
-border:1px solid #ff2b2b;
-box-shadow:0 0 10px #ff0000, 0 0 20px #ff0000;
-text-shadow:0 0 10px #ff0000;
-
-/* نبض */
-animation:redPulse 1.2s infinite ease-in-out;
-cursor:pointer;
-}
-
-.red-glow:hover{
-transform:scale(1.08);
-box-shadow:0 0 15px #ff0000, 0 0 35px #ff0000;
-}
-
-@keyframes redPulse{
-0%{
-opacity:0.6;
-filter:brightness(1);
-}
-50%{
-opacity:1;
-filter:brightness(1.4);
-}
-100%{
-opacity:0.6;
-filter:brightness(1);
-}
-}  
 </style>
 </head>
 
 <body>
 
-<!-- TOP -->
+<!-- LOGIN -->
+<div class="login" id="login">
+<div class="login-box">
+<h3>🔐 PASSWORD</h3>
+<input type="password" id="pass" placeholder="Enter password">
+<button onclick="check()">ENTER</button>
+</div>
+</div>
+
+<!-- MAIN -->
+<div id="main" style="display:none">
+
+<div class="topbar">
+<div class="status">⚡ ONLINE</div>
+<div class="brand">BY RAMY</div>
+</div>
+
+<div class="box">
+
 <div class="top">
-<div class="card hover-gold" style="background-image:url('https://xatimg.com/image/Exyy42aGbIIi.jpg')"></div>
-<div class="card hover-gold" style="background-image:url('https://xatimg.com/image/rOyfWGOQKU6o.jpg')"></div>
-<div class="card hover-gold" style="background-image:url('https://xatimg.com/image/Exyy42aGbIIi.jpg')"></div>
+<img class="avatar" src="https://xatimg.com/image/RKP5IrStF45l.png">
+<div class="name">RAMY</div>
 </div>
 
-<div class="main">
-
-<div class="left">
-<div class="profile">
-<img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
-
-<div class="info-move">
-<div class="name glow-text">RAMY</div>
-<div class="status glow-text">● SYSTEM ONLINE</div>
-</div>
-
-</div>
-
-<div class="section radio-title">RADIO</div>
+<!-- RADIO -->
 <div class="radio">
-<button class="quran gold-hover" onclick="radio(0)">QURAN</button>
-<button class="fm gold-hover" onclick="radio(1)">Nogoum FM 100.6</button>
-<button class="stop-radio red-glow gold-hover" style="width:100%;margin-top:8px;" onclick="stopRadio()">STOP RADIO</button>
+<button class="radio-btn" onclick="playRadio(0)">🎧 قرآن</button>
+<button class="radio-btn" onclick="playRadio(1)">🎶 ميلودي</button>
+<button class="radio-btn" onclick="playRadio(2)">🎤 حماقي</button>
+<button class="radio-btn" onclick="playRadio(3)">🔥 منوعات</button>
 </div>
 
-<div class="section">CHAT ROOMS</div>
-<div class="chat">
-<a href="https://xat.com/2ra" target="_blank" class="gold-hover">2RA</a>
-<a href="https://xat.com/7reqa" target="_blank" class="gold-hover">7REQA</a>
-<a href="https://xat.com/trade" target="_blank" class="gold-hover">TRADE</a>
-<a href="https://xat.com/cambio" target="_blank" class="gold-hover">CAMBIO</a>
-</div>
-</div>
-<div class="right">
-<div class="songs-header">
-  <div class="songs-left">🎵 SONGS</div>
-  <div class="songs-right">⚡ RAMY SYSTEM ⚡</div>
+<div class="radio-box" onclick="toggleRadio()">▶ / ⏸ تشغيل الراديو</div>
+
+<!-- LINKS -->
+<div class="links">
+<a href="https://xat.com/2ra" target="_blank">🔥 2ra Chat</a>
+<a href="https://xat.com/7reqa" target="_blank">⚡ 7reqa Chat</a>
+<a href="https://xat.com/trade" target="_blank">💰 Trade Hub</a>
+<a href="https://xat.com/cambio" target="_blank">🌐 Cambio Zone</a>
 </div>
 
-<div class="songs-wrap">
-
-<div class="col">
-<!-- 1-11 -->
-<div class="song hover-gold"><span>نفسي أطمن بيك</span><div><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>الشعر الأسود</span><div><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>حبي الأولاني</span><div><button class="play" onclick="playSong(2)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>كوابيس</span><div><button class="play" onclick="playSong(3)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>مش تمام</span><div><button class="play" onclick="playSong(4)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>مشوار الحب</span><div><button class="play" onclick="playSong(5)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>صاحبة الجلالة</span><div><button class="play" onclick="playSong(6)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>عملالي عمل</span><div><button class="play" onclick="playSong(7)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>بحبها</span><div><button class="play" onclick="playSong(8)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>فيكي سر</span><div><button class="play" onclick="playSong(9)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>حياتي قصيدة</span><div><button class="play" onclick="playSong(10)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-</div>
-
-<div class="col">
-<!-- 12-22 -->
-<div class="song hover-gold"><span>لسه</span><div><button class="play" onclick="playSong(11)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>مش زي غيرها</span><div><button class="play" onclick="playSong(12)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>نسند بعض</span><div><button class="play" onclick="playSong(13)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>وش السعد</span><div><button class="play" onclick="playSong(14)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>يا حظ بيه</span><div><button class="play" onclick="playSong(15)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>ياللي ناسيني</span><div><button class="play" onclick="playSong(16)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>هلوسة</span><div><button class="play" onclick="playSong(17)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>قصة حب</span><div><button class="play" onclick="playSong(18)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>ذكريات</span><div><button class="play" onclick="playSong(19)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>حبيتك ليه</span><div><button class="play" onclick="playSong(20)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>توأمي</span><div><button class="play" onclick="playSong(21)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<!-- SONGS -->
+<div class="wrap">
+<div class="col" id="left"></div>
+<div class="col" id="right"></div>
 </div>
 
 </div>
 </div>
-</div>
 
-<!-- PLAYER -->
-<div class="player">
-<div class="auto-play">
-  <button class="auto-btn" onclick="toggleAutoPlay()">
-    ⚡ AUTO PLAY ⚡
-  </button>
-</div>
-<div class="bigplay auto-glow" onclick="togglePlay()" id="mainBtn">▶</div>
-<input type="range" id="progress" value="0" min="0" max="100">
-<div class="volume-box">
-  🔊
-  <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
-</div>
-</div>
-  
-<audio id="audio"></audio>
+<audio id="radio"></audio>
+<audio id="player"></audio>
 
 <script>
-let audio=document.getElementById("audio");
-let progress=document.getElementById("progress");
-let volume=document.getElementById("volume");
-let btn=document.getElementById("mainBtn");
 
-/* SONGS */
-const songs=[
-"https://2u.pw/79BQj1",
-"https://2u.pw/bWZrZR",
-"https://2u.pw/JXlu6P",
-"https://2u.pw/0nlO60",
-"https://2u.pw/xxTuCT",
-"https://2u.pw/w0fqur",
-"https://2u.pw/bmZaL7",
-"https://2u.pw/MIIxAH",
-"https://2u.pw/rvHuMT",
-"https://2u.pw/LibNJq",
-"https://2u.pw/t39HHk",
-"https://2u.pw/W2yDPi",
-"https://2u.pw/gl98FX",
-"https://2u.pw/GB7fYU",
-"https://2u.pw/OOHGBx",
-"https://2u.pw/RLiltR",
-"https://2u.pw/jeHrHc",
-"https://2u.pw/hVpdww",
-"https://2u.pw/e74Z4h",
-"https://2u.pw/rgOydb",
-"https://2u.pw/hDOUEG",
-"https://2u.pw/QAvwiC"
-];
+/* LOGIN */
+function check(){
+if(pass.value==="106080"){
+login.style.display="none";
+main.style.display="block";
+}else alert("Wrong Password");
+}
+pass.addEventListener("keydown",e=>{
+if(e.key==="Enter") check();
+});
 
 /* RADIO */
-let radioUrls=[
+let radios=[
 "https://stream.radiojar.com/8s5u5tpdtwzuv",
-"https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"
+"https://audio.nrpstream.com/listen/nogoumfm/radio.mp3",
+"https://stream.zeno.fm/w7atxdpk1pdvv",
+"https://stream.zeno.fm/hswv0qwu7vgtv"
 ];
 
-function playSong(i){
+let radio=document.getElementById("radio");
+let isRadio=false;
 
-autoMode = false; // يقفل الأوتو لو ضغطت يدوي
-
-audio.src = songs[i];
-audio.load();
-audio.play();
-btn.innerText="⏸";
-
-/* تلوين */
-document.querySelectorAll(".song").forEach(el=>{
-el.classList.remove("active-song");
-});
-
-document.querySelectorAll(".song")[i].classList.add("active-song");
-
-currentIndex = i;
+function playRadio(i){
+radio.pause();
+radio.src=radios[i];
+radio.play();
+isRadio=true;
 }
 
-function radio(i){
-audio.src=radioUrls[i];
-audio.play();
-btn.innerText="⏸";
-}
+function toggleRadio(){
+if(!radio.src) radio.src=radios[0];
 
-function stop(){
-audio.pause();
-audio.currentTime=0;
-btn.innerText="▶";
-progress.value=0;
-}
-
-function toggleAutoPlay(){
-autoMode = !autoMode;
-
-let btn = document.querySelector(".auto-btn");
-
-if(autoMode){
-btn.classList.add("active");
-btn.innerText="⚡ AUTO ON ⚡";
-playNextAuto();
+if(isRadio){
+radio.pause();
+isRadio=false;
 }else{
-btn.classList.remove("active");
-btn.innerText="⚡ AUTO PLAY ⚡";
+radio.play();
+isRadio=true;
 }
 }
 
-audio.addEventListener("timeupdate",()=>{
-if(audio.duration){
-progress.value=(audio.currentTime/audio.duration)*100;
-}
+/* SONGS */
+let songs=[
+["نفسي أطمن بيك","https://j.top4top.io/m_3769le8x51.mp3"],
+["الشعر الأسود","https://k.top4top.io/m_3769enq6z2.mp3"],
+["حبي الأولاني","https://l.top4top.io/m_3769auk3d3.mp3"],
+["كوابيس","https://a.top4top.io/m_3769kdadn4.mp3"],
+["مش تمام","https://b.top4top.io/m_3769kg8sd5.mp3"],
+["مشوار الحب","https://c.top4top.io/m_3769ien0c6.mp3"],
+["صاحبة الجلالة","https://d.top4top.io/m_3769yw3257.mp3"],
+["عملالي عمل","https://e.top4top.io/m_3769yb3k29.mp3"],
+["بحبها","https://f.top4top.io/m_37690zriz10.mp3"],
+["فيكي سر","https://b.top4top.io/m_3769lxi681.mp3"],
+["حياتي قصيدة","https://c.top4top.io/m_3769g0kg52.mp3"],
+["لسه","https://d.top4top.io/m_3769xz8mi3.mp3"],
+["مش زي غيرها","https://e.top4top.io/m_3769o93s34.mp3"],
+["نسند بعض","https://f.top4top.io/m_3769c3tql5.mp3"],
+["وش السعد","https://g.top4top.io/m_3769r7bcu6.mp3"],
+["يا حظ بيه","https://l.top4top.io/m_3769p7dkd1.mp3"],
+["ياللي ناسيني","https://a.top4top.io/m_37697muuj2.mp3"],
+["هلوسة","https://b.top4top.io/m_3769i9yd13.mp3"],
+["قصة حب","https://c.top4top.io/m_3769ou0bt4.mp3"],
+["ذكريات","https://d.top4top.io/m_37697zirj5.mp3"],
+["حبيتك ليه","https://e.top4top.io/m_3769rnmrk6.mp3"],
+["توأمي","https://d.top4top.io/m_3769a1jgw1.mp3"]
+];
+
+let left=document.getElementById("left");
+let right=document.getElementById("right");
+let player=document.getElementById("player");
+
+songs.forEach((s,i)=>{
+let div=document.createElement("div");
+div.className="song";
+div.innerHTML=`
+${s[0]}
+<div>
+<button class="play" onclick="player.src='${s[1]}';player.play()">▶</button>
+<button class="stop" onclick="player.pause()">⏹</button>
+</div>`;
+(i%2?right:left).appendChild(div);
 });
 
-progress.addEventListener("input",()=>{
-if(audio.duration){
-audio.currentTime=(progress.value/100)*audio.duration;
-}
-});
-
-volume.addEventListener("input",()=>{
-audio.volume=volume.value;
-});
-function stopRadio(){
-audio.pause();
-audio.currentTime=0;
-btn.innerText="▶";
-}  
-// ================= AUTO PLAY SYSTEM =================
-let autoMode=false;
-let currentIndex=0;
-
-function toggleAutoPlay(){
-autoMode = !autoMode;
-
-let btnAuto = document.querySelector(".auto-btn");
-
-if(autoMode){
-btnAuto.classList.add("active");
-btnAuto.innerText="⚡ AUTO ON ⚡";
-playNextAuto();
-}else{
-btnAuto.classList.remove("active");
-btnAuto.innerText="⚡ AUTO PLAY ⚡";
-}
-}
-
-function playNextAuto(){
-if(!autoMode) return;
-
-/* تشغيل الأغنية */
-audio.src = songs[currentIndex];
-audio.load();
-audio.play();
-btn.innerText="⏸";
-
-/* تلوين الأغنية */
-document.querySelectorAll(".song").forEach(el=>{
-el.classList.remove("active-song");
-});
-
-let current = document.querySelectorAll(".song")[currentIndex];
-if(current){
-current.classList.add("active-song");
-}
-
-/* بعد ما تخلص */
-audio.onended = function(){
-currentIndex++;
-
-if(currentIndex >= songs.length){
-currentIndex = 0;
-}
-
-playNextAuto();
-};
-} 
-function togglePlay(){
-if(audio.paused){
-audio.play();
-btn.innerText="⏸";
-}else{
-audio.pause();
-btn.innerText="▶";
-}
-}  
 </script>
 
 </body>
