@@ -349,20 +349,26 @@ background:#021017;
 box-shadow:0 0 15px #00ffcc22;
 }
 
-.songs-left{
-color:#00ffcc;
+.songs-left,
+.songs-right{
 font-weight:bold;
 letter-spacing:2px;
-text-shadow:0 0 10px #00ffcc;
+
+/* RGB ألوان بتلف */
+animation:rgbShift 2s infinite linear;
+
+/* Glow حي */
+text-shadow:0 0 10px currentColor, 0 0 20px currentColor;
 }
 
-.songs-right{
-margin-left:auto;
-text-align:right;
-color:#00ffcc;
-font-weight:bold;
-letter-spacing:2px;
-text-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc;
+/* تغيير الألوان */
+@keyframes rgbShift{
+0%{color:#00ffcc;}
+20%{color:#00aaff;}
+40%{color:#ff00ff;}
+60%{color:#ff0033;}
+80%{color:#ffee00;}
+100%{color:#00ffcc;}
 }
 
 /* نفس النبض */
