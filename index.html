@@ -474,18 +474,6 @@ inset 0 0 40px rgba(0,255,204,0.3),
 0 0 60px rgba(0,255,204,0.15);
 }
 }  
-.volume-box{
-display:flex;
-align-items:center;
-gap:8px;
-color:#00ffcc;
-font-size:18px;
-padding:0 5px;
-}
-
-.volume-box input[type=range]{
-cursor:pointer;
-}  
 </style>
 </head>
 
@@ -572,10 +560,7 @@ cursor:pointer;
 <div class="player">
 <div class="bigplay" onclick="togglePlay()" id="mainBtn">▶</div>
 <input type="range" id="progress" value="0" min="0" max="100">
-<div class="volume-box">
-  🔊
-  <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
-</div>
+<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
 </div>
   
 <audio id="audio"></audio>
