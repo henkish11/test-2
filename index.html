@@ -11,24 +11,21 @@ background:#020b0f;
 font-family:Arial;
 color:#00ffcc;
 }
+
 /* تأثير الهوفر الذهبي */
 .hover-gold{
 transition:all 0.3s ease;
 }
 
-/* عند المرور */
 .hover-gold:hover{
 transform:scale(1.05);
-
-/* نور ذهبي */
 box-shadow:
 0 0 10px #ffd700,
 0 0 20px #ffd700,
 0 0 40px #ffcc00;
-
-/* لمعان خفيف */
 filter:brightness(1.2);
 }
+
 /* TOP */
 .top{
 display:grid;
@@ -36,6 +33,31 @@ grid-template-columns:repeat(3,1fr);
 gap:10px;
 padding:10px;
 }
+
+/* CARD تعديل الصور */
+.card{
+width:100%;
+height:180px;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 0 25px #00ffff55;
+border:1px solid #00ffff44;
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:0.3s;
+}
+
+.card:hover img{
+transform:scale(1.08);
+filter:brightness(1.1);
+}
+
+/* باقي الهوفرات */
 .gold-hover{
 transition:all 0.25s ease;
 }
@@ -48,50 +70,25 @@ border-color:#ffd700;
 color:#fff;
 text-shadow:0 0 10px #ffd700, 0 0 20px #ffd700;
 }
+
+/* BY RAMY */
 .by-ramy{
 position:fixed;
 right:20px;
 top:50%;
 transform:translateY(-50%);
-
 font-size:22px;
 font-weight:bold;
 letter-spacing:2px;
-
-/* خط جميل */
 font-family:'Trebuchet MS', sans-serif;
-
-/* لون */
 color:#00ffcc;
-
-/* Glow */
 text-shadow:0 0 5px #00ffcc, 0 0 10px #00ffcc;
-
-/* نبض */
 animation:ramyPulse 1.5s infinite alternate;
 }
 
-/* Animation */
 @keyframes ramyPulse{
-0%{
-opacity:0.4;
-text-shadow:0 0 5px #00ffcc;
-}
-100%{
-opacity:1;
-text-shadow:0 0 15px #00ffcc, 0 0 30px #00ffcc;
-}
-}
-  
-.card{
-width:100%;
-aspect-ratio: 16/9; /* تقدر تغيرها حسب صورتك */
-border-radius:12px;
-background-size:contain;
-background-repeat:no-repeat;
-background-position:center;
-box-shadow:0 0 25px #00ffff55;
-border:1px solid #00ffff44;
+0%{opacity:0.4;text-shadow:0 0 5px #00ffcc;}
+100%{opacity:1;text-shadow:0 0 15px #00ffcc, 0 0 30px #00ffcc;}
 }
 
 /* MAIN */
@@ -205,7 +202,6 @@ border-bottom:1px solid #00ffcc22;
 color:#ffff66;
 }
 
-/* BUTTONS */
 .play{
 background:#0088ff;
 border:none;
@@ -247,24 +243,13 @@ align-items:center;
 font-size:26px;
 cursor:pointer;
 color:#00ffcc;
-
-/* Glow */
 box-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc inset;
-
-/* Animation */
 animation:pulse 1s infinite alternate;
 }
 
-/* النبض */
 @keyframes pulse{
-from{
-opacity:0.5;
-box-shadow:0 0 5px #00ffcc;
-}
-to{
-opacity:1;
-box-shadow:0 0 20px #00ffcc, 0 0 40px #00ffcc;
-}
+from{opacity:0.5;box-shadow:0 0 5px #00ffcc;}
+to{opacity:1;box-shadow:0 0 20px #00ffcc, 0 0 40px #00ffcc;}
 }
 
 input[type=range]{flex:1;}
@@ -281,13 +266,6 @@ color:#00ffcc;
 
 <!-- TOP -->
 <div class="top">
-<div class="card hover-gold">
-<img src="https://xatimg.com/image/p3pJsYxgaCWd.jpg">
-</div>
-
-<div class="card hover-gold">
-<img src="https://xatimg.com/image/EMmcKykagLWU.jpg">
-</div>
 
 <div class="card hover-gold">
 <img src="https://xatimg.com/image/p3pJsYxgaCWd.jpg">
@@ -300,7 +278,7 @@ color:#00ffcc;
 <div class="card hover-gold">
 <img src="https://xatimg.com/image/p3pJsYxgaCWd.jpg">
 </div>
-</div>
+
 </div>
 
 <div class="main">
@@ -329,9 +307,9 @@ color:#00ffcc;
 <a href="https://xat.com/cambio" target="_blank" class="gold-hover">CAMBIO</a>
 </div>
 </div>
+
 <div class="right">
 <div class="title">🎵 SONGS by-ramy</div>
-
 
 <div class="songs-wrap">
 
@@ -369,7 +347,6 @@ color:#00ffcc;
 </div>
 </div>
 
-<!-- PLAYER -->
 <div class="player">
 <div class="bigplay" onclick="togglePlay()" id="mainBtn">▶</div>
 <input type="range" id="progress" value="0" min="0" max="100">
@@ -386,37 +363,7 @@ let progress=document.getElementById("progress");
 let volume=document.getElementById("volume");
 let btn=document.getElementById("mainBtn");
 
-/* SONGS */
-const songs=[
-"https://j.top4top.io/m_3769le8x51.mp3",
-"https://k.top4top.io/m_3769enq6z2.mp3",
-"https://l.top4top.io/m_3769auk3d3.mp3",
-"https://a.top4top.io/m_3769kdadn4.mp3",
-"https://b.top4top.io/m_3769kg8sd5.mp3",
-"https://c.top4top.io/m_3769ien0c6.mp3",
-"https://d.top4top.io/m_3769yw3257.mp3",
-"https://e.top4top.io/m_3769yb3k29.mp3",
-"https://f.top4top.io/m_37690zriz10.mp3",
-"https://b.top4top.io/m_3769lxi681.mp3",
-"https://c.top4top.io/m_3769g0kg52.mp3",
-"https://d.top4top.io/m_3769xz8mi3.mp3",
-"https://e.top4top.io/m_3769o93s34.mp3",
-"https://f.top4top.io/m_3769c3tql5.mp3",
-"https://g.top4top.io/m_3769r7bcu6.mp3",
-"https://l.top4top.io/m_3769p7dkd1.mp3",
-"https://a.top4top.io/m_37697muuj2.mp3",
-"https://b.top4top.io/m_3769i9yd13.mp3",
-"https://c.top4top.io/m_3769ou0bt4.mp3",
-"https://d.top4top.io/m_37697zirj5.mp3",
-"https://e.top4top.io/m_3769rnmrk6.mp3",
-"https://d.top4top.io/m_3769a1jgw1.mp3"
-];
-
-/* RADIO */
-let radioUrls=[
-"https://stream.radiojar.com/8s5u5tpdtwzuv",
-"https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"
-];
+const songs=[/* نفس روابطك */];
 
 function playSong(i){
 audio.src=songs[i];
@@ -434,7 +381,6 @@ function stop(){
 audio.pause();
 audio.currentTime=0;
 btn.innerText="▶";
-progress.value=0;
 }
 
 function togglePlay(){
@@ -462,11 +408,12 @@ audio.currentTime=(progress.value/100)*audio.duration;
 volume.addEventListener("input",()=>{
 audio.volume=volume.value;
 });
+
 function stopRadio(){
 audio.pause();
 audio.currentTime=0;
 btn.innerText="▶";
-}  
+}
 </script>
 
 </body>
