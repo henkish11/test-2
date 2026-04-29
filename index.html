@@ -136,40 +136,37 @@ padding:10px;
 border:1px solid #00ffcc33;
 }
 
-/* SONG HEADER */
+/* 🔥 SONG HEADER (FIXED) */
 .songs-header{
 display:flex;
 justify-content:space-between;
 align-items:center;
+width:100%;
 padding:10px 15px;
 margin-bottom:10px;
 border:1px solid #00ffcc33;
 border-radius:10px;
 background:#021017;
 box-shadow:0 0 15px #00ffcc22;
-font-size:20px;
+box-sizing:border-box;
 }
 
-/* LEFT TEXT */
+/* LEFT SONGS */
 .songs-header .left{
 color:#00ffcc;
 font-weight:bold;
-animation:glowPulse 1.2s infinite ease-in-out;
+letter-spacing:2px;
+text-shadow:0 0 10px #00ffcc;
 }
 
 /* RIGHT BY RAMY */
 .songs-header .right{
 color:#ffd700;
 font-weight:bold;
-animation:ramyPulse 1.2s infinite ease-in-out;
+letter-spacing:2px;
 text-shadow:0 0 10px #ffd700;
-}
-
-/* RAMY PULSE */
-@keyframes ramyPulse{
-0%{opacity:0.3; transform:scale(0.95);}
-50%{opacity:1; transform:scale(1.05);}
-100%{opacity:0.3; transform:scale(0.95);}
+margin-left:auto;   /* 🔥 ده اللي بيخليه لازق يمين */
+text-align:right;
 }
 
 /* SONGS */
@@ -310,10 +307,10 @@ color:#00ffcc;
 <div class="song"><span>08. عملالي عمل</span><button class="play">▶</button></div>
 <div class="song"><span>09. بحبها</span><button class="play">▶</button></div>
 <div class="song"><span>10. فيكي سر</span><button class="play">▶</button></div>
-<div class="song"><span>11. حياتي قصيدة</span><button class="play">▶</button></div>
 </div>
 
 <div class="col">
+<div class="song"><span>11. حياتي قصيدة</span><button class="play">▶</button></div>
 <div class="song"><span>12. لسه</span><button class="play">▶</button></div>
 <div class="song"><span>13. مش زي غيرها</span><button class="play">▶</button></div>
 <div class="song"><span>14. نسند بعض</span><button class="play">▶</button></div>
@@ -323,18 +320,10 @@ color:#00ffcc;
 <div class="song"><span>18. هلوسة</span><button class="play">▶</button></div>
 <div class="song"><span>19. قصة حب</span><button class="play">▶</button></div>
 <div class="song"><span>20. ذكريات</span><button class="play">▶</button></div>
-<div class="song"><span>21. حبيتك ليه</span><button class="play">▶</button></div>
-<div class="song"><span>22. توأمي</span><button class="play">▶</button></div>
 </div>
 
 </div>
 </div>
-</div>
-
-<div class="player">
-<div class="bigplay">▶</div>
-<input type="range">
-<input type="range">
 </div>
 
 <div class="footer glow-text">⚡ RAMY SYSTEM v2.0 ⚡</div>
