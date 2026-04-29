@@ -9,35 +9,112 @@ body{
 margin:0;
 background:#020b0f;
 font-family:Arial;
-color:#00ffcc;
+color:#00ffcc;  
+}
+.radio-title{
+color:#ffffff;
+font-weight:bold;
+letter-spacing:2px;
+
+/* نور أبيض */
+text-shadow:0 0 5px #fff, 0 0 15px #fff, 0 0 25px #fff;
+
+/* اهتزاز + نبض */
+animation:radioGlowShake 1.2s infinite ease-in-out;
 }
 
-/* glow عام */
+/* حركة + وميض */
+@keyframes radioGlowShake{
+0%{
+opacity:0.4;
+transform:translateX(0px) scale(0.95);
+text-shadow:0 0 5px #fff;
+}
+25%{
+transform:translateX(-2px);
+}
+50%{
+opacity:1;
+transform:translateX(2px) scale(1.05);
+text-shadow:0 0 15px #fff, 0 0 30px #fff;
+}
+75%{
+transform:translateX(-1px);
+}
+100%{
+opacity:0.4;
+transform:translateX(0px) scale(0.95);
+text-shadow:0 0 5px #fff;
+}
+}  
 .glow-text{
 color:#00ffcc;
 font-weight:bold;
 letter-spacing:2px;
+margin:0 6px;
+
 text-shadow:0 0 5px #00ffcc, 0 0 15px #00ffcc;
 animation:glowPulse 1.2s infinite ease-in-out;
 }
 
+/* نفس النبض للاتنين */
 @keyframes glowPulse{
-0%{opacity:0.3; transform:scale(0.95);}
-50%{opacity:1; transform:scale(1.05);}
-100%{opacity:0.3; transform:scale(0.95);}
+0%{
+opacity:0.3;
+transform:scale(0.95);
+}
+50%{
+opacity:1;
+transform:scale(1.05);
+}
+100%{
+opacity:0.3;
+transform:scale(0.95);
+}
+}  
+.byramy{
+margin-left:10px;
+font-weight:bold;
+color:#00ffcc;
+letter-spacing:2px;
+
+text-shadow:0 0 5px #00ffcc, 0 0 15px #00ffcc;
+animation:ramyPulse 1.2s infinite ease-in-out;
 }
 
-/* hover */
+/* نبض */
+@keyframes ramyPulse{
+0%{
+opacity:0.3;
+transform:scale(0.95);
+}
+50%{
+opacity:1;
+transform:scale(1.05);
+}
+100%{
+opacity:0.3;
+transform:scale(0.95);
+}
+}  
+/* تأثير الهوفر الذهبي */
 .hover-gold{
 transition:all 0.3s ease;
 }
 
+/* عند المرور */
 .hover-gold:hover{
 transform:scale(1.05);
-box-shadow:0 0 10px #ffd700,0 0 20px #ffd700,0 0 40px #ffcc00;
+
+/* نور ذهبي */
+box-shadow:
+0 0 10px #ffd700,
+0 0 20px #ffd700,
+0 0 40px #ffcc00;
+
+/* لمعان خفيف */
 filter:brightness(1.2);
 }
-
 /* TOP */
 .top{
 display:grid;
@@ -45,7 +122,53 @@ grid-template-columns:repeat(3,1fr);
 gap:10px;
 padding:10px;
 }
+.gold-hover{
+transition:all 0.25s ease;
+}
 
+.gold-hover:hover{
+transform:scale(1.07);
+box-shadow:0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 40px #ffcc00;
+filter:brightness(1.2);
+border-color:#ffd700;
+color:#fff;
+text-shadow:0 0 10px #ffd700, 0 0 20px #ffd700;
+}
+.by-ramy{
+position:fixed;
+right:20px;
+top:50%;
+transform:translateY(-50%);
+
+font-size:22px;
+font-weight:bold;
+letter-spacing:2px;
+
+/* خط جميل */
+font-family:'Trebuchet MS', sans-serif;
+
+/* لون */
+color:#00ffcc;
+
+/* Glow */
+text-shadow:0 0 5px #00ffcc, 0 0 10px #00ffcc;
+
+/* نبض */
+animation:ramyPulse 1.5s infinite alternate;
+}
+
+/* Animation */
+@keyframes ramyPulse{
+0%{
+opacity:0.4;
+text-shadow:0 0 5px #00ffcc;
+}
+100%{
+opacity:1;
+text-shadow:0 0 15px #00ffcc, 0 0 30px #00ffcc;
+}
+}
+  
 .card{
 height:160px;
 border-radius:12px;
@@ -76,25 +199,35 @@ box-shadow:0 0 15px #00ffcc22;
 display:flex;
 align-items:center;
 gap:12px;
+padding-left:5px; /* تزقيه يمين بسيط */
 }
 
 .profile img{
 width:70px;
 height:70px;
 border-radius:50%;
+
 border:2px solid #00ffcc;
-box-shadow:0 0 20px #00ffcc;
+
+/* نور قوي */
+box-shadow:
+0 0 10px #00ffcc,
+0 0 20px #00ffcc,
+0 0 40px #00ffcc;
+
+/* حركة + نبض */
 animation:avatarPulse 1.5s infinite ease-in-out;
 }
 
-@keyframes avatarPulse{
-0%{transform:scale(0.95);}
-50%{transform:scale(1.05);}
-100%{transform:scale(0.95);}
+.name{
+font-size:28px;
+color:#00ff88;
 }
 
-.name{font-size:28px;color:#00ff88;}
-.status{font-size:12px;color:#00ff88;}
+.status{
+font-size:12px;
+color:#00ff88;
+}
 
 .section{
 margin-top:15px;
@@ -136,37 +269,10 @@ padding:10px;
 border:1px solid #00ffcc33;
 }
 
-/* 🔥 SONG HEADER (FIXED) */
-.songs-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-padding:10px 15px;
+.title{
+text-align:center;
+font-size:20px;
 margin-bottom:10px;
-border:1px solid #00ffcc33;
-border-radius:10px;
-background:#021017;
-box-shadow:0 0 15px #00ffcc22;
-box-sizing:border-box;
-}
-
-/* LEFT SONGS */
-.songs-header .left{
-color:#00ffcc;
-font-weight:bold;
-letter-spacing:2px;
-text-shadow:0 0 10px #00ffcc;
-}
-
-/* RIGHT BY RAMY */
-.songs-header .right{
-color:#ffd700;
-font-weight:bold;
-letter-spacing:2px;
-text-shadow:0 0 10px #ffd700;
-margin-left:auto;   /* 🔥 ده اللي بيخليه لازق يمين */
-text-align:right;
 }
 
 /* SONGS */
@@ -192,6 +298,7 @@ border-bottom:1px solid #00ffcc22;
 color:#ffff66;
 }
 
+/* BUTTONS */
 .play{
 background:#0088ff;
 border:none;
@@ -226,19 +333,31 @@ background:#021017;
 width:60px;
 height:60px;
 border-radius:50%;
+background:#021017;
 display:flex;
 justify-content:center;
 align-items:center;
 font-size:26px;
 cursor:pointer;
 color:#00ffcc;
-box-shadow:0 0 10px #00ffcc,0 0 20px #00ffcc inset;
+
+/* Glow */
+box-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc inset;
+
+/* Animation */
 animation:pulse 1s infinite alternate;
 }
 
+/* النبض */
 @keyframes pulse{
-from{opacity:0.5;}
-to{opacity:1;}
+from{
+opacity:0.5;
+box-shadow:0 0 5px #00ffcc;
+}
+to{
+opacity:1;
+box-shadow:0 0 20px #00ffcc, 0 0 40px #00ffcc;
+}
 }
 
 input[type=range]{flex:1;}
@@ -248,6 +367,73 @@ text-align:center;
 padding:10px;
 color:#00ffcc;
 }
+.songs-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+width:100%;
+box-sizing:border-box;
+}
+.songs-header .right{
+margin-left:auto;
+}  
+
+padding:10px 15px;
+margin-bottom:10px;
+
+border:1px solid #00ffcc33;
+border-radius:10px;
+background:#021017;
+
+box-shadow:0 0 15px #00ffcc22;
+}
+
+/* الشمال */
+.songs-header .left{
+color:#00ffcc;
+font-weight:bold;
+letter-spacing:2px;
+text-shadow:0 0 10px #00ffcc;
+
+animation:glowPulse 1.2s infinite ease-in-out;
+}
+
+/* اليمين */
+.songs-header .right{
+color:#ffd700;
+font-weight:bold;
+letter-spacing:2px;
+text-shadow:0 0 10px #ffd700;
+
+animation:glowPulse 1.2s infinite ease-in-out;
+}
+
+/* نفس النبض */
+@keyframes glowPulse{
+0%{opacity:0.4; transform:scale(0.95);}
+50%{opacity:1; transform:scale(1.05);}
+100%{opacity:0.4; transform:scale(0.95);}
+}  
+@keyframes avatarPulse{
+0%{
+transform:scale(0.95) translateY(0px);
+box-shadow:0 0 10px #00ffcc;
+opacity:0.7;
+}
+
+50%{
+transform:scale(1.05) translateY(-3px);
+box-shadow:0 0 25px #00ffcc, 0 0 40px #00ffcc;
+opacity:1;
+}
+
+100%{
+transform:scale(0.95) translateY(0px);
+box-shadow:0 0 10px #00ffcc;
+opacity:0.7;
+}
+}  
 </style>
 </head>
 
@@ -271,24 +457,22 @@ color:#00ffcc;
 </div>
 </div>
 
-<div class="section">RADIO</div>
+<div class="section radio-title">RADIO</div>
 <div class="radio">
-<button class="quran hover-gold" onclick="radio(0)">QURAN</button>
-<button class="music hover-gold" onclick="radio(1)">MUSIC</button>
-<button class="hover-gold" style="width:100%;margin-top:8px;" onclick="stopRadio()">STOP RADIO</button>
+<button class="quran gold-hover" onclick="radio(0)">QURAN</button>
+<button class="music gold-hover" onclick="radio(1)">MUSIC</button>
+<button class="stop-radio gold-hover" style="width:100%;margin-top:8px;" onclick="stopRadio()">STOP RADIO</button>
 </div>
 
 <div class="section">CHAT ROOMS</div>
 <div class="chat">
-<a href="https://xat.com/2ra">2RA</a>
-<a href="https://xat.com/7reqa">7REQA</a>
-<a href="https://xat.com/trade">TRADE</a>
-<a href="https://xat.com/cambio">CAMBIO</a>
+<a href="https://xat.com/2ra" target="_blank" class="gold-hover">2RA</a>
+<a href="https://xat.com/7reqa" target="_blank" class="gold-hover">7REQA</a>
+<a href="https://xat.com/trade" target="_blank" class="gold-hover">TRADE</a>
+<a href="https://xat.com/cambio" target="_blank" class="gold-hover">CAMBIO</a>
 </div>
 </div>
-
 <div class="right">
-
 <div class="songs-header">
 <span class="left">🎵 SONGS</span>
 <span class="right">BY RAMY</span>
@@ -297,36 +481,138 @@ color:#00ffcc;
 <div class="songs-wrap">
 
 <div class="col">
-<div class="song"><span>01. نفسي أطمن بيك</span><button class="play">▶</button></div>
-<div class="song"><span>02. الشعر الأسود</span><button class="play">▶</button></div>
-<div class="song"><span>03. حبي الأولاني</span><button class="play">▶</button></div>
-<div class="song"><span>04. كوابيس</span><button class="play">▶</button></div>
-<div class="song"><span>05. مش تمام</span><button class="play">▶</button></div>
-<div class="song"><span>06. مشوار الحب</span><button class="play">▶</button></div>
-<div class="song"><span>07. صاحبة الجلالة</span><button class="play">▶</button></div>
-<div class="song"><span>08. عملالي عمل</span><button class="play">▶</button></div>
-<div class="song"><span>09. بحبها</span><button class="play">▶</button></div>
-<div class="song"><span>10. فيكي سر</span><button class="play">▶</button></div>
+<!-- 1-11 -->
+<div class="song hover-gold"><span>01. نفسي أطمن بيك</span><div><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>02. الشعر الأسود</span><div><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>03. حبي الأولاني</span><div><button class="play" onclick="playSong(2)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>04. كوابيس</span><div><button class="play" onclick="playSong(3)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>05. مش تمام</span><div><button class="play" onclick="playSong(4)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>06. مشوار الحب</span><div><button class="play" onclick="playSong(5)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>07. صاحبة الجلالة</span><div><button class="play" onclick="playSong(6)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>08. عملالي عمل</span><div><button class="play" onclick="playSong(7)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>09. بحبها</span><div><button class="play" onclick="playSong(8)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>10. فيكي سر</span><div><button class="play" onclick="playSong(9)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>11. حياتي قصيدة</span><div><button class="play" onclick="playSong(10)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
 </div>
 
 <div class="col">
-<div class="song"><span>11. حياتي قصيدة</span><button class="play">▶</button></div>
-<div class="song"><span>12. لسه</span><button class="play">▶</button></div>
-<div class="song"><span>13. مش زي غيرها</span><button class="play">▶</button></div>
-<div class="song"><span>14. نسند بعض</span><button class="play">▶</button></div>
-<div class="song"><span>15. وش السعد</span><button class="play">▶</button></div>
-<div class="song"><span>16. يا حظ بيه</span><button class="play">▶</button></div>
-<div class="song"><span>17. ياللي ناسيني</span><button class="play">▶</button></div>
-<div class="song"><span>18. هلوسة</span><button class="play">▶</button></div>
-<div class="song"><span>19. قصة حب</span><button class="play">▶</button></div>
-<div class="song"><span>20. ذكريات</span><button class="play">▶</button></div>
+<!-- 12-22 -->
+<div class="song hover-gold"><span>12. لسه</span><div><button class="play" onclick="playSong(11)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>13. مش زي غيرها</span><div><button class="play" onclick="playSong(12)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>14. نسند بعض</span><div><button class="play" onclick="playSong(13)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>15. وش السعد</span><div><button class="play" onclick="playSong(14)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>16. يا حظ بيه</span><div><button class="play" onclick="playSong(15)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>17. ياللي ناسيني</span><div><button class="play" onclick="playSong(16)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>18. هلوسة</span><div><button class="play" onclick="playSong(17)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>19. قصة حب</span><div><button class="play" onclick="playSong(18)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>20. ذكريات</span><div><button class="play" onclick="playSong(19)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>21. حبيتك ليه</span><div><button class="play" onclick="playSong(20)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>22. توأمي</span><div><button class="play" onclick="playSong(21)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
 </div>
 
 </div>
 </div>
+</div>
+
+<!-- PLAYER -->
+<div class="player">
+<div class="bigplay" onclick="togglePlay()" id="mainBtn">▶</div>
+<input type="range" id="progress" value="0" min="0" max="100">
+<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
 </div>
 
 <div class="footer glow-text">⚡ RAMY SYSTEM v2.0 ⚡</div>
+  
+<audio id="audio"></audio>
+
+<script>
+let audio=document.getElementById("audio");
+let progress=document.getElementById("progress");
+let volume=document.getElementById("volume");
+let btn=document.getElementById("mainBtn");
+
+/* SONGS */
+const songs=[
+"https://j.top4top.io/m_3769le8x51.mp3",
+"https://k.top4top.io/m_3769enq6z2.mp3",
+"https://l.top4top.io/m_3769auk3d3.mp3",
+"https://a.top4top.io/m_3769kdadn4.mp3",
+"https://b.top4top.io/m_3769kg8sd5.mp3",
+"https://c.top4top.io/m_3769ien0c6.mp3",
+"https://d.top4top.io/m_3769yw3257.mp3",
+"https://e.top4top.io/m_3769yb3k29.mp3",
+"https://f.top4top.io/m_37690zriz10.mp3",
+"https://b.top4top.io/m_3769lxi681.mp3",
+"https://c.top4top.io/m_3769g0kg52.mp3",
+"https://d.top4top.io/m_3769xz8mi3.mp3",
+"https://e.top4top.io/m_3769o93s34.mp3",
+"https://f.top4top.io/m_3769c3tql5.mp3",
+"https://g.top4top.io/m_3769r7bcu6.mp3",
+"https://l.top4top.io/m_3769p7dkd1.mp3",
+"https://a.top4top.io/m_37697muuj2.mp3",
+"https://b.top4top.io/m_3769i9yd13.mp3",
+"https://c.top4top.io/m_3769ou0bt4.mp3",
+"https://d.top4top.io/m_37697zirj5.mp3",
+"https://e.top4top.io/m_3769rnmrk6.mp3",
+"https://d.top4top.io/m_3769a1jgw1.mp3"
+];
+
+/* RADIO */
+let radioUrls=[
+"https://stream.radiojar.com/8s5u5tpdtwzuv",
+"https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"
+];
+
+function playSong(i){
+audio.src=songs[i];
+audio.play();
+btn.innerText="⏸";
+}
+
+function radio(i){
+audio.src=radioUrls[i];
+audio.play();
+btn.innerText="⏸";
+}
+
+function stop(){
+audio.pause();
+audio.currentTime=0;
+btn.innerText="▶";
+progress.value=0;
+}
+
+function togglePlay(){
+if(audio.paused){
+audio.play();
+btn.innerText="⏸";
+}else{
+audio.pause();
+btn.innerText="▶";
+}
+}
+
+audio.addEventListener("timeupdate",()=>{
+if(audio.duration){
+progress.value=(audio.currentTime/audio.duration)*100;
+}
+});
+
+progress.addEventListener("input",()=>{
+if(audio.duration){
+audio.currentTime=(progress.value/100)*audio.duration;
+}
+});
+
+volume.addEventListener("input",()=>{
+audio.volume=volume.value;
+});
+function stopRadio(){
+audio.pause();
+audio.currentTime=0;
+btn.innerText="▶";
+}  
+</script>
 
 </body>
 </html>
