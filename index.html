@@ -271,7 +271,32 @@ align-items:center;
 }
 
 .song span{
-color:#ffff66;
+font-size:18px; /* تكبير الخط */
+font-weight:bold;
+letter-spacing:1px;
+
+/* ألوان بتتقلب */
+animation: songRGB 3s infinite linear;
+
+/* إضاءة قوية */
+text-shadow:
+0 0 5px currentColor,
+0 0 10px currentColor,
+0 0 20px currentColor,
+0 0 40px currentColor;
+
+/* نعومة */
+transition:0.3s;
+}
+
+/* حركة RGB */
+@keyframes songRGB{
+0%{color:#00ffcc;}
+20%{color:#00aaff;}
+40%{color:#ff00ff;}
+60%{color:#ff0033;}
+80%{color:#ffee00;}
+100%{color:#00ffcc;}
 }
 
 /* BUTTONS */
@@ -630,32 +655,32 @@ color:#ffee00;
 
 <div class="col">
 <!-- 1-11 -->
-<div class="song hover-gold"><span>01. نفسي أطمن بيك</span><div><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>02. الشعر الأسود</span><div><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>03. حبي الأولاني</span><div><button class="play" onclick="playSong(2)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>04. كوابيس</span><div><button class="play" onclick="playSong(3)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>05. مش تمام</span><div><button class="play" onclick="playSong(4)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>06. مشوار الحب</span><div><button class="play" onclick="playSong(5)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>07. صاحبة الجلالة</span><div><button class="play" onclick="playSong(6)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>08. عملالي عمل</span><div><button class="play" onclick="playSong(7)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>09. بحبها</span><div><button class="play" onclick="playSong(8)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>10. فيكي سر</span><div><button class="play" onclick="playSong(9)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>11. حياتي قصيدة</span><div><button class="play" onclick="playSong(10)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>نفسي أطمن بيك</span><div><button class="play" onclick="playSong(0)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>الشعر الأسود</span><div><button class="play" onclick="playSong(1)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>حبي الأولاني</span><div><button class="play" onclick="playSong(2)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>كوابيس</span><div><button class="play" onclick="playSong(3)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>مش تمام</span><div><button class="play" onclick="playSong(4)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>مشوار الحب</span><div><button class="play" onclick="playSong(5)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>صاحبة الجلالة</span><div><button class="play" onclick="playSong(6)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>عملالي عمل</span><div><button class="play" onclick="playSong(7)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>بحبها</span><div><button class="play" onclick="playSong(8)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>فيكي سر</span><div><button class="play" onclick="playSong(9)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>حياتي قصيدة</span><div><button class="play" onclick="playSong(10)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
 </div>
 
 <div class="col">
 <!-- 12-22 -->
-<div class="song hover-gold"><span>12. لسه</span><div><button class="play" onclick="playSong(11)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>13. مش زي غيرها</span><div><button class="play" onclick="playSong(12)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>14. نسند بعض</span><div><button class="play" onclick="playSong(13)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>15. وش السعد</span><div><button class="play" onclick="playSong(14)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>16. يا حظ بيه</span><div><button class="play" onclick="playSong(15)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>17. ياللي ناسيني</span><div><button class="play" onclick="playSong(16)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>18. هلوسة</span><div><button class="play" onclick="playSong(17)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>19. قصة حب</span><div><button class="play" onclick="playSong(18)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>20. ذكريات</span><div><button class="play" onclick="playSong(19)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>21. حبيتك ليه</span><div><button class="play" onclick="playSong(20)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
-<div class="song hover-gold"><span>22. توأمي</span><div><button class="play" onclick="playSong(21)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>لسه</span><div><button class="play" onclick="playSong(11)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>مش زي غيرها</span><div><button class="play" onclick="playSong(12)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>نسند بعض</span><div><button class="play" onclick="playSong(13)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>وش السعد</span><div><button class="play" onclick="playSong(14)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>يا حظ بيه</span><div><button class="play" onclick="playSong(15)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>ياللي ناسيني</span><div><button class="play" onclick="playSong(16)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>هلوسة</span><div><button class="play" onclick="playSong(17)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>قصة حب</span><div><button class="play" onclick="playSong(18)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>ذكريات</span><div><button class="play" onclick="playSong(19)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>حبيتك ليه</span><div><button class="play" onclick="playSong(20)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
+<div class="song hover-gold"><span>توأمي</span><div><button class="play" onclick="playSong(21)">▶</button><button class="stop" onclick="stop()">■</button></div></div>
 </div>
 
 </div>
