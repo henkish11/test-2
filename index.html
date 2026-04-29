@@ -408,7 +408,59 @@ box-shadow:0 0 20px #00ffcc, 0 0 40px #00ffcc;
 }
 }
 
-input[type=range]{flex:1;}
+/* شكل عام */
+input[type=range]{
+flex:1;
+-webkit-appearance:none;
+appearance:none;
+height:6px;
+border-radius:10px;
+outline:none;
+
+/* ألوان متحركة */
+background:linear-gradient(90deg, #00ffcc, #00aaff, #ff00ff, #ffee00);
+background-size:300%;
+
+/* حركة RGB */
+animation: sliderRGB 4s linear infinite;
+
+/* Glow */
+box-shadow:0 0 10px #00ffcc;
+}
+
+/* الحركة */
+@keyframes sliderRGB{
+0%{background-position:0%;}
+100%{background-position:300%;}
+}
+
+/* الدائرة (المؤشر) */
+input[type=range]::-webkit-slider-thumb{
+-webkit-appearance:none;
+width:18px;
+height:18px;
+border-radius:50%;
+background:#fff;
+cursor:pointer;
+
+/* Glow قوي */
+box-shadow:
+0 0 10px #00ffcc,
+0 0 20px #00ffcc,
+0 0 30px #00ffcc;
+
+/* تكبير بسيط */
+transition:0.2s;
+}
+
+/* Hover */
+input[type=range]::-webkit-slider-thumb:hover{
+transform:scale(1.2);
+box-shadow:
+0 0 15px #ff00ff,
+0 0 30px #ff00ff,
+0 0 50px #ff00ff;
+}
 
 .footer{
 text-align:center;
