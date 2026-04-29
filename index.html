@@ -139,7 +139,7 @@ border:1px solid #00ffcc33;
 /* SONG HEADER */
 .songs-header{
 display:flex;
-justify-content:flex-start;
+justify-content:space-between;
 align-items:center;
 padding:10px 15px;
 margin-bottom:10px;
@@ -148,6 +148,28 @@ border-radius:10px;
 background:#021017;
 box-shadow:0 0 15px #00ffcc22;
 font-size:20px;
+}
+
+/* LEFT TEXT */
+.songs-header .left{
+color:#00ffcc;
+font-weight:bold;
+animation:glowPulse 1.2s infinite ease-in-out;
+}
+
+/* RIGHT BY RAMY */
+.songs-header .right{
+color:#ffd700;
+font-weight:bold;
+animation:ramyPulse 1.2s infinite ease-in-out;
+text-shadow:0 0 10px #ffd700;
+}
+
+/* RAMY PULSE */
+@keyframes ramyPulse{
+0%{opacity:0.3; transform:scale(0.95);}
+50%{opacity:1; transform:scale(1.05);}
+100%{opacity:0.3; transform:scale(0.95);}
 }
 
 /* SONGS */
@@ -271,37 +293,38 @@ color:#00ffcc;
 <div class="right">
 
 <div class="songs-header">
-🎵 SONGS
+<span class="left">🎵 SONGS</span>
+<span class="right">BY RAMY</span>
 </div>
 
 <div class="songs-wrap">
 
 <div class="col">
-<div class="song"><span>01. نفسي أطمن بيك</span><button class="play" onclick="playSong(0)">▶</button></div>
-<div class="song"><span>02. الشعر الأسود</span><button class="play" onclick="playSong(1)">▶</button></div>
-<div class="song"><span>03. حبي الأولاني</span><button class="play" onclick="playSong(2)">▶</button></div>
-<div class="song"><span>04. كوابيس</span><button class="play" onclick="playSong(3)">▶</button></div>
-<div class="song"><span>05. مش تمام</span><button class="play" onclick="playSong(4)">▶</button></div>
-<div class="song"><span>06. مشوار الحب</span><button class="play" onclick="playSong(5)">▶</button></div>
-<div class="song"><span>07. صاحبة الجلالة</span><button class="play" onclick="playSong(6)">▶</button></div>
-<div class="song"><span>08. عملالي عمل</span><button class="play" onclick="playSong(7)">▶</button></div>
-<div class="song"><span>09. بحبها</span><button class="play" onclick="playSong(8)">▶</button></div>
-<div class="song"><span>10. فيكي سر</span><button class="play" onclick="playSong(9)">▶</button></div>
-<div class="song"><span>11. حياتي قصيدة</span><button class="play" onclick="playSong(10)">▶</button></div>
+<div class="song"><span>01. نفسي أطمن بيك</span><button class="play">▶</button></div>
+<div class="song"><span>02. الشعر الأسود</span><button class="play">▶</button></div>
+<div class="song"><span>03. حبي الأولاني</span><button class="play">▶</button></div>
+<div class="song"><span>04. كوابيس</span><button class="play">▶</button></div>
+<div class="song"><span>05. مش تمام</span><button class="play">▶</button></div>
+<div class="song"><span>06. مشوار الحب</span><button class="play">▶</button></div>
+<div class="song"><span>07. صاحبة الجلالة</span><button class="play">▶</button></div>
+<div class="song"><span>08. عملالي عمل</span><button class="play">▶</button></div>
+<div class="song"><span>09. بحبها</span><button class="play">▶</button></div>
+<div class="song"><span>10. فيكي سر</span><button class="play">▶</button></div>
+<div class="song"><span>11. حياتي قصيدة</span><button class="play">▶</button></div>
 </div>
 
 <div class="col">
-<div class="song"><span>12. لسه</span><button class="play" onclick="playSong(11)">▶</button></div>
-<div class="song"><span>13. مش زي غيرها</span><button class="play" onclick="playSong(12)">▶</button></div>
-<div class="song"><span>14. نسند بعض</span><button class="play" onclick="playSong(13)">▶</button></div>
-<div class="song"><span>15. وش السعد</span><button class="play" onclick="playSong(14)">▶</button></div>
-<div class="song"><span>16. يا حظ بيه</span><button class="play" onclick="playSong(15)">▶</button></div>
-<div class="song"><span>17. ياللي ناسيني</span><button class="play" onclick="playSong(16)">▶</button></div>
-<div class="song"><span>18. هلوسة</span><button class="play" onclick="playSong(17)">▶</button></div>
-<div class="song"><span>19. قصة حب</span><button class="play" onclick="playSong(18)">▶</button></div>
-<div class="song"><span>20. ذكريات</span><button class="play" onclick="playSong(19)">▶</button></div>
-<div class="song"><span>21. حبيتك ليه</span><button class="play" onclick="playSong(20)">▶</button></div>
-<div class="song"><span>22. توأمي</span><button class="play" onclick="playSong(21)">▶</button></div>
+<div class="song"><span>12. لسه</span><button class="play">▶</button></div>
+<div class="song"><span>13. مش زي غيرها</span><button class="play">▶</button></div>
+<div class="song"><span>14. نسند بعض</span><button class="play">▶</button></div>
+<div class="song"><span>15. وش السعد</span><button class="play">▶</button></div>
+<div class="song"><span>16. يا حظ بيه</span><button class="play">▶</button></div>
+<div class="song"><span>17. ياللي ناسيني</span><button class="play">▶</button></div>
+<div class="song"><span>18. هلوسة</span><button class="play">▶</button></div>
+<div class="song"><span>19. قصة حب</span><button class="play">▶</button></div>
+<div class="song"><span>20. ذكريات</span><button class="play">▶</button></div>
+<div class="song"><span>21. حبيتك ليه</span><button class="play">▶</button></div>
+<div class="song"><span>22. توأمي</span><button class="play">▶</button></div>
 </div>
 
 </div>
@@ -309,97 +332,12 @@ color:#00ffcc;
 </div>
 
 <div class="player">
-<div class="bigplay" onclick="togglePlay()" id="mainBtn">▶</div>
-<input type="range" id="progress" value="0" max="100">
-<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+<div class="bigplay">▶</div>
+<input type="range">
+<input type="range">
 </div>
 
 <div class="footer glow-text">⚡ RAMY SYSTEM v2.0 ⚡</div>
-
-<audio id="audio"></audio>
-
-<script>
-let audio=document.getElementById("audio");
-let progress=document.getElementById("progress");
-let volume=document.getElementById("volume");
-let btn=document.getElementById("mainBtn");
-
-const songs=[
-"https://j.top4top.io/m_3769le8x51.mp3",
-"https://k.top4top.io/m_3769enq6z2.mp3",
-"https://l.top4top.io/m_3769auk3d3.mp3",
-"https://a.top4top.io/m_3769kdadn4.mp3",
-"https://b.top4top.io/m_3769kg8sd5.mp3",
-"https://c.top4top.io/m_3769ien0c6.mp3",
-"https://d.top4top.io/m_3769yw3257.mp3",
-"https://e.top4top.io/m_3769yb3k29.mp3",
-"https://f.top4top.io/m_37690zriz10.mp3",
-"https://b.top4top.io/m_3769lxi681.mp3",
-"https://c.top4top.io/m_3769g0kg52.mp3",
-"https://d.top4top.io/m_3769xz8mi3.mp3",
-"https://e.top4top.io/m_3769o93s34.mp3",
-"https://f.top4top.io/m_3769c3tql5.mp3",
-"https://g.top4top.io/m_3769r7bcu6.mp3",
-"https://l.top4top.io/m_3769p7dkd1.mp3",
-"https://a.top4top.io/m_37697muuj2.mp3",
-"https://b.top4top.io/m_3769i9yd13.mp3",
-"https://c.top4top.io/m_3769ou0bt4.mp3",
-"https://d.top4top.io/m_37697zirj5.mp3",
-"https://e.top4top.io/m_3769rnmrk6.mp3",
-"https://d.top4top.io/m_3769a1jgw1.mp3"
-];
-
-let radioUrls=[
-"https://stream.radiojar.com/8s5u5tpdtwzuv",
-"https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"
-];
-
-function playSong(i){
-audio.src=songs[i];
-audio.play();
-btn.innerText="⏸";
-}
-
-function radio(i){
-audio.src=radioUrls[i];
-audio.play();
-btn.innerText="⏸";
-}
-
-function stop(){
-audio.pause();
-audio.currentTime=0;
-btn.innerText="▶";
-progress.value=0;
-}
-
-function togglePlay(){
-if(audio.paused){audio.play();btn.innerText="⏸";}
-else{audio.pause();btn.innerText="▶";}
-}
-
-audio.addEventListener("timeupdate",()=>{
-if(audio.duration){
-progress.value=(audio.currentTime/audio.duration)*100;
-}
-});
-
-progress.addEventListener("input",()=>{
-if(audio.duration){
-audio.currentTime=(progress.value/100)*audio.duration;
-}
-});
-
-volume.addEventListener("input",()=>{
-audio.volume=volume.value;
-});
-
-function stopRadio(){
-audio.pause();
-audio.currentTime=0;
-btn.innerText="▶";
-}
-</script>
 
 </body>
 </html>
