@@ -3,7 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <title>RAMY SYSTEM v2.0</title>
+.active-song{
+border-left:4px solid #00ffcc;
+padding-left:10px;
+animation: rainbowGlow 1.5s infinite linear;
+box-shadow:0 0 10px #00ffcc;
+}
 
+@keyframes rainbowGlow{
+0%{
+filter:hue-rotate(0deg);
+background:rgba(0,255,204,0.05);
+}
+
+25%{
+filter:hue-rotate(90deg);
+background:rgba(255,0,150,0.05);
+}
+
+50%{
+filter:hue-rotate(180deg);
+background:rgba(0,150,255,0.05);
+}
+
+75%{
+filter:hue-rotate(270deg);
+background:rgba(255,255,0,0.05);
+}
+
+100%{
+filter:hue-rotate(360deg);
+background:rgba(0,255,204,0.05);
+}
+}
 <style>
 body{
 margin:0;
@@ -603,10 +635,24 @@ let radioUrls=[
 "https://audio.nrpstream.com/listen/nogoumfm/radio.mp3"
 ];
 
+let currentSong=null;
+
 function playSong(i){
+
+// تشغيل الصوت
 audio.src=songs[i];
 audio.play();
 btn.innerText="⏸";
+
+// إزالة التفعيل من كل الأغاني
+document.querySelectorAll(".song").forEach(el=>{
+el.classList.remove("active-song");
+});
+
+// إضافة تفعيل للأغنية الحالية
+document.querySelectorAll(".song")[i].classList.add("active-song");
+
+currentSong=i;
 }
 
 function radio(i){
