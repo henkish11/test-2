@@ -11,6 +11,31 @@ background:#020b0f;
 font-family:Arial;
 color:#00ffcc;  
 }
+.glow-text{
+color:#00ffcc;
+font-weight:bold;
+letter-spacing:2px;
+margin:0 6px;
+
+text-shadow:0 0 5px #00ffcc, 0 0 15px #00ffcc;
+animation:glowPulse 1.2s infinite ease-in-out;
+}
+
+/* نفس النبض للاتنين */
+@keyframes glowPulse{
+0%{
+opacity:0.3;
+transform:scale(0.95);
+}
+50%{
+opacity:1;
+transform:scale(1.05);
+}
+100%{
+opacity:0.3;
+transform:scale(0.95);
+}
+}  
 .byramy{
 margin-left:10px;
 font-weight:bold;
@@ -337,7 +362,8 @@ color:#00ffcc;
 </div>
 <div class="right">
 <div class="title">
-🎵 SONGS <span class="byramy">BY RAMY</span>
+<span class="glow-text">🎵 SONGS</span>
+<span class="glow-text">BY RAMY</span>
 </div>
 
 
