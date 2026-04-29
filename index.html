@@ -700,9 +700,22 @@ let radioUrls=[
 ];
 
 function playSong(i){
-audio.src=songs[i];
+
+autoMode = false; // يقفل الأوتو لو ضغطت يدوي
+
+audio.src = songs[i];
+audio.load();
 audio.play();
 btn.innerText="⏸";
+
+/* تلوين */
+document.querySelectorAll(".song").forEach(el=>{
+el.classList.remove("active-song");
+});
+
+document.querySelectorAll(".song")[i].classList.add("active-song");
+
+currentIndex = i;
 }
 
 function radio(i){
@@ -752,6 +765,55 @@ function stopRadio(){
 audio.pause();
 audio.currentTime=0;
 btn.innerText="▶";
+}  
+// ================= AUTO PLAY SYSTEM =================
+let autoMode=false;
+let currentIndex=0;
+
+function toggleAutoPlay(){
+autoMode = !autoMode;
+
+let btnAuto = document.querySelector(".auto-btn");
+
+if(autoMode){
+btnAuto.classList.add("active");
+btnAuto.innerText="⚡ AUTO ON ⚡";
+playNextAuto();
+}else{
+btnAuto.classList.remove("active");
+btnAuto.innerText="⚡ AUTO PLAY ⚡";
+}
+}
+
+function playNextAuto(){
+if(!autoMode) return;
+
+/* تشغيل الأغنية */
+audio.src = songs[currentIndex];
+audio.load();
+audio.play();
+btn.innerText="⏸";
+
+/* تلوين الأغنية */
+document.querySelectorAll(".song").forEach(el=>{
+el.classList.remove("active-song");
+});
+
+let current = document.querySelectorAll(".song")[currentIndex];
+if(current){
+current.classList.add("active-song");
+}
+
+/* بعد ما تخلص */
+audio.onended = function(){
+currentIndex++;
+
+if(currentIndex >= songs.length){
+currentIndex = 0;
+}
+
+playNextAuto();
+};
 }  
 </script>
 
