@@ -640,15 +640,17 @@ let currentSong=null;
 function playSong(i){
 
 audio.src=songs[i];
-audio.play();
+audio.load();   // 👈 مهم جداً
+audio.play().catch(err=>{
+console.log("Audio error:", err);
+});
+
 btn.innerText="⏸";
 
-// إزالة التفعيل من كل الأغاني
 document.querySelectorAll(".song").forEach(el=>{
 el.classList.remove("active-song");
 });
 
-// إضافة تفعيل للأغنية الحالية
 let songsList=document.querySelectorAll(".song");
 if(songsList[i]){
 songsList[i].classList.add("active-song");
