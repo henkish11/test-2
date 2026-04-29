@@ -72,14 +72,6 @@ opacity:0.3;
 transform:scale(0.95);
 }
 }  
-.byramy{
-margin-left:10px;
-font-weight:bold;
-color:#00ffcc;
-letter-spacing:2px;
-
-text-shadow:0 0 5px #00ffcc, 0 0 15px #00ffcc;
-animation:ramyPulse 1.2s infinite ease-in-out;
 }
 
 /* نبض */
@@ -133,28 +125,6 @@ filter:brightness(1.2);
 border-color:#ffd700;
 color:#fff;
 text-shadow:0 0 10px #ffd700, 0 0 20px #ffd700;
-}
-.by-ramy{
-position:fixed;
-right:20px;
-top:50%;
-transform:translateY(-50%);
-
-font-size:22px;
-font-weight:bold;
-letter-spacing:2px;
-
-/* خط جميل */
-font-family:'Trebuchet MS', sans-serif;
-
-/* لون */
-color:#00ffcc;
-
-/* Glow */
-text-shadow:0 0 5px #00ffcc, 0 0 10px #00ffcc;
-
-/* نبض */
-animation:ramyPulse 1.5s infinite alternate;
 }
 
 /* Animation */
@@ -531,6 +501,7 @@ opacity:0.7;
 </div>
   
 <audio id="audio"></audio>
+<div class="hud-ramy">⚡ RAMY SYSTEM ⚡</div>
 
 <script>
 let audio=document.getElementById("audio");
