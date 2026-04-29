@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>RAMY SYSTEM v2.0</title>
+.active-song span{
+animation:textGlow 1s infinite alternate;
+}
 
+@keyframes textGlow{
+0%{
+text-shadow:0 0 5px #fff, 0 0 10px #00ffcc;
+}
+100%{
+text-shadow:0 0 10px #ff00ff, 0 0 20px #00ffcc;
+}
+}
 <style>
 body{
 margin:0;
