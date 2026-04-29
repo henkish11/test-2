@@ -562,6 +562,24 @@ box-shadow:
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }  
+.auto-glow{
+animation:autoGlow 1.2s infinite alternate;
+}
+
+@keyframes autoGlow{
+0%{
+box-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc;
+color:#00ffcc;
+}
+50%{
+box-shadow:0 0 20px #ff00ff, 0 0 40px #ff00ff;
+color:#ff00ff;
+}
+100%{
+box-shadow:0 0 20px #ffee00, 0 0 40px #ffee00;
+color:#ffee00;
+}
+}  
 </style>
 </head>
 
@@ -651,7 +669,7 @@ box-shadow:
     ⚡ AUTO PLAY ⚡
   </button>
 </div>
-<div class="bigplay" onclick="togglePlay()" id="mainBtn">▶</div>
+<div class="bigplay auto-glow" onclick="togglePlay()" id="mainBtn">▶</div>
 <input type="range" id="progress" value="0" min="0" max="100">
 <div class="volume-box">
   🔊
@@ -814,6 +832,15 @@ currentIndex = 0;
 
 playNextAuto();
 };
+} 
+function togglePlay(){
+if(audio.paused){
+audio.play();
+btn.innerText="⏸";
+}else{
+audio.pause();
+btn.innerText="▶";
+}
 }  
 </script>
 
