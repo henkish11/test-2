@@ -220,50 +220,60 @@ font-weight:bold;
 .music{background:#5522aa;color:#fff;}
 
 /* CHAT */
+/* CHAT ROOMS - WHITE PINK NEON */
 .chat a{
 display:block;
 margin-top:10px;
-padding:10px;
-border:1px solid #00ffcc33;
-border-radius:8px;
-text-decoration:none;
+padding:12px;
+border:1px solid #ff4fd8;
 
-/* تكبير الخط */
 font-size:18px;
 font-weight:bold;
 letter-spacing:1px;
 
-/* RGB */
-animation: chatRGB 3s infinite linear;
+color:#fff;
 
-/* Glow */
+/* نيون أبيض + زهري */
 text-shadow:
-0 0 5px currentColor,
-0 0 10px currentColor,
-0 0 20px currentColor,
-0 0 30px currentColor;
+0 0 5px #fff,
+0 0 10px #ff4fd8,
+0 0 20px #ff4fd8,
+0 0 40px #ff4fd8;
 
-/* حركة ناعمة */
+border-radius:10px;
+text-decoration:none;
 transition:0.3s;
+
+/* نبض خفيف */
+animation:chatPinkPulse 1.8s infinite ease-in-out;
 }
 
-/* حركة الألوان */
-@keyframes chatRGB{
-0%{color:#00ffcc;}
-20%{color:#00aaff;}
-40%{color:#ff00ff;}
-60%{color:#ff0033;}
-80%{color:#ffee00;}
-100%{color:#00ffcc;}
+/* نبض النيون */
+@keyframes chatPinkPulse{
+0%{
+transform:scale(0.98);
+box-shadow:0 0 5px #ff4fd8;
+opacity:0.7;
+}
+50%{
+transform:scale(1.03);
+box-shadow:0 0 20px #ff4fd8, 0 0 40px #ff4fd8;
+opacity:1;
+}
+100%{
+transform:scale(0.98);
+box-shadow:0 0 5px #ff4fd8;
+opacity:0.7;
+}
 }
 
 /* Hover أقوى */
 .chat a:hover{
 transform:scale(1.08);
 box-shadow:
-0 0 10px currentColor,
-0 0 20px currentColor,
-0 0 40px currentColor;
+0 0 15px #fff,
+0 0 30px #ff4fd8,
+0 0 60px #ff4fd8;
 }
 
 /* RIGHT */
