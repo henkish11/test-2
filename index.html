@@ -222,12 +222,48 @@ font-weight:bold;
 /* CHAT */
 .chat a{
 display:block;
-margin-top:8px;
-padding:8px;
+margin-top:10px;
+padding:10px;
 border:1px solid #00ffcc33;
-border-radius:6px;
+border-radius:8px;
 text-decoration:none;
-color:#00ccff;
+
+/* تكبير الخط */
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+
+/* RGB */
+animation: chatRGB 3s infinite linear;
+
+/* Glow */
+text-shadow:
+0 0 5px currentColor,
+0 0 10px currentColor,
+0 0 20px currentColor,
+0 0 30px currentColor;
+
+/* حركة ناعمة */
+transition:0.3s;
+}
+
+/* حركة الألوان */
+@keyframes chatRGB{
+0%{color:#00ffcc;}
+20%{color:#00aaff;}
+40%{color:#ff00ff;}
+60%{color:#ff0033;}
+80%{color:#ffee00;}
+100%{color:#00ffcc;}
+}
+
+/* Hover أقوى */
+.chat a:hover{
+transform:scale(1.08);
+box-shadow:
+0 0 10px currentColor,
+0 0 20px currentColor,
+0 0 40px currentColor;
 }
 
 /* RIGHT */
