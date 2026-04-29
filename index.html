@@ -48,6 +48,41 @@ border-color:#ffd700;
 color:#fff;
 text-shadow:0 0 10px #ffd700, 0 0 20px #ffd700;
 }
+.by-ramy{
+position:fixed;
+right:20px;
+top:50%;
+transform:translateY(-50%);
+
+font-size:22px;
+font-weight:bold;
+letter-spacing:2px;
+
+/* خط جميل */
+font-family:'Trebuchet MS', sans-serif;
+
+/* لون */
+color:#00ffcc;
+
+/* Glow */
+text-shadow:0 0 5px #00ffcc, 0 0 10px #00ffcc;
+
+/* نبض */
+animation:ramyPulse 1.5s infinite alternate;
+}
+
+/* Animation */
+@keyframes ramyPulse{
+0%{
+opacity:0.4;
+text-shadow:0 0 5px #00ffcc;
+}
+100%{
+opacity:1;
+text-shadow:0 0 15px #00ffcc, 0 0 30px #00ffcc;
+}
+}
+  
 .card{
 height:160px;
 border-radius:12px;
@@ -275,9 +310,9 @@ color:#00ffcc;
 <a href="https://xat.com/cambio" target="_blank" class="gold-hover">CAMBIO</a>
 </div>
 </div>
-
+<div class="by-ramy">by RAMY</div>
 <div class="right">
-<div class="title">🎵 SONGS by RAMY</div>
+<div class="title">🎵 SONGS</div>
 
 <div class="songs-wrap">
 
