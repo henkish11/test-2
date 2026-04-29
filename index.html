@@ -759,6 +759,37 @@ box-shadow:
 0 0 20px #ffd700,
 0 0 40px #ffcc00;
 transition:0.3s;
+} 
+.red-glow{
+background:#220000;
+color:#ff2b2b;
+border:1px solid #ff2b2b;
+box-shadow:0 0 10px #ff0000, 0 0 20px #ff0000;
+text-shadow:0 0 10px #ff0000;
+
+/* نبض */
+animation:redPulse 1.2s infinite ease-in-out;
+cursor:pointer;
+}
+
+.red-glow:hover{
+transform:scale(1.08);
+box-shadow:0 0 15px #ff0000, 0 0 35px #ff0000;
+}
+
+@keyframes redPulse{
+0%{
+opacity:0.6;
+filter:brightness(1);
+}
+50%{
+opacity:1;
+filter:brightness(1.4);
+}
+100%{
+opacity:0.6;
+filter:brightness(1);
+}
 }  
 </style>
 </head>
@@ -789,7 +820,7 @@ transition:0.3s;
 <div class="radio">
 <button class="quran gold-hover" onclick="radio(0)">QURAN</button>
 <button class="music gold-hover" onclick="radio(1)">MUSIC</button>
-<button class="stop-radio gold-hover" style="width:100%;margin-top:8px;" onclick="stopRadio()">STOP RADIO</button>
+<button class="stop-radio red-glow gold-hover" style="width:100%;margin-top:8px;" onclick="stopRadio()">STOP RADIO</button>
 </div>
 
 <div class="section">CHAT ROOMS</div>
