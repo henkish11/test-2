@@ -395,6 +395,17 @@ transform:scale(0.95) translateY(0px);
 box-shadow:0 0 10px #00ffcc;
 opacity:0.7;
 }
+}
+.info-move{
+animation: moveSide 2s infinite ease-in-out;
+display:flex;
+flex-direction:column;
+}
+
+@keyframes moveSide{
+0%{transform:translateX(0px);}
+50%{transform:translateX(8px);}
+100%{transform:translateX(0px);}
 }  
 </style>
 </head>
@@ -413,10 +424,12 @@ opacity:0.7;
 <div class="left">
 <div class="profile">
 <img src="https://xatimg.com/image/mr0HaGwQtzx2.png">
-<div>
+
+<div class="info-move">
 <div class="name glow-text">RAMY</div>
 <div class="status glow-text">● SYSTEM ONLINE</div>
 </div>
+
 </div>
 
 <div class="section radio-title">RADIO</div>
