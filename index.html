@@ -212,7 +212,7 @@ padding:8px;
 margin-top:8px;
 border:none;
 border-radius:8px;
-cursor:pointer;
+cursor: url("https://cur.cursors-4u.net/cursors/cur-9/cur817.cur"), pointer;
 font-weight:bold;
 }
 
@@ -691,6 +691,61 @@ color:#ff00ff;
 100%{
 box-shadow:0 0 20px #ffee00, 0 0 40px #ffee00;
 color:#ffee00;
+}
+}  
+/* نخلي الجسم كله ماوس عادي */
+body{
+cursor:default;
+}
+
+/* الأغاني */
+.song{
+cursor:pointer;
+position:relative;
+}
+
+/* كسر الإحساس الافتراضي وإضافة Glow بصري */
+.song:hover{
+box-shadow:
+0 0 10px #ffd700,
+0 0 20px #ffd700,
+0 0 40px #ffcc00;
+}
+
+/* Cursor دهبي وهمي (نبض بصري) */
+body::after{
+content:"✋";
+position:fixed;
+pointer-events:none;
+font-size:22px;
+color:#ffd700;
+text-shadow:
+0 0 10px #ffd700,
+0 0 20px #ffd700,
+0 0 40px #ffcc00;
+
+/* مكانه يتبع الماوس */
+transform:translate(-50%,-50%);
+
+/* نبض */
+animation:goldCursorPulse 0.8s infinite;
+mix-blend-mode:screen;
+z-index:999999;
+}
+
+/* حركة النبض */
+@keyframes goldCursorPulse{
+0%{
+opacity:0.4;
+transform:scale(0.9) translate(-50%,-50%);
+}
+50%{
+opacity:1;
+transform:scale(1.2) translate(-50%,-50%);
+}
+100%{
+opacity:0.4;
+transform:scale(0.9) translate(-50%,-50%);
 }
 }  
 </style>
