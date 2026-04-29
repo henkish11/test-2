@@ -485,6 +485,82 @@ padding:0 5px;
 
 .volume-box input[type=range]{
 cursor:pointer;
+} 
+.auto-play{
+text-align:center;
+margin:15px;
+}
+
+/* الزر الأساسي */
+.auto-btn{
+position:relative;
+padding:12px 25px;
+font-size:16px;
+font-weight:bold;
+letter-spacing:2px;
+
+color:#fff;
+background:#021017;
+border:1px solid #00ffcc55;
+border-radius:12px;
+cursor:pointer;
+overflow:hidden;
+
+/* Glow */
+box-shadow:
+0 0 10px #00ffcc,
+0 0 20px #00ffcc inset;
+
+transition:0.3s;
+}
+
+/* خط RGB متحرك */
+.auto-btn::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+270deg,
+#00ffcc,
+#ff00ff,
+#00aaff,
+#ffee00,
+#ff0033
+);
+background-size:600% 600%;
+animation:rgbMove 4s infinite linear;
+opacity:0.3;
+z-index:0;
+}
+
+/* النص فوق */
+.auto-btn{
+z-index:1;
+}
+
+/* Hover */
+.auto-btn:hover{
+transform:scale(1.1);
+box-shadow:
+0 0 20px #00ffcc,
+0 0 40px #ff00ff,
+0 0 60px #00aaff;
+}
+
+/* لما يشتغل */
+.auto-btn.active{
+color:#000;
+background:#00ffcc;
+box-shadow:
+0 0 20px #00ffcc,
+0 0 40px #00ffcc;
+}
+
+/* حركة الألوان */
+@keyframes rgbMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }  
 </style>
 </head>
@@ -571,8 +647,10 @@ cursor:pointer;
 <!-- PLAYER -->
 <div class="player">
 <div class="auto-play">
-  <button onclick="toggleAutoPlay()">▶ AUTO PLAY</button>
-</div>  
+  <button class="auto-btn" onclick="toggleAutoPlay()">
+    ⚡ AUTO PLAY ⚡
+  </button>
+</div>
 <div class="bigplay" onclick="togglePlay()" id="mainBtn">▶</div>
 <input type="range" id="progress" value="0" min="0" max="100">
 <div class="volume-box">
@@ -640,13 +718,18 @@ btn.innerText="▶";
 progress.value=0;
 }
 
-function togglePlay(){
-if(audio.paused){
-audio.play();
-btn.innerText="⏸";
+function toggleAutoPlay(){
+autoMode = !autoMode;
+
+let btn = document.querySelector(".auto-btn");
+
+if(autoMode){
+btn.classList.add("active");
+btn.innerText="⚡ AUTO ON ⚡";
+playNextAuto();
 }else{
-audio.pause();
-btn.innerText="▶";
+btn.classList.remove("active");
+btn.innerText="⚡ AUTO PLAY ⚡";
 }
 }
 
